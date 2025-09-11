@@ -11,7 +11,7 @@ import produkt8 from "../../images/motiv-jente.png";
 export default function Home() {
   return(
     <div>
-      <div className="bg-white grid grid-cols-6 grid-rows-2 gap-1 p-0 m-0">
+      <div className="bg-white grid grid-cols-6 grid-rows-2 gap-1 p-12 m-0 rounded-lg">
         <img src={produkt1} alt=""/>
         <img src={produkt2} alt=""/>
         <img src={produkt3} alt=""/>
