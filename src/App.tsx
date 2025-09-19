@@ -19,7 +19,7 @@ function App() {
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/ProductSpecific/:id" element={<ProductSpecific />} />
+          <Route  path="/product/:handle" element={<ProductSpecific />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>

@@ -1,7 +1,7 @@
-import produkt1 from "../../images/motiv-by.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
+import type { Product } from "../../hooks/fetchAllProducts";
 
 export default function AllProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -34,8 +34,9 @@ export default function AllProducts() {
  
         <ul className="grid grid-cols-4 gap-5">
         {products.map((product) => (
-          <Link to="/ProductSpecific/:id">
+          
           <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded-lg p-4 bg-white flex flex-col shadow-lg">
+            <Link to={`/product/${product.id}`}>
             {product.images.edges[0] && (
               <img
                 src={product.images.edges[0].node.url}
@@ -48,8 +49,9 @@ export default function AllProducts() {
           <p className="text-lg font-semibold">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
   {product.variants.edges[0].node.priceV2.currencyCode}</p>
         </div>
+        </Link>
           </li>
-          </Link>
+          
         ))}
       </ul>
     </div>
