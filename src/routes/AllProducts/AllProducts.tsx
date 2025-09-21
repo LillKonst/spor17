@@ -45,9 +45,9 @@ export default function AllProducts() {
               />
             )}
             <div className=" mt-2 px-1 flex flex-col justify-center">
-          <p className="text-md">{product.title}</p>
-          <p className="text-lg font-semibold">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
-  {product.variants.edges[0].node.priceV2.currencyCode}</p>
+          <h2 className="text-md">{product.title}</h2>
+          <h2 className="text-lg">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
+  {product.variants.edges[0].node.priceV2.currencyCode}</h2>
         </div>
         </Link>
           </li>

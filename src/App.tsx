@@ -11,8 +11,8 @@ function App() {
   
 
   return (
-    <div className="bg-background h-full p-5">
-      <div className="container mx-auto px-12">
+    <div className="bg-background h-full xxs:p-5">
+      <div className="container mx-auto xxs:px-5 lg:px-12">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
