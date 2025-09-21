@@ -36,7 +36,7 @@ export default function AllProducts() {
         {products.map((product) => (
           
           <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded-lg p-4 bg-white flex flex-col shadow-lg">
-            <Link to={`/product/${product.id}`}>
+            <Link to={`/product/${product.handle}`}>
             {product.images.edges[0] && (
               <img
                 src={product.images.edges[0].node.url}

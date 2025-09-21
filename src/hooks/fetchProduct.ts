@@ -2,6 +2,7 @@ import { shopifyFetch } from "./api";
 
 export interface Product {
   id: string;
+  handle: string;
   title: string;
   description: string;
   images: { edges: { node: { url: string; altText: string | null } }[] };
@@ -17,6 +18,7 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
     query($handle: String!) {
       productByHandle(handle: $handle) {
         id
+        handle
         title
         description
         images(first: 1) {
