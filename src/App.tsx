@@ -11,7 +11,7 @@ function App() {
   
 
   return (
-    <div className="bg-background h-screen p-5 px-10">
+    <div className="bg-background h-full p-5">
       <div className="container mx-auto px-12">
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/ProductSpecific/:id" element={<ProductSpecific />} />
+          <Route  path="/product/:handle" element={<ProductSpecific />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>
