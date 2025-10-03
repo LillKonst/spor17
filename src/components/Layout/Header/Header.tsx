@@ -29,6 +29,11 @@ export default function Header() {
             Kontakt
             </Link> 
           </li>
+          <li>
+            <Link to="cart">
+            Shopping Cart
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

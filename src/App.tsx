@@ -6,6 +6,7 @@ import About from "./routes/About/About";
 import Contact from "./routes/Contact/Contact";
 import AllProducts from "./routes/AllProducts/AllProducts";
 import ProductSpecific from "./routes/ProductSpecific/ProductSpecific";
+import ShoppingCart from "./routes/ShoppingCart/ShoppingCart";
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route  path="/product/:handle" element={<ProductSpecific />} />
+          <Route path="/cart" element={<ShoppingCart />} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>
