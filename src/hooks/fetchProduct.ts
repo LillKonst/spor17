@@ -4,7 +4,7 @@ export interface Product {
   id: string;
   handle: string;
   title: string;
-  description: string;
+  descriptionHtml: string;
   images: { edges: { node: { url: string; altText: string | null } }[] };
   variants: { edges: { node: { priceV2: { amount: string; currencyCode: string } } }[] };
 }
@@ -20,13 +20,13 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
         id
         handle
         title
-        description
-        images(first: 1) {
+        descriptionHtml
+        images(first: 10) {   # hent opptil 10 bilder, eller 4 hvis du alltid har 4
           edges {
-            node {
-              url
-              altText
-            }
+          node {
+          url
+          altText
+          }
           }
         }
         variants(first: 1) {

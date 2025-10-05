@@ -1,4 +1,4 @@
-import logo from "../../../images/logo.svg"
+import logo from "../../../images/Logo-SPOR17.svg"
 
 import { Link } from "react-router-dom";
 
@@ -9,8 +9,8 @@ export function RouteNotFound() {
 export default function Header() {
   return (
     <div className="p-5 flex items-center justify-between">
-      <Link to="">
-      <img src={logo} alt="Spor 17 logo" className="w-28"/>
+      <Link to="" className="flex items-center gap-2 text-2xl">
+      <img src={logo} alt="Spor 17 logo" className="w-8"/> spor 17
       </Link>
       <nav>
         <ul className="flex gap-4 text-xl">
