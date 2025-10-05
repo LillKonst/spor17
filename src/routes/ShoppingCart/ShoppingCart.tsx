@@ -45,16 +45,16 @@ export default function ShoppingCart() {
        <h2 className="text-2xl mb-5">Handlekurv</h2>
         <ul>
           {cart.lines?.length > 0 ? (
-            <ul>
+            <ul className="flex flex-col gap-5">
               {cart.lines.map((line) => (
                 <li key={line.id} className="flex items-center space-x-4 p-4 rounded shadow-sm">
                 {line.image && (
-                  <img src={line.image} alt={line.title} className="w-16 h-16 object-cover rounded" />
+                  <img src={line.image} alt={line.title} className="w-54 h-54 object-cover rounded" />
                   )}
                   <div className="flex-1">
                       <p className="font-semibold">{line.title}</p>
                         <p>
-                          Pris: {line.price.amount} {line.price.currencyCode}
+                          Pris: {Math.round(Number(line.price.amount))} {line.price.currencyCode}
                                    </p>
                                 <p>Antall: {line.quantity}</p>
                      <div className="space-x-2 mt-2">
@@ -80,9 +80,19 @@ export default function ShoppingCart() {
           )}
         </ul>
 
-    <p>
+    <p className="text-xl">
       Total (inkl. tax og duty): {totalAmount} {cart.cost.currencyCode}
     </p>
+    {cart.checkoutUrl && (
+  <button
+    onClick={() => window.location.href = cart.checkoutUrl}
+    className="bg-black text-white px-6 py-3 rounded-lg mt-4"
+  >
+    Gå til betaling
+  </button>
+)}
+
+
     </div>
   );
 }

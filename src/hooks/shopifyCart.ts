@@ -22,22 +22,42 @@ export interface Cart {
   id: string;
   createdAt: string;
   updatedAt: string;
+  checkoutUrl: string;
   lines: CartLine[];
   cost: CartCost;
 }
+
+// interface ShopifyMerchandise {
+//   id: string;
+//   title: string;
+//   priceV2: { amount: string; currencyCode: string };
+//   image?: { url: string };
+// }
 
 interface ShopifyCartLine {
   node: {
     id: string;
     quantity: number;
-    merchandise: { id: string };
+    merchandise: {
+      id: string;
+      title: string;
+      priceV2: { amount: string; currencyCode: string };
+      product: {
+        title: string;
+        images: {
+          edges: { node: { url: string; altText: string | null } }[];
+        };
+      };
+    };
   };
 }
+
 
 interface ShopifyCart {
   id: string;
   createdAt: string;
   updatedAt: string;
+  checkoutUrl: string;
   lines: { edges: ShopifyCartLine[] };
   cost: {
     subtotalAmount: { amount: string; currencyCode: string };
@@ -53,11 +73,16 @@ function normalizeCart(raw: ShopifyCart): Cart {
     id: raw.id,
     createdAt: raw.createdAt,
     updatedAt: raw.updatedAt,
+    checkoutUrl: raw.checkoutUrl,
     lines: raw.lines.edges.map((e) => ({
-      id: e.node.id,
-      quantity: e.node.quantity,
-      merchandiseId: e.node.merchandise.id,
-    })),
+  id: e.node.id,
+  quantity: e.node.quantity,
+  merchandiseId: e.node.merchandise.id,
+  title: e.node.merchandise.product.title,
+  image: e.node.merchandise.product.images.edges[0]?.node.url,
+  price: e.node.merchandise.priceV2,
+})),
+
     cost: {
       amount: raw.cost.totalAmount.amount,
       currencyCode: raw.cost.totalAmount.currencyCode,
@@ -66,6 +91,7 @@ function normalizeCart(raw: ShopifyCart): Cart {
     },
   };
 }
+
 
 
 export async function createCart(variantId: string, quantity: number): Promise<Cart> {
@@ -78,6 +104,7 @@ export async function createCart(variantId: string, quantity: number): Promise<C
       ) {
         cart {
           id
+          checkoutUrl
           createdAt
           updatedAt
           lines(first: 10) {
@@ -86,10 +113,27 @@ export async function createCart(variantId: string, quantity: number): Promise<C
                 id
                 quantity
                 merchandise {
-        ... on ProductVariant {
-          id
+  ... on ProductVariant {
+    id
+    title
+    product {
+      title
+      images(first: 1) {
+        edges {
+          node {
+            url
+            altText
+          }
         }
       }
+    }
+    priceV2 {
+      amount
+      currencyCode
+    }
+  }
+}
+
               }
             }
           }
@@ -119,6 +163,7 @@ export async function addToCart(cartId: string, variantId: string, quantity: num
       ) {
         cart {
           id
+          checkoutUrl
           createdAt
           updatedAt
           lines(first: 10) {
@@ -127,10 +172,27 @@ export async function addToCart(cartId: string, variantId: string, quantity: num
                 id
                 quantity
                 merchandise {
-        ... on ProductVariant {
-          id
+  ... on ProductVariant {
+    id
+    title
+    product {
+      title
+      images(first: 1) {
+        edges {
+          node {
+            url
+            altText
+          }
         }
       }
+    }
+    priceV2 {
+      amount
+      currencyCode
+    }
+  }
+}
+
               }
             }
           }
@@ -157,6 +219,7 @@ export async function getCart(cartId: string): Promise<Cart> {
     query cart($id: ID!) {
       cart(id: $id) {
         id
+        checkoutUrl
         createdAt
         updatedAt
         lines(first: 10) {
@@ -165,10 +228,27 @@ export async function getCart(cartId: string): Promise<Cart> {
               id
               quantity
               merchandise {
-        ... on ProductVariant {
-          id
+  ... on ProductVariant {
+    id
+    title
+    product {
+      title
+      images(first: 1) {
+        edges {
+          node {
+            url
+            altText
+          }
         }
       }
+    }
+    priceV2 {
+      amount
+      currencyCode
+    }
+  }
+}
+
             }
           }
         }
@@ -198,6 +278,7 @@ export async function updateCartLine(cartId: string, lineId: string, quantity: n
       ) {
         cart {
           id
+          checkoutUrl
           createdAt
           updatedAt
           lines(first: 10) {
@@ -206,10 +287,27 @@ export async function updateCartLine(cartId: string, lineId: string, quantity: n
                 id
                 quantity
                 merchandise {
-        ... on ProductVariant {
-          id
+  ... on ProductVariant {
+    id
+    title
+    product {
+      title
+      images(first: 1) {
+        edges {
+          node {
+            url
+            altText
+          }
         }
       }
+    }
+    priceV2 {
+      amount
+      currencyCode
+    }
+  }
+}
+
               }
             }
           }
