@@ -3,11 +3,15 @@ import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
 import type { Product } from "../../hooks/fetchProduct";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
+// import { AddToCartButton } from "../../components/Buttons/CallToActionButton";
+import { useCart } from "../../hooks/useCart";
 
 
 export default function ProductSpecific() {
   const { handle } = useParams<{ handle: string }>();
   const [product, setProduct] = useState<Product | null>(null);
+  const { addItem } = useCart();
+
 
   useEffect(() => {
     if (!handle) return;
@@ -15,6 +19,8 @@ export default function ProductSpecific() {
   }, [handle]);
 
   if (!product) return <p>Produktet finnes ikke eller laster...</p>;
+
+  const variantId = product.variants.edges[0].node.id;
   
   return (
     <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg py-5 px-5 lg:px-10 justify-center">
@@ -38,8 +44,14 @@ export default function ProductSpecific() {
         ></div>
 
 
-        <button className="bg-background mt-12 p-2 px-5 rounded-lg w-fit">Legg i handlekurv</button>
-      
+        {/* <button className="bg-background mt-12 p-2 px-5 rounded-lg w-fit" onClick={() => addItem(product.variants.edges[0].node.id, 1)}>Legg i handlekurv</button> */}
+        {/* <AddToCartButton variantId={product.variants.edges[0].node.id} /> */}
+         <button
+          className="bg-background mt-12 p-2 px-5 rounded-lg w-fit"
+          onClick={() => addItem(variantId, 1)}
+        >
+          Legg i handlekurv
+        </button>
       
       
       </div>

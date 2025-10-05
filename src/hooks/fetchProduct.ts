@@ -6,7 +6,7 @@ export interface Product {
   title: string;
   descriptionHtml: string;
   images: { edges: { node: { url: string; altText: string | null } }[] };
-  variants: { edges: { node: { priceV2: { amount: string; currencyCode: string } } }[] };
+  variants: { edges: { node: { id: string; priceV2: { amount: string; currencyCode: string } } }[] };
 }
 
 interface ProductResponse {
@@ -32,6 +32,7 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
         variants(first: 1) {
           edges {
             node {
+            id
               priceV2 {
                 amount
                 currencyCode
