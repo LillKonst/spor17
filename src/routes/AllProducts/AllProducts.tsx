@@ -32,7 +32,7 @@ export default function AllProducts() {
     <div className="">
       <h1 className="text-2xl p-5 ">JULEKORT - DEN ENKLE SERIEN</h1>
  
-        <ul className="grid grid-cols-4 gap-5">
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {products.map((product) => (
           
           <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded-lg p-4 bg-white flex flex-col shadow-lg">
@@ -41,12 +41,16 @@ export default function AllProducts() {
               <img
                 src={product.images.edges[0].node.url}
                 alt={product.images.edges[0].node.altText || product.title}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg -my-5 px-2"
               />
             )}
             <div className=" mt-2 px-1 flex flex-col justify-center">
-          <h2 className="text-md">{product.title}</h2>
-          <h2 className="text-lg">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
+          <h2 className="text-md">
+            {product.title.slice(0, 10)}
+            <br />
+            {product.title.slice(10)}
+          </h2>
+          <h2 className="text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
   {product.variants.edges[0].node.priceV2.currencyCode}</h2>
         </div>
         </Link>
