@@ -73,13 +73,8 @@ export default function Header() {
             </Link>
           </li>
           <li>
-             <Link to="/Contact">
-            Kontakt
-            </Link> 
-          </li>
-          <li>
             <Link to="cart">
-            Shopping Cart
+            Handlekurv
             </Link>
           </li>
         </ul>
