@@ -47,7 +47,7 @@ export default function ShoppingCart() {
           {cart.lines?.length > 0 ? (
             <ul className="flex flex-col gap-5">
               {cart.lines.map((line) => (
-                <li key={line.id} className="flex items-center space-x-4 p-4 rounded shadow-sm">
+                <li key={line.id} className="flex flex-col md:flex-row items-center space-x-4 p-4 rounded shadow-sm">
                 {line.image && (
                   <img src={line.image} alt={line.title} className="w-54 h-54 object-cover rounded" />
                   )}
