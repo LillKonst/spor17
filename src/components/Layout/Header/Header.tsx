@@ -35,7 +35,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="p-5 flex items-center justify-between">
+    <div className="p-5 flex items-center justify-between relative">
       <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
       <img src={logo} alt="Spor 17 logo" className="w-8"/> spor 17
       </Link>
@@ -44,9 +44,11 @@ export default function Header() {
           <button
             ref={buttonRef}
             onClick={toggleMenu}
-            className="text-md p-2 mt-3 text-black font-semibold"
+            className="text-md p-2 mt-3 text-black font-semibold rounded-lg bg-white shadow-lg relative z-50"
           >
-            MENU
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
           </button>
         </div>
 
@@ -57,7 +59,7 @@ export default function Header() {
           } absolute md:static top-[77px] left-50 right-0 h-screen md:h-[70px] p-5 md:p-0 
                        rounded
                      bg-background md:w-full md:justify-end
-                      md:space-x-4 `}
+                      md:space-x-4 z-40`}
         >
 
       <nav className="md:self-center">
