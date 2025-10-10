@@ -11,8 +11,17 @@ export default function ShoppingCart() {
     if (!cartId) return;
 
     setLoading(true);
-    getCart(cartId)
-      .then((data) => setCart(data))
+    // 🔹 Når handlekurv lastes inn første gang
+getCart(cartId)
+  .then((data) => {
+    setCart(data);
+
+    // Beregn total antall varer
+    const totalItems = data.lines.reduce((sum, line) => sum + line.quantity, 0);
+    localStorage.setItem("cartCount", String(totalItems));
+    window.dispatchEvent(new Event("cartCountUpdated"));
+  })
+
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
@@ -22,17 +31,43 @@ export default function ShoppingCart() {
 
     setLoading(true);
     try {
-      const updatedCart = await updateCartLine(cart.id, lineId, quantity);
-      setCart(updatedCart);
-    } catch (err) {
-      console.error(err);
+      const updateQuantity = async (lineId: string, quantity: number) => {
+  if (!cart) return;
+
+  // ✅ Ikke tillat negative antall
+  if (quantity < 1) return;
+
+  // ✅ Optimistisk oppdatering i React før API-kall
+  const updatedLines = cart.lines.map(line =>
+    line.id === lineId ? { ...line, quantity } : line
+  );
+
+  setCart({ ...cart, lines: updatedLines });
+
+  try {
+    // Send endringen til Shopify, men behold UI snappy
+    const updatedCart = await updateCartLine(cart.id, lineId, quantity);
+    setCart(updatedCart);
+
+    // Beregn totalantall
+    const totalItems = updatedCart.lines.reduce((sum, l) => sum + l.quantity, 0);
+    localStorage.setItem("cartCount", String(totalItems));
+    window.dispatchEvent(new Event("cartCountUpdated"));
+  } catch (err) {
+    console.error(err);
+  }
+};
+
     } finally {
       setLoading(false);
     }
   };
 
   if (loading) return <div>Laster handlekurv...</div>;
-  if (!cart || cart.lines.length === 0) return <div>Handlekurven er tom</div>;
+  if (!cart || cart.lines.length === 0) { 
+    localStorage.setItem("cartCount", "0");
+    return <div>Handlekurven er tom</div>;
+  }
 
 
    const totalAmount =

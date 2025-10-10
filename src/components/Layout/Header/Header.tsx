@@ -11,7 +11,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-
+  const [cartCount, setCartCount] = useState<number>(0);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -34,6 +34,20 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+  const storedCount = localStorage.getItem("cartCount");
+  if (storedCount) setCartCount(Number(storedCount));
+
+ 
+  const handleStorageChange = () => {
+    const updatedCount = localStorage.getItem("cartCount");
+    if (updatedCount) setCartCount(Number(updatedCount));
+  };
+  window.addEventListener("cartCountUpdated", handleStorageChange);
+
+  return () => window.removeEventListener("storage", handleStorageChange);
+}, []);
+
   return (
     <div className="p-5 flex items-center justify-between relative">
       <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
@@ -44,7 +58,7 @@ export default function Header() {
           <button
             ref={buttonRef}
             onClick={toggleMenu}
-            className="text-md p-2 mt-3 text-black font-semibold rounded-lg bg-white shadow-lg relative z-50"
+            className="text-md p-2 text-black font-semibold rounded-lg bg-white shadow-lg relative z-50"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -65,18 +79,25 @@ export default function Header() {
       <nav className="md:self-center">
         <ul className="flex flex-col md:flex-row gap-4 text-xl">
           <li>
-            <Link to="/AllProducts">
+            <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)}>
             Julekort
             </Link> 
           </li>
           <li>
-             <Link to="/About">
+             <Link to="/About" onClick={() => setIsMenuOpen(false)}>
             Om Oss
             </Link>
           </li>
           <li>
-            <Link to="cart">
-            Handlekurv
+            <Link to="cart" onClick={() => setIsMenuOpen(false)} className="relative">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag" viewBox="0 0 16 16">
+                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+              </svg>
+              {cartCount > 0 && (
+              <span className="absolute top-0 right-0 text-red-500 text-sm font-bold rounded-full w-6 h-7 flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
             </Link>
           </li>
         </ul>
