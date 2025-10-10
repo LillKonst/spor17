@@ -3,7 +3,6 @@ import { RouteNotFound } from "./components/Layout/Header/Header";
 import Layout from "./components/Layout/Layout";
 import Home from "./routes/Home/Home";
 import About from "./routes/About/About";
-import Contact from "./routes/Contact/Contact";
 import AllProducts from "./routes/AllProducts/AllProducts";
 import ProductSpecific from "./routes/ProductSpecific/ProductSpecific";
 import ShoppingCart from "./routes/ShoppingCart/ShoppingCart";
@@ -19,7 +18,6 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="/AllProducts" element={<AllProducts />} />
           <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
           <Route  path="/product/:handle" element={<ProductSpecific />} />
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="*" element={<RouteNotFound />} />
