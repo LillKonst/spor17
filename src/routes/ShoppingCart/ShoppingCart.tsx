@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Cart } from "../../hooks/shopifyCart";
-import { getCart, updateCartLine } from "../../hooks/shopifyCart";
+import { getCart, updateCartLine, clearCart } from "../../hooks/shopifyCart";
 import CartItemList from "../../components/CartItemList/CartItemList";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
 
@@ -46,6 +46,22 @@ export default function ShoppingCart() {
     return <div>Handlekurven er tom</div>;
   }
 
+
+ const handleClearCart = async () => {
+  if (!cart) return;
+  setLoading(true);
+  try {
+    await clearCart(cart.id);
+    setCart({ ...cart, lines: [] });
+    localStorage.setItem("cartCount", "0");
+    window.dispatchEvent(new Event("cartCountUpdated"));
+  } catch (err) {
+    console.error("Kunne ikke tømme handlekurven", err);
+  } finally {
+    setLoading(false);
+  }
+};
+
   const totalAmount =
     (Number(cart.cost.amount) || 0) +
     (Number(cart.cost.totalTaxAmount?.amount) || 0) +
@@ -61,9 +77,18 @@ export default function ShoppingCart() {
         Total (inkl. tax og duty): {totalAmount} {cart.cost.currencyCode}
       </p>
 
-      {cart.checkoutUrl && (
-        <CallToActionButton type="checkout" text="Gå til kassen" className="mt-4" />
-      )}
+     <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        <button
+          onClick={handleClearCart}
+          className="border border-gray-400 px-5 py-2 rounded-lg hover:bg-gray-100 transition"
+        >
+          Tøm handlekurv
+        </button>
+
+        {cart.checkoutUrl && (
+          <CallToActionButton type="checkout" text="Gå til kassen" />
+        )}
+      </div>
     </div>
   );
 }

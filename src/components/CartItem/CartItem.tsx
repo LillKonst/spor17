@@ -19,14 +19,17 @@ export default function CartItem({ line, onUpdateQuantity }: CartItemProps) {
         <p>Antall: {line.quantity}</p>
         <div className="space-x-2 mt-2">
           <button
+          type="button"
             className="px-2 py-1 bg-gray-200 rounded"
             onClick={() => onUpdateQuantity(line.id, line.quantity + 1)}
           >
             +
           </button>
           <button
+          type="button"
             className="px-2 py-1 bg-gray-200 rounded"
             onClick={() => onUpdateQuantity(line.id, line.quantity - 1)}
+            disabled={line.quantity <= 1}
           >
             -
           </button>
