@@ -189,7 +189,7 @@ export default function ShoppingCart() {
     (Number(cart.cost.totalDutyAmount?.amount) || 0);
 
   return (
-    <div className="bg-white container p-10 rounded-lg">
+    <div className="bg-white mx-auto p-3 xxs:p-5 md:p-10 rounded-lg">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl mb-5">Handlekurv</h2>
         <ClearCartButton onConfirm={handleClearCart} />

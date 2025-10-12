@@ -22,7 +22,7 @@ export default function ProductSpecific() {
   const variantId = product.variants.edges[0].node.id;
   
   return (
-    <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg py-5 px-5 lg:px-10 justify-center">
+    <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg p-3 md:py-5 md:px-5 lg:px-10 justify-center">
       <div>
         <ImageCarousel
           images={product.images.edges.map(edge => edge.node)}

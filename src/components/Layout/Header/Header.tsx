@@ -85,7 +85,7 @@ export default function Header() {
         <ul className="flex flex-col md:flex-row gap-4 text-xl">
           <li>
             <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)}>
-            Julekort
+            våre julekort
             </Link> 
           </li>
           <li>
