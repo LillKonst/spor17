@@ -2,6 +2,5 @@
   command = "npm run build"
   publish = "dist"
 
-# Skru av secret scanning for disse nøkkelnavnene (helt trygt)
-[secrets_scan]
-  omit_keys = ["VITE_SHOPIFY_STORE_DOMAIN", "VITE_SHOPIFY_STOREFRONT_TOKEN"]
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_SHOPIFY_STOREFRONT_TOKEN,VITE_SHOPIFY_STORE_DOMAIN,REVIEW_ID"
