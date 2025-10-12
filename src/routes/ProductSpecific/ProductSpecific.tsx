@@ -30,7 +30,9 @@ export default function ProductSpecific() {
       </div>
       <div className="flex flex-col xs:p-10 gap-5">
         <ProductDetails product={product} />
+        <div className="xs:px-10">
         <CallToActionButton type="addToCart" variantId={variantId} className="text-white bg-green-500 hover:bg-green-600" />
+      </div>
       </div>
     </div>
   );
