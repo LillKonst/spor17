@@ -8,7 +8,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const price = product.variants.edges[0].node.priceV2;
 
   return (
-    <div className="flex flex-col xs:p-10 gap-5">
+    <div className="flex flex-col p-3 md:p-10 gap-5">
       <div className="flex justify-between flex-col xl:flex-row">
         <h1 className="text-2xl">{product.title}</h1>
         <h2 className="text-2xl">
