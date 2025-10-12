@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import logo from "../../../images/Logo-SPOR17.svg"
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 
 export function RouteNotFound() {
@@ -38,15 +40,18 @@ export default function Header() {
   const storedCount = localStorage.getItem("cartCount");
   if (storedCount) setCartCount(Number(storedCount));
 
- 
-  const handleStorageChange = () => {
+  const handleCartCountUpdated = () => {
     const updatedCount = localStorage.getItem("cartCount");
     if (updatedCount) setCartCount(Number(updatedCount));
   };
-  window.addEventListener("cartCountUpdated", handleStorageChange);
 
-  return () => window.removeEventListener("storage", handleStorageChange);
+  window.addEventListener("cartCountUpdated", handleCartCountUpdated);
+
+  return () => {
+    window.removeEventListener("cartCountUpdated", handleCartCountUpdated);
+  };
 }, []);
+
 
   return (
     <div className="p-5 flex items-center justify-between relative">
@@ -90,14 +95,24 @@ export default function Header() {
           </li>
           <li>
             <Link to="cart" onClick={() => setIsMenuOpen(false)} className="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
               </svg>
-              {cartCount > 0 && (
-              <span className="absolute top-0 right-0 text-red-500 text-sm font-bold rounded-full w-6 h-7 flex items-center justify-center">
-                {cartCount}
-              </span>
-            )}
+              <AnimatePresence mode="popLayout">
+  {cartCount > 0 && (
+    <motion.span
+      key={cartCount} 
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.5, opacity: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+      className="absolute top-1 left-2 md:top-1 md:right-2 text-red-600 text-sm font-bold rounded flex items-center justify-center"
+    >
+      {cartCount}
+    </motion.span>
+  )}
+</AnimatePresence>
+
             </Link>
           </li>
         </ul>
