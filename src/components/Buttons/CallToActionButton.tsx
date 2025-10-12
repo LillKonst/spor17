@@ -18,7 +18,7 @@ export default function CallToActionButton({ variantId, type, text, className }:
     if (type === "addToCart" && variantId) {
       setLoading(true);
       try {
-        await addItem(variantId, 1); // Antar at addItem kan være async
+        await addItem(variantId, 1); 
       } catch (err) {
         console.error("Kunne ikke legge til i handlekurv", err);
       } finally {
@@ -38,7 +38,7 @@ export default function CallToActionButton({ variantId, type, text, className }:
 
   return (
     <button
-      className={`bg-background mt-12 p-2 px-5 rounded-lg w-fit ${className || ""}`}
+      className={`bg-background p-2 px-5 rounded-lg w-fit ${className || ""}`}
       onClick={handleClick}
       disabled={loading}
     >

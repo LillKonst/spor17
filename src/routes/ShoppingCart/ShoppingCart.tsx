@@ -3,6 +3,7 @@ import type { Cart } from "../../hooks/shopifyCart";
 import { getCart, updateCartLine, clearCart } from "../../hooks/shopifyCart";
 import CartItemList from "../../components/CartItemList/CartItemList";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
+import ClearCartButton from "../../components/Buttons/ClearCartButton";
 
 export default function ShoppingCart() {
   const [cart, setCart] = useState<Cart | null>(null);
@@ -69,22 +70,20 @@ export default function ShoppingCart() {
 
   return (
      <div className="bg-white container p-10 rounded-lg">
-      <h2 className="text-2xl mb-5">Handlekurv</h2>
+      <div className="flex justify-between">
+        <h2 className="text-2xl mb-5">Handlekurv</h2>
+        <ClearCartButton onConfirm={handleClearCart} />
+      </div>
+      
 
       <CartItemList lines={cart.lines} onUpdateQuantity={updateQuantity} />
 
-      <p className="text-xl mt-5">
-        Total (inkl. tax og duty): {totalAmount} {cart.cost.currencyCode}
-      </p>
+      
 
-     <div className="flex flex-col sm:flex-row gap-4 mt-6">
-        <button
-          onClick={handleClearCart}
-          className="border border-gray-400 px-5 py-2 rounded-lg hover:bg-gray-100 transition"
-        >
-          Tøm handlekurv
-        </button>
-
+      <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6">
+        <p className="text-xl">
+          Total (inkl. tax og duty): {totalAmount} {cart.cost.currencyCode}
+        </p>
         {cart.checkoutUrl && (
           <CallToActionButton type="checkout" text="Gå til kassen" />
         )}
