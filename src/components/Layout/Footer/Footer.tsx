@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return(
     <div className="flex flex-col gap-5 items-center pt-10 pb-3 px-5 w-full">
       <div className="flex flex-col md:flex-row w-full justify-between gap-5">
       <div>
         <h2 className="md:text-xl mb-1">Kundeservice</h2>
-        <h3 className="text-sm md:text-md">kontakt oss - post@spor17.no</h3>
+        <Link to="/Contact">
+          <h3 className="text-sm md:text-md">kontakt oss - post@spor17.no</h3>
+        </Link>
         <h3 className="text-sm md:text-md">Frakt og retur</h3>
         <h3 className="text-sm md:text-md">Salgsbetingelser</h3>
       </div>
