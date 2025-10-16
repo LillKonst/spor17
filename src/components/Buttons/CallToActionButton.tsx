@@ -80,18 +80,21 @@
 import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import { useNavigate } from "react-router-dom";
+import AddedToCartModal from "../AddToCartModal/AddToCartModal";
 
 interface CallToActionProps {
   variantId?: string;     
   type: "addToCart" | "checkout"; 
   text?: string; 
   className?: string;      
+  productName?: string;
 }
 
-export default function CallToActionButton({ variantId, type, text, className }: CallToActionProps) {
+export default function CallToActionButton({ variantId, type, text, className, productName }: CallToActionProps) {
   const { addItem } = useCart();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false); 
 
   const handleClick = async () => {
     if (type === "addToCart" && variantId) {
@@ -106,6 +109,9 @@ export default function CallToActionButton({ variantId, type, text, className }:
 
         localStorage.setItem("cartCount", String(totalItems));
         window.dispatchEvent(new Event("cartCountUpdated"));
+
+        setShowModal(true);
+
       } catch (err) {
         console.error("Kunne ikke legge til i handlekurv", err);
       } finally {
@@ -123,13 +129,22 @@ export default function CallToActionButton({ variantId, type, text, className }:
         : "Laster..."
       : text || (type === "addToCart" ? "Legg i handlekurv" : "Gå til kassen");
 
-  return (
-    <button
-      className={`bg-background p-2 px-5 rounded-lg w-fit ${className || ""}`}
-      onClick={handleClick}
-      disabled={loading}
-    >
-      {buttonText}
-    </button>
+  return ( 
+  
+    <div>
+      <button
+        className={`bg-background p-2 px-5 rounded-lg w-fit ${className || ""}`}
+        onClick={handleClick}
+        disabled={loading}
+      >
+        {buttonText}
+      </button>
+
+       <AddedToCartModal
+        show={showModal}
+        productName={productName || "Produktet"}
+        onClose={() => setShowModal(false)}
+      />
+    </div>
   );
 }
