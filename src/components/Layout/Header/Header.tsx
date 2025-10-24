@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import logo from "../../../images/ny-logo.svg"
+import logo from "../../../images/newest-logo.svg"
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
@@ -56,11 +56,32 @@ export default function Header() {
 
   return (
     <div className="p-5 flex items-center justify-between relative">
-      <Link to="" className="flex items-center gap-2 text-2xl w-[145px] ms-9">
+      <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
       <img src={logo} alt="Spor 17 logo" className=""/>
       </Link>
 
-      <div className="block md:hidden">
+      <div className="flex gap-5 items-center lg:w-full">
+        <Link to="cart" onClick={() => setIsMenuOpen(false)} className="relative lg:order-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+          </svg>
+          <AnimatePresence mode="popLayout">
+          {cartCount > 0 && (
+            <motion.span
+              key={cartCount} 
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              className="absolute top-1 left-2 lg:top-1 lg:right-2 text-red-600 text-sm font-bold rounded flex items-center justify-center"
+            >
+              {cartCount}
+            </motion.span>
+            )}
+          </AnimatePresence>
+         </Link>
+
+      <div className="block lg:hidden">
           <button
             ref={buttonRef}
             onClick={toggleMenu}
@@ -75,15 +96,15 @@ export default function Header() {
          <div
           ref={menuRef}
           className={`${
-            isMenuOpen ? "flex" : "hidden md:flex"
-          } absolute md:static top-[77px] left-50 right-0 h-screen md:h-[70px] p-5 md:p-0 
+            isMenuOpen ? "flex" : "hidden lg:flex"
+          } absolute lg:static top-[77px] left-50 right-0 h-screen lg:h-[70px] p-5 lg:p-0 
                        rounded
-                     bg-background md:w-full md:justify-end
-                      md:space-x-4 z-40`}
+                     bg-background lg:w-full flex flex-col lg:flex-row lg:justify-end gap-5 lg:items-center
+                      lg:space-x-4 z-40`}
         >
 
-      <nav className="md:self-center">
-        <ul className="flex flex-col md:flex-row gap-4 text-xl">
+      <nav className="lg:self-center">
+        <ul className="flex flex-col lg:flex-row gap-4 text-xl">
           <li>
             <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)}>
             våre julekort
@@ -99,29 +120,7 @@ export default function Header() {
       </nav>
        <Searchbar />
       </div>
-     
-    
-            <Link to="cart" onClick={() => setIsMenuOpen(false)} className="relative">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
-              </svg>
-              <AnimatePresence mode="popLayout">
-  {cartCount > 0 && (
-    <motion.span
-      key={cartCount} 
-      initial={{ scale: 0.5, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.5, opacity: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 15 }}
-      className="absolute top-1 left-2 md:top-1 md:right-2 text-red-600 text-sm font-bold rounded flex items-center justify-center"
-    >
-      {cartCount}
-    </motion.span>
-  )}
-</AnimatePresence>
-
-            </Link>
-        
+        </div>
     </div>
   );
 }
