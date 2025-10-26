@@ -28,7 +28,7 @@ export default function ProductListAll() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div>
+    <div className="bg-white rounded-lg py-5 px-4 sm:px-6 md:px-8 lg:px-10">
       <h1 className="text-2xl p-5 ">JULEKORT - DEN ENKLE SERIEN</h1>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         {products.map((product) => (

@@ -26,6 +26,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "src/hooks/fetchAllProducts.ts"]
+  "include": ["src", "src/hooks/fetchAllProducts.ts", "global.d.ts"]
 }
 
