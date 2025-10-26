@@ -1,3 +1,4 @@
+import InfoBoxHome from "../../components/InfoBoxHome/InfoBoxHome";
 import MainImg from "../../components/MainImg/MainImg";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 import { fetchAllProducts, type Product } from "../../hooks/fetchAllProducts";
@@ -32,6 +33,7 @@ export default function Home() {
     <div>
       <MainImg />
       <ProductSlider products={products} />
+      <InfoBoxHome />
     </div>
   );
 }
