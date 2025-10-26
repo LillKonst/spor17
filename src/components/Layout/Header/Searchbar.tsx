@@ -118,9 +118,9 @@ export default function Searchbar() {
 
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-md">
+    <div ref={containerRef} className="relative w-full max-w-md mt-2">
       {/* 🔍 Input */}
-      <div className="lg:mx-5 bg-white rounded-lg p-3 flex items-center gap-2 border border-gray-300">
+      <div className="lg:mx-5 bg-white rounded-lg p-2 flex items-center gap-2 border border-gray-300">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"

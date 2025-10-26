@@ -29,6 +29,9 @@
 
   --color-background: #F7F7F7;
   --color-customGreen: #A5EB9F;
+  --color-customHover: #93D38E;
+  --color-customRed: #F24242;
+  --color-customRedHover: #D83B3B;
 
   --breakpoint-xs: 500px;
   --breakpoint-xxs: 450px;

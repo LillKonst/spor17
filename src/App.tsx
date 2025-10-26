@@ -12,8 +12,11 @@ function App() {
   
 
   return (
-    <div className="bg-background h-full p-2 xs:p-5">
-      <div className="mx-auto p-2 xs:px-5 lg:px-12">
+    <div className="bg-background h-full relative">
+       <div className="bg-customGreen rounded p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
+          <p className="text-xs sm:text-sm md:text-md">LANSERINGS TILBUD T.O.M 10. NOVEMBER ! 10 % PÅ ALLE VARER</p>
+        </div>
+      <div className="px-5" >
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />

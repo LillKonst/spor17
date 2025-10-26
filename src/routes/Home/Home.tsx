@@ -30,7 +30,7 @@ export default function Home() {
   if (error) return <p className="text-center text-red-500 py-8">{error}</p>;
 
   return(
-    <div className="z-10">
+    <div className="z-10 lg:px-5">
       <MainImg />
       <ProductSlider products={products} />
       <InfoBoxHome />

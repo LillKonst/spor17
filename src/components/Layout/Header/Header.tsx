@@ -55,7 +55,7 @@ export default function Header() {
 
 
   return (
-    <div className="p-5 flex flex-col xxxs:flex-row items-center justify-between relative mb-10 xxs:mb-3">
+    <div className="pt-15 xxxs:pt-12 xxs:pt-10 mb-3 px-2 flex flex-col xxxs:flex-row items-center justify-between relative xxs:mb-3">
       <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
       <img src={logo} alt="Spor 17 logo" className=""/>
       </Link>
@@ -99,19 +99,19 @@ export default function Header() {
             isMenuOpen ? "flex" : "hidden lg:flex"
           } absolute lg:static top-[77px] left-50 right-0 h-screen lg:h-[70px] p-5 lg:p-0 
                        rounded
-                     bg-background lg:w-full flex flex-col lg:flex-row lg:justify-end gap-5 lg:items-center
+                     bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row gap-5 lg:items-center lg:justify-between
                       lg:space-x-4 z-40`}
         >
 
-      <nav className="lg:self-center">
+      <nav className="lg:self-center lg:mt-5 lg: ms-8">
         <ul className="flex flex-col lg:flex-row gap-4 text-xl">
           <li>
-            <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)}>
-            våre julekort
+            <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+            Produkter
             </Link> 
           </li>
           <li>
-             <Link to="/About" onClick={() => setIsMenuOpen(false)}>
+             <Link to="/About" onClick={() => setIsMenuOpen(false)} className="hover:underline">
             Om Oss
             </Link>
           </li>
@@ -120,9 +120,6 @@ export default function Header() {
       </nav>
        <Searchbar />
       </div>
-        </div>
-        <div className="bg-customGreen rounded-t-lg p-1 absolute -bottom-10 xxs:-bottom-3 left-0 right-0 h-20md:h-7 w-full text-center z-0">
-          <p className="text-xs sm:text-sm md:text-md">LANSERINGS TILBUD T.O.M 10. NOVEMBER ! 10 % PÅ ALLE VARER</p>
         </div>
     </div>
   );
