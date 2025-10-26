@@ -31,10 +31,11 @@ export default function ProductSpecific() {
       <div className="flex flex-col xs:p-10 gap-5">
         <ProductDetails product={product} />
         <div className="xs:px-10">
+          <p className="my-3">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
         <CallToActionButton
           type="addToCart"
           variantId={variantId}
-          className="text-white bg-green-500 hover:bg-green-600"
+          className="text-black bg-customGreen hover:bg-customHover"
           productName={product.title} // 👈 her!
         />
       </div>

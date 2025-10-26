@@ -47,7 +47,7 @@ export default function ClearCartButton({ onConfirm }: ClearCartButtonProps) {
           <div className="flex justify-end gap-3">
             <button
               onClick={handleConfirm}
-              className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600 transition"
+              className="px-3 py-1 rounded bg-customRed text-white hover:bg-customRedHover transition"
             >
               Ja, tøm
             </button>

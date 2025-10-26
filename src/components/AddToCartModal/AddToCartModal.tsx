@@ -34,7 +34,7 @@ export default function AddedToCartModal({ show, productName, onClose }: AddedTo
             <div className="flex gap-3 justify-center mt-5">
               <button
                 onClick={() => navigate("/cart")}
-                className="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition"
+                className="bg-customGreen text-black py-2 px-4 rounded-lg hover:bg-customHover transition"
               >
                 Gå til handlekurv
               </button>

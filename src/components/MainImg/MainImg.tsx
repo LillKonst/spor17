@@ -10,8 +10,8 @@ import produkt8 from "../../images/Julekort-misteltein.png";
 
 export default function MainImg() {
   return(
-   
-      <Link to="/AllProducts" className="bg-white w-full grid grid-cols-6 auto-rows-auto md:grid-rows-2 gap-1 p-2 xxs:p-5 xs:p-8 md:p-12 m-0 rounded-lg">
+    <div className="bg-white w-full rounded m-0 p-2 xxs:p-5 xs:p-8 md:px-12">
+      <Link to="/AllProducts" className="lg:px-12 grid grid-cols-6 auto-rows-auto md:grid-rows-2 gap-1">
         <img src={produkt1} alt="" className="col-span-2 md:col-span-1 row-span-1"/>
         <img src={produkt2} alt="" className="col-span-2 md:col-span-1 row-span-1"/>
         <img src={produkt3} alt="" className="col-span-2 md:col-span-1 row-span-1"/>
@@ -25,6 +25,6 @@ export default function MainImg() {
         <img src={produkt7} alt="" className="col-span-3 md:col-span-1 row-span-2"/>
         <img src={produkt8} alt="" className="col-span-3 md:col-span-1 row-span-2"/>
       </Link>
-
+    </div>
   );
 }
