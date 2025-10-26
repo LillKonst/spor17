@@ -4,11 +4,11 @@ export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   
   return(
-     <div className="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-6 mt-10">
-      <h2 className="text-2xl font-semibold mb-4 text-center">Kontakt oss</h2>
+     <div className="bg-white px-10 mt-10 flex flex-col gap-3 flex-1">
+      <h2 className="text-2xl mb-4 text-center">Send oss en melding her</h2>
 
       {submitted ? (
-        <p className="text-green-600 text-center">
+        <p className="bg-customGreen text-black text-center p-5 rounded-2xl">
           Takk for meldingen din! Vi tar kontakt så snart vi kan.
         </p>
       ) : (
@@ -44,7 +44,7 @@ export default function ContactForm() {
               name="epost"
               type="email"
               required
-              className=" font-Garamondw-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
+              className=" font-Garamondw-full w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
             />
           </div>
 
@@ -63,7 +63,7 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            className="bg-green-500 text-white font-semibold py-2 rounded-lg hover:bg-green-600 transition"
+            className="bg-customGreen text-black font-semibold py-2 rounded-lg hover:bg-customHover transition"
           >
             Send melding
           </button>

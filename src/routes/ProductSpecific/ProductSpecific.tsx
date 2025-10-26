@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
 import type { Product } from "../../hooks/fetchProduct";
-import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
+// import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
+import ImageCarouselSwiper from "../../components/ImageCarousel/Carousel";
 
 
 
@@ -23,15 +24,15 @@ export default function ProductSpecific() {
   
   return (
     <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg p-3 md:py-5 md:px-5 lg:px-10 justify-center">
-      <div>
-        <ImageCarousel
+      <div className="">
+        <ImageCarouselSwiper
           images={product.images.edges.map(edge => edge.node)}
         />
       </div>
-      <div className="flex flex-col xs:p-10 gap-5">
+      <div className="flex flex-col xs:p-5 gap-5">
         <ProductDetails product={product} />
         <div className="xs:px-10">
-          <p className="my-3">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
+          <p className="my-3 text-sm">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
         <CallToActionButton
           type="addToCart"
           variantId={variantId}
