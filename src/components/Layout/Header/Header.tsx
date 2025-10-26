@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import logo from "../../../images/newest-logo.svg"
+import logo from "../../../images/SPOR17-TOG-LOGO.svg"
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
@@ -55,7 +55,7 @@ export default function Header() {
 
 
   return (
-    <div className="p-5 flex items-center justify-between relative">
+    <div className="p-5 flex flex-col xxxs:flex-row items-center justify-between relative mb-10 xxs:mb-3">
       <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
       <img src={logo} alt="Spor 17 logo" className=""/>
       </Link>
@@ -120,6 +120,9 @@ export default function Header() {
       </nav>
        <Searchbar />
       </div>
+        </div>
+        <div className="bg-customGreen rounded-t-lg p-1 absolute -bottom-10 xxs:-bottom-3 left-0 right-0 h-20md:h-7 w-full text-center z-0">
+          <p className="text-xs sm:text-sm md:text-md">LANSERINGS TILBUD T.O.M 10. NOVEMBER ! 10 % PÅ ALLE VARER</p>
         </div>
     </div>
   );
