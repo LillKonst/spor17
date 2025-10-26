@@ -115,6 +115,11 @@ export default function Header() {
             Om Oss
             </Link>
           </li>
+          <li>
+             <Link to="/Contact" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+            Kontakt
+            </Link>
+          </li>
           
         </ul>
       </nav>

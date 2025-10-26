@@ -14,7 +14,7 @@ export default function ImageCarousel({ images }: { images: ProductImage[] }) {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full max-w-md h-full">
+      <div className="w-full max-w-lg h-full">
         <img
           src={images[selectedIndex].url}
           alt={images[selectedIndex].altText || "Produktbilde"}
