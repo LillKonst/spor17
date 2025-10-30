@@ -19,7 +19,6 @@ export default function ContactForm() {
           onSubmit={() => setSubmitted(true)}
           className="flex flex-col gap-4"
         >
-          {/* 🔒 Nødvendig for Netlify Forms */}
           <input type="hidden" name="form-name" value="contact" />
 
           <div>
@@ -72,3 +71,4 @@ export default function ContactForm() {
     </div>
   );
 }
+
