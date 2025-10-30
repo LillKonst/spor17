@@ -20,6 +20,7 @@ export default function CallToActionButton({
   const { cart, addItem, fetchCart } = useCart();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   const handleClick = async () => {
     if (type === "addToCart" && variantId) {
@@ -31,7 +32,6 @@ export default function CallToActionButton({
           (sum, line) => sum + line.quantity,
           0
         );
-
         localStorage.setItem("cartCount", String(totalItems));
         window.dispatchEvent(new Event("cartCountUpdated"));
 
@@ -43,11 +43,10 @@ export default function CallToActionButton({
       }
     }
 
-    // ✅ Gå til kassen via Shopify checkout URL
     if (type === "checkout") {
       setLoading(true);
       try {
-        await fetchCart(); // sørg for at cart er oppdatert
+        await fetchCart();
         const currentCartId = localStorage.getItem("cartId");
 
         if (!currentCartId) {
@@ -55,17 +54,22 @@ export default function CallToActionButton({
           return;
         }
 
-        // hent cart-data fra localStorage om nødvendig
         const fetchedCart = await fetchCart();
-        const checkoutUrl =
-          fetchedCart?.checkoutUrl || cart?.checkoutUrl;
+        const checkoutUrl = fetchedCart?.checkoutUrl || cart?.checkoutUrl;
 
         if (!checkoutUrl) {
           alert("Fant ikke checkout-URL. Prøv å oppdatere siden.");
           return;
         }
 
-        window.location.href = checkoutUrl; // ✅ Shopify checkout
+        // 🔹 Vis toast
+        setShowToast(true);
+
+        // Naviger etter 1,5 sekunder
+        setTimeout(() => {
+          window.location.href = checkoutUrl;
+        }, 1500);
+
       } catch (err) {
         console.error("Feil ved navigering til checkout:", err);
       } finally {
@@ -81,9 +85,9 @@ export default function CallToActionButton({
     : text || (type === "addToCart" ? "Legg i handlekurv" : "Gå til kassen");
 
   return (
-    <div>
+    <div className="relative">
       <button
-        className={`bg-background p-2 px-5 rounded-lg w-fit ${className || ""}`}
+        className={`bg-customGreen hover:bg-customHover p-2 px-5 rounded-lg w-fit ${className || ""}`}
         onClick={handleClick}
         disabled={loading}
       >
@@ -95,6 +99,13 @@ export default function CallToActionButton({
         productName={productName || "Produktet"}
         onClose={() => setShowModal(false)}
       />
+
+      {/* 🔹 Toast for checkout */}
+      {showToast && (
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-customGreen text-black px-5 py-3 rounded shadow-lg transition-opacity duration-300">
+          Tar deg med til en sikker betalingsside...
+        </div>
+      )}
     </div>
   );
 }
