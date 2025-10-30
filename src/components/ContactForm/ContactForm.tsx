@@ -43,7 +43,7 @@ export default function ContactForm() {
               name="epost"
               type="email"
               required
-              className=" font-Garamondw-full w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
+              className=" font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
             />
           </div>
 
