@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="flex-2 flex flex-col md:flex-row gap-5 xl:gap-10 items-start justify-center lg:justify-start lg:mt-12">
       <div>
         <h2 className="text-2xl mb-2">Kundeservice</h2>
-        <Link to="/Contact">
+        <Link to="/kontakt">
           <h3 className="">kontakt oss - post@spor17.no</h3>
         </Link>
         <h3 className="">Frakt og retur</h3>
@@ -22,7 +22,7 @@ export default function Footer() {
 
       <div>
         <h2 className="text-2xl mb-2">Informasjon</h2>
-        <Link to="/About" className="">Om oss</Link>
+        <Link to="/om" className="">Om oss</Link>
         <h3 className="">ORG NR: 916851383</h3>
         <h3 className="">Nygata 11, 3189 Horten</h3>
       </div>

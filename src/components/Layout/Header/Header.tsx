@@ -61,7 +61,7 @@ export default function Header() {
       </Link>
 
       <div className="flex gap-5 items-center lg:w-full">
-        <Link to="cart" onClick={() => setIsMenuOpen(false)} className="relative lg:order-2">
+        <Link to="handlekurv" onClick={() => setIsMenuOpen(false)} className="relative lg:order-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
             <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
           </svg>
@@ -106,17 +106,17 @@ export default function Header() {
       <nav className="lg:self-center lg:mt-5 lg: ms-8">
         <ul className="flex flex-col lg:flex-row gap-4 text-xl">
           <li>
-            <Link to="/AllProducts" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+            <Link to="/produkter" onClick={() => setIsMenuOpen(false)} className="hover:underline">
             Produkter
             </Link> 
           </li>
           <li>
-             <Link to="/About" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+             <Link to="/om" onClick={() => setIsMenuOpen(false)} className="hover:underline">
             Om Oss
             </Link>
           </li>
           <li>
-             <Link to="/Contact" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+             <Link to="/kontakt" onClick={() => setIsMenuOpen(false)} className="hover:underline">
             Kontakt
             </Link>
           </li>

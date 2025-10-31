@@ -4,3 +4,8 @@
 
 [build.environment]
   SECRETS_SCAN_OMIT_KEYS = "VITE_SHOPIFY_STOREFRONT_TOKEN,VITE_SHOPIFY_STORE_DOMAIN,REVIEW_ID"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
