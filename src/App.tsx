@@ -8,6 +8,7 @@ import ProductSpecific from "./routes/ProductSpecific/ProductSpecific";
 import ShoppingCart from "./routes/ShoppingCart/ShoppingCart";
 import Contact from "./routes/Contact/Contact";
 import { HeadProvider, Title, Meta, Link } from 'react-head';
+import ScrollToTop from "./components/Layout/ScrollToTop";
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
     <Meta property="og:title" content="Spor 17" />
     <Meta property="og:image" content="/SPOR17-TOG-LOGOimg.png" />
     <Link rel="icon" href="/fav-icon.svg" />
+    <ScrollToTop />
     <div className="bg-background h-full relative">
        <div className="bg-customGreen rounded p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
           <p className="text-xs sm:text-sm md:text-md">LANSERINGS TILBUD T.O.M 10. NOVEMBER ! 10 % PÅ ALLE VARER</p>
