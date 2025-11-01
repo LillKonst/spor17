@@ -62,7 +62,7 @@ export default function ContactForm() {
 
           <button
             type="submit"
-            className="bg-customGreen text-black font-semibold py-2 rounded-lg hover:bg-customHover transition"
+            className="bg-customGreen text-black py-2 rounded-lg hover:bg-customHover transition"
           >
             Send melding
           </button>
