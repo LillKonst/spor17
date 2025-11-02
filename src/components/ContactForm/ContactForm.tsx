@@ -22,12 +22,12 @@ export default function ContactForm() {
           <input type="hidden" name="form-name" value="contact" />
 
           <div>
-            <label htmlFor="navn" className="block text-sm font-medium">
+            <label htmlFor="name" className="block text-sm font-medium">
               Navn
             </label>
             <input
-              id="navn"
-              name="navn"
+              id="name"
+              name="name"
               type="text"
               required
               className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
@@ -35,12 +35,12 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="epost" className="block text-sm font-medium">
+            <label htmlFor="email" className="block text-sm font-medium">
               E-postadresse
             </label>
             <input
-              id="epost"
-              name="epost"
+              id="email"
+              name="email"
               type="email"
               required
               className=" font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
@@ -48,12 +48,12 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label htmlFor="melding" className="block text-sm font-medium">
+            <label htmlFor="message" className="block text-sm font-medium">
               Melding
             </label>
             <textarea
-              id="melding"
-              name="melding"
+              id="message"
+              name="message"
               rows={5}
               required
               className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
