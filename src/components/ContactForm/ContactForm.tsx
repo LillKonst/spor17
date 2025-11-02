@@ -16,10 +16,16 @@ export default function ContactForm() {
           name="contact"
           method="POST"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
           onSubmit={() => setSubmitted(true)}
           className="flex flex-col gap-4"
         >
           <input type="hidden" name="form-name" value="contact" />
+          <p className="hidden">
+          <label>
+            Ikke fyll ut dette feltet: <input name="bot-field" />
+          </label>
+          </p>
 
           <div>
             <label htmlFor="name" className="block text-sm font-medium">
