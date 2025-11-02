@@ -2,6 +2,11 @@ import { useState } from "react";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  setSubmitted(true);
+};
   
   return(
      <div className="bg-white px-10 mt-10 flex flex-col gap-3 flex-1">
@@ -17,7 +22,7 @@ export default function ContactForm() {
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          onSubmit={() => setSubmitted(true)}
+          onSubmit={handleSubmit}
           className="flex flex-col gap-4"
         >
           <input type="hidden" name="form-name" value="contact" />
