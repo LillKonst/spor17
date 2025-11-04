@@ -22,8 +22,8 @@ function App() {
     <Link rel="icon" href="/fav-icon.svg" />
     <ScrollToTop />
     <div className="bg-background h-full relative">
-       <div className="bg-customGreen rounded p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
-          <p className="text-xs sm:text-sm md:text-md">LANSERINGS TILBUD T.O.M 10. NOVEMBER ! 10 % PÅ ALLE VARER</p>
+       <div className="bg-customRed p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
+          <p className="text-xs sm:text-sm md:text-md text-white">ÅPNINGSTILBUD T.O.M 16. NOVEMBER ! 20% VED KJØP AV 2 ELLER FLERE JULEKORTPAKKER</p>
         </div>
       <div className="px-5" >
       <Routes>
