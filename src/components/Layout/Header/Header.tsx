@@ -140,7 +140,7 @@
 
 
 import { useEffect, useState, useRef } from "react";
-import logo from "../../../images/SPOR17-TOG-LOGO.svg";
+import logo from "../../../images/plain-logo.svg";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
@@ -199,8 +199,8 @@ export default function Header() {
 
   return (
     <div className="pt-15 xxxs:pt-12 xxs:pt-10 mb-3 px-2 flex flex-col xxxs:flex-row items-center justify-between relative xxs:mb-3">
-      <Link to="" className="flex items-center gap-2 text-2xl w-[145px]">
-        <img src={logo} alt="Spor 17 logo" />
+      <Link to="" className="flex items-center lg:ms-5 ">
+        <img src={logo} alt="Spor 17 logo" className="w-[150px]" />
       </Link>
 
       <div className="flex gap-5 items-center lg:w-full">
