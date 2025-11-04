@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import logo from "../../../images/SPOR17-TOG-LOGO.svg";
+import logo from "../../../images/plain-logo.svg";
 
 export default function Footer() {
   return(
     <div className="flex flex-col gap-5 items-center pt-10 pb-3 w-full">
       <div className="flex flex-col lg:flex-row w-full justify-between gap-5">
-        <div className="flex-1 flex flex-col mb-12 lg:px-10 items-center">
+        <Link to="/" className="flex-1 flex flex-col mb-12 lg:px-10 items-center">
           <img src={logo} alt="logo" className="w-full"/>
-          <p className="text-sm -mt-3">© alle rettigheter reservert SPOR 17</p>
-        </div>
+          <p className="text-sm m-3">© alle rettigheter reservert SPOR 17</p>
+        </Link>
 
         <div className="flex-2 flex flex-col md:flex-row gap-5 xl:gap-10 items-start justify-center lg:justify-start lg:mt-12">
       <div>

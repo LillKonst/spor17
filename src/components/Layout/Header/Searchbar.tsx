@@ -148,7 +148,7 @@ export default function Searchbar() {
     {results.map((product) => (
       <Link
         key={product.id}
-        to={`/product/${product.handle}`}
+        to={`/produkt/${product.handle}`}
         className="flex items-center gap-3 p-3 hover:bg-gray-50 transition"
       >
         {product.images?.edges[0]?.node?.url && (
