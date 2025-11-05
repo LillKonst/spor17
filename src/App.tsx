@@ -9,6 +9,9 @@ import ShoppingCart from "./routes/ShoppingCart/ShoppingCart";
 import Contact from "./routes/Contact/Contact";
 import { HeadProvider, Title, Meta, Link } from 'react-head';
 import ScrollToTop from "./components/Layout/ScrollToTop";
+import Policy from "./routes/Policy/Policy";
+import PrivacyPolicy from "./routes/Policy/PrivacyPolicy";
+import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
 
 function App() {
   
@@ -34,6 +37,9 @@ function App() {
           <Route path="/kontakt" element={<Contact />} />
           <Route  path="/produkt/:handle" element={<ProductSpecific />} />
           <Route path="/handlekurv" element={<ShoppingCart />} />
+          <Route path="/kjøpsbetingelser" element={<Policy/>} />
+          <Route path="/sikkerhet-personvern" element={<PrivacyPolicy/>} />
+          <Route path="/frakt-retur" element={<ShippingAndReturns/>} />
           <Route path="*" element={<RouteNotFound />} />
         </Route>
       </Routes>
