@@ -31,7 +31,7 @@ export default function Footer() {
         <h2 className="text-2xl mb-2">Følg oss</h2>
         <div className="flex gap-2 ">
           <a
-            href="https://facebook.com/dittbrukernavn"
+            href="https://www.facebook.com/profile.php?id=61583399043251"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-blue-600"
