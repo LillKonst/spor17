@@ -4,6 +4,7 @@ import { getCart, updateCartLine, clearCart } from "../../hooks/shopifyCart";
 import CartItemList from "../../components/CartItemList/CartItemList";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
 import ClearCartButton from "../../components/Buttons/ClearCartButton";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
   const [cart, setCart] = useState<Cart | null>(null);
@@ -85,7 +86,7 @@ export default function ShoppingCart() {
 
   if (!cart || cart.lines.length === 0) {
     localStorage.setItem("cartCount", "0");
-    return <div>Handlekurven er tom</div>;
+    return <div className="h-screen flex flex-col gap-5 mx-5"><h2>Handlekurven er tom</h2><Link to="/produkter" className="bg-customGreen py-2 px-3 rounded w-fit">Fortsett å handle</Link></div>;
   }
 
   const totalAmount =
