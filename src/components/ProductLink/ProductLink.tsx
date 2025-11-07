@@ -9,7 +9,7 @@ export default function ProductLink({ product }: ProductLinkProps) {
   const image = product.images.edges[0]?.node;
 
   return (
-    <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded-lg bg-white flex flex-col shadow-lg">
+    <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded bg-white flex flex-col shadow-lg">
             <Link to={`/produkt/${product.handle}`}>
             <div className="w-full aspect-[5/3.5] rounded-lg overflow-hidden">
             {product.images.edges[0] && (

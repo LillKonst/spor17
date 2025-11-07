@@ -23,7 +23,7 @@ export default function ProductSpecific() {
   const variantId = product.variants.edges[0].node.id;
   
   return (
-    <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg p-3 md:py-5 md:px-5 lg:px-10 justify-center">
+    <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg p-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
       <div className="">
         <ImageCarouselSwiper
           images={product.images.edges.map(edge => edge.node)}
@@ -32,11 +32,11 @@ export default function ProductSpecific() {
       <div className="flex flex-col xs:p-5 gap-5">
         <ProductDetails product={product} />
         <div className="xs:px-10">
-          <p className="my-3 text-sm">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
+          <p className="my-3 text-sm px-3">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
         <CallToActionButton
           type="addToCart"
           variantId={variantId}
-          className="text-black bg-customGreen hover:bg-customHover"
+          className="text-black bg-customGreen hover:bg-customHover mx-2"
           productName={product.title} // 👈 her!
         />
       </div>

@@ -59,7 +59,7 @@ export default function Header() {
   return (
     <div className="pt-15 xxxs:pt-12 xxs:pt-10 mb-3 px-2 flex flex-col xxxs:flex-row items-center justify-between relative xxs:mb-3">
       <Link to="" className="flex items-center lg:ms-5 ">
-        <img src={logo} alt="Spor 17 logo" className="w-[150px]" />
+        <img src={logo} alt="Spor 17 logo" className="w-[120px] md:w-[135px] xl:w-[150px]" />
       </Link>
 
       <div className="flex gap-5 items-center lg:w-full">
@@ -91,7 +91,7 @@ export default function Header() {
             onClick={toggleMenu}
             className="text-md p-2 text-black font-semibold rounded-lg bg-white shadow-lg relative z-50"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg>
           </button>
@@ -109,7 +109,7 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
               className={`${
                 isMenuOpen || isDesktop ? "flex" : "hidden"
-              } absolute lg:static top-[105px] sm:top[100px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] p-5 lg:p-0 
+              } absolute lg:static top-[95px] sm:top[100px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] p-5 lg:p-0 
                 bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
                 gap-5 lg:items-center lg:justify-between lg:space-x-4 z-40`}
             >
@@ -132,7 +132,10 @@ export default function Header() {
                   </li>
                 </ul>
               </nav>
-              <Searchbar />
+              <Searchbar onSelectResult={() => {
+                if (window.innerWidth < 1024) setIsMenuOpen(false);
+              }} />
+
             </motion.div>
           )}
         </AnimatePresence>
