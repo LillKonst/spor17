@@ -3,30 +3,32 @@ import { useState } from "react";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  function encode(data: Record<string, string>) {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
 
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
-  const form = e.currentTarget;
-  const data = {
-    "form-name": "contact",
-    name: (form.elements.namedItem("name") as HTMLInputElement).value,
-    email: (form.elements.namedItem("email") as HTMLInputElement).value,
-    message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
-  };
+  // Hent selve skjemaet fra eventet
+  const form = e.currentTarget; // ⚠️ her får vi HTMLFormElement
+  const formData = new FormData(form);
+
+  // Lag entries uten å bruke .entries()
+  const formEntries: [string, string][] = [];
+  formData.forEach((value, key) => {
+    formEntries.push([key, value.toString()]);
+  });
+
+  const encoded = new URLSearchParams(formEntries).toString();
 
   fetch("/", {
     method: "POST",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: encode(data),
+    body: encoded,
   })
-    .then(() => setSubmitted(true))
-    .catch((error) => alert(error));
+    .then(() => {
+      setSubmitted(true);
+      form.reset();
+    })
+    .catch((err) => alert("Det oppsto en feil: " + err));
 };
 
 
