@@ -3,10 +3,34 @@ import { useState } from "react";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  setSubmitted(true);
+  function encode(data: Record<string, string>) {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const data = {
+    "form-name": "contact",
+    name: (form.elements.namedItem("name") as HTMLInputElement).value,
+    email: (form.elements.namedItem("email") as HTMLInputElement).value,
+    message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+  };
+
+  fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode(data),
+  })
+    .then(() => setSubmitted(true))
+    .catch((error) => alert(error));
 };
+
+
+
   
   return(
      <div className="bg-white px-10 mt-10 flex flex-col gap-3 flex-1">
