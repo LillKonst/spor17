@@ -4,13 +4,16 @@ import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { CartProvider } from './components/CartProvider/CartProvider.tsx'
+import GAListener from "./GAListener";
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <CartProvider>
-        <App />
-      </CartProvider>
+      <GAListener>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </GAListener>
     </BrowserRouter>
   </StrictMode>,
 )
