@@ -15,7 +15,7 @@ interface ProductSliderProps {
 export default function ProductSlider({ products }: ProductSliderProps) {
   return (
     <div className="bg-white p-5 rounded-lg my-10 ">
-      <h2 className="text-3xl m-2 p-2 ">Våre Julekort</h2>
+      <h2 className="text-2xl md:text-3xl m-2 p-2 ">Våre Julekort</h2>
     <Swiper
       modules={[Navigation, Pagination]}
       spaceBetween={20}

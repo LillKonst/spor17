@@ -15,6 +15,10 @@ interface PredictiveSearchResponse {
   };
 }
 
+interface SearchbarProps {
+  onSelectResult?: () => void;
+}
+
 async function fetchPredictiveSearch(query: string): Promise<Product[]> {
   if (!query.trim()) return [];
 
@@ -42,7 +46,7 @@ async function fetchPredictiveSearch(query: string): Promise<Product[]> {
   return data.predictiveSearch.products;
 }
 
-export default function Searchbar() {
+export default function Searchbar({ onSelectResult }: SearchbarProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -149,6 +153,12 @@ export default function Searchbar() {
       <Link
         key={product.id}
         to={`/produkt/${product.handle}`}
+        onClick={() => {
+          if (window.innerWidth < 1024) {
+          onSelectResult?.(); // lukk hovedmeny på mobil
+          setIsOpen(false);   // lukk dropdown på mobil
+          }
+          }}
         className="flex items-center gap-3 p-3 hover:bg-gray-50 transition"
       >
         {product.images?.edges[0]?.node?.url && (

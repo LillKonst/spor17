@@ -21,7 +21,7 @@ export default function AddedToCartModal({ show, productName, onClose }: AddedTo
           onClick={onClose}
         >
           <motion.div
-            className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-sm w-full"
+            className="bg-white rounded mx-5 shadow-lg p-8 text-center max-w-sm w-full"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
