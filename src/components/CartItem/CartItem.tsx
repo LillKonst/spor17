@@ -12,12 +12,12 @@ export default function CartItem({
   isLoading,
 }: CartItemProps) {
   return (
-    <li className="flex flex-col md:flex-row items-center space-x-4 p-4 rounded shadow-sm">
+    <li className="flex flex-col sm:flex-row items-center space-x-4 p-4 rounded shadow-sm">
       {line.image && (
         <img
           src={line.image}
           alt={line.title}
-          className="w-full md:w-54 md:h-54 object-cover rounded -mt-4"
+          className="w-full sm:w-54 sm:h-54 object-cover rounded -mt-4"
         />
       )}
       <div className="w-full flex-1 -mt-3 xxs:-mt-5">

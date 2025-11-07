@@ -21,12 +21,12 @@ export default function ProductLink({ product }: ProductLinkProps) {
             )}
             </div>
             <div className=" mx-4 py-5 flex flex-col justify-center">
-          <h2 className="text-md xs:text-xl">
+          <h2 className="md:text-md xs:text-lg">
             {product.title.slice(0, 10)}
             <br />
             {product.title.slice(10)}
           </h2>
-          <h2 className="text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
+          <h2 className="text-lg md:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
           {product.variants.edges[0].node.priceV2.currencyCode}</h2>
         </div>
         </Link>
