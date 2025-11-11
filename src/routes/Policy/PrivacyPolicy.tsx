@@ -53,9 +53,14 @@ export default function PrivacyPolicy() {
         <ul className="list-disc ml-5 space-y-1">
           <li>Direkte fra deg, når du bruker Tjenestene eller kommuniserer med oss.</li>
           <li>
-            Automatisk, gjennom informasjonskapsler (cookies). Nettbutikken vår bruker kun tekniske cookies som er
-            nødvendige for at handlekurv og utsjekk skal fungere. Vi bruker ikke cookies for analyse, markedsføring
-            eller sporing.
+            Automatisk, gjennom informasjonskapsler (cookies) og sporingsverktøy som Meta Pixel. 
+Disse kan inkludere data som hvordan du navigerer på nettsiden, hvilke produkter du ser på, 
+og anonymiserte identifikatorer.
+
+<li>Merk: Når du besøker vår nettside, vil du få muligheten til å godta eller avslå bruk av cookies 
+og Meta Pixel-data. Hvis du avslår, vil vi fortsatt bruke nødvendige cookies for å gjennomføre kjøp, 
+men vi vil ikke spore aktivitet for markedsføringsformål eller avansert matching.</li>
+
           </li>
           <li>Fra tjenesteleverandører som hjelper oss med betaling, frakt eller kundestøtte.</li>
           <li>Fra samarbeidspartnere eller tredjeparter som vi samarbeider med.</li>
@@ -70,6 +75,10 @@ export default function PrivacyPolicy() {
           <li>
             <strong>Sikkerhet og forebygging av svindel:</strong> For å beskytte kontoer og forhindre ulovlig aktivitet.
           </li>
+          <li><strong>Markedsføring og annonsering:</strong> Med ditt samtykke kan vi bruke Meta Pixel til å analysere 
+og tilpasse annonsering på Facebook/Instagram, inkludert avansert matching av informasjon 
+du har oppgitt til oss (f.eks. e-postadresse).
+</li>
           <li>
             <strong>Kommunikasjon med deg:</strong> For kundeservice, henvendelser og oppfølging.
           </li>
@@ -182,7 +191,7 @@ export default function PrivacyPolicy() {
 
         <p className="text-sm text-gray-500 mt-4">
           For formål som gjelder gjeldende personvernlovgivning, er Spor 17 behandlingsansvarlig for dine
-          personopplysninger. Sist oppdatert: 05.11.2025.
+          personopplysninger. Sist oppdatert: 11.11.2025.
         </p>
       </div>
     </div>
