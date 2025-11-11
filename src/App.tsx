@@ -12,6 +12,7 @@ import ScrollToTop from "./components/Layout/ScrollToTop";
 import Policy from "./routes/Policy/Policy";
 import PrivacyPolicy from "./routes/Policy/PrivacyPolicy";
 import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
+import CookieBanner from "./components/CookieBanner/CookieBanner";
 
 function App() {
   
@@ -29,6 +30,7 @@ function App() {
           <p className="text-xs md:text-sm lg:text-md text-white">ÅPNINGSTILBUD T.O.M 16. NOVEMBER ! 20% VED KJØP AV 2 ELLER FLERE JULEKORTPAKKER</p>
         </div>
       <div className="px-5" >
+        
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
@@ -44,6 +46,7 @@ function App() {
         </Route>
       </Routes>
       </div>
+      <CookieBanner />
     </div>
     </HeadProvider>
   )
