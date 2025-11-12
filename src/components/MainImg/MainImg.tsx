@@ -7,6 +7,7 @@ import produkt5 from "../../images/Julekort-venterpånissen.png";
 import produkt6 from "../../images/Julekort-hus.png";
 import produkt7 from "../../images/Julekort-snømann.png";
 import produkt8 from "../../images/Julekort-misteltein.png";
+import logopicture from "../../images/Group 4.svg";
 
 export default function MainImg() {
   return(
@@ -22,8 +23,10 @@ export default function MainImg() {
           <h1 className="text-2xl xxxs:text-4xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">DEN ENKLE SERIEN</h1>
           <h2 className="text-sm xxxs:text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-4xl 2xl:text-5xl">ENKLE OG SØTE JULEKORT 2025</h2>
         </div>
-        <img src={produkt7} alt="" className="col-span-3 md:col-span-1 row-span-2"/>
-        <img src={produkt8} alt="" className="col-span-3 md:col-span-1 row-span-2"/>
+        <img src={produkt7} alt="" className="col-span-2 md:col-span-1 row-span-1"/>
+        <img src={logopicture} alt="" className="md:hidden col-span-2 md:col-span-1 row-span-1"/>
+        <img src={produkt8} alt="" className="col-span-2 md:col-span-1 row-span-1"/>
+        
       </Link>
     </div>
   );
