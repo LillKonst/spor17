@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper/modules";
+import { Navigation, Thumbs, Zoom } from "swiper/modules";
 import type { Swiper as SwiperClass } from "swiper/types";
+import { ZoomIn } from "lucide-react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import "swiper/css/zoom";
 
 interface ProductImage {
   url: string;
@@ -14,6 +16,7 @@ interface ProductImage {
 
 export default function ImageCarouselSwiper({ images }: { images: ProductImage[] }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   if (!images || images.length === 0) {
     return <p>Ingen bilder tilgjengelig</p>;
@@ -23,19 +26,30 @@ export default function ImageCarouselSwiper({ images }: { images: ProductImage[]
     <div className="flex flex-col items-center">
       {/* 🔹 Hovedbilde-slider */}
       <Swiper
-        modules={[Navigation, Thumbs]}
+        modules={[Navigation, Thumbs, Zoom]}
         navigation
         thumbs={{ swiper: thumbsSwiper }}
+        zoom={{ maxRatio: 3 }}
         spaceBetween={10}
         className="w-full max-w-lg rounded-lg overflow-hidden"
       >
         {images.map((img, i) => (
           <SwiperSlide key={i}>
+            <div className="swiper-zoom-container relative" onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}>
             <img
               src={img.url}
               alt={img.altText || "Produktbilde"}
               className="w-full h-auto object-contain p-5"
             />
+
+            {hovered === i && (
+                <div className="absolute left-6 top-85 w-60 h-20 inset-0 rounded-2xl flex flex-col items-center justify-center bg-black/30 text-white text-sm transition-opacity duration-300">
+                  <ZoomIn className="w-6 h-6 mb-2 opacity-80" />
+                  <span>Doobeltklikk for å zoome inn</span>
+                </div>
+              )}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

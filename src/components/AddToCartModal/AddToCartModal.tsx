@@ -31,7 +31,7 @@ export default function AddedToCartModal({ show, productName, onClose }: AddedTo
               🛒 {productName} er lagt i handlekurven
             </h2>
 
-            <div className="flex gap-3 justify-center mt-5">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-5">
               <button
                 onClick={() => navigate("/handlekurv")}
                 className="bg-customGreen text-black py-2 px-4 rounded-lg hover:bg-customHover transition"
