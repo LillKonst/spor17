@@ -22,7 +22,7 @@ function App() {
     <Title>Spor 17</Title>
     <Meta name="description" content="Velkommen til Spor 17" />
     <Meta property="og:title" content="Spor 17" />
-    <Meta property="og:image" content="/Plain-logo-bg.png" />
+    <Meta property="og:image" content="/images/mainimgspor17.png" />
     <Link rel="icon" href="/fav-icon.svg" />
     <ScrollToTop />
     <div className="bg-background h-full relative">
