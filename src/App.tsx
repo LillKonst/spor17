@@ -13,6 +13,7 @@ import Policy from "./routes/Policy/Policy";
 import PrivacyPolicy from "./routes/Policy/PrivacyPolicy";
 import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
+import MetaPixel from "./components/MetaPixel/MetaPixel";
 
 function App() {
   
@@ -47,6 +48,7 @@ function App() {
       </Routes>
       </div>
       <CookieBanner />
+      <MetaPixel pixelId="1523394162215243" />
     </div>
     </HeadProvider>
   )

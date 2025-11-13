@@ -2,13 +2,6 @@ import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import AddedToCartModal from "../AddToCartModal/AddToCartModal";
 
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
-}
-
-
 interface CallToActionProps {
   variantId?: string;
   type: "addToCart" | "checkout";
@@ -34,6 +27,15 @@ export default function CallToActionButton({
       setLoading(true);
       try {
         const updatedCart = await addItem(variantId, 1);
+
+        const consent = document.cookie.includes("spor17-consent=true");
+    if (consent && window.fbq) {
+      window.fbq("track", "AddToCart", {
+        content_name: productName,
+        content_ids: [variantId],
+        content_type: "product",
+      });
+    }
 
         const totalItems = updatedCart.lines.reduce(
           (sum, line) => sum + line.quantity,
@@ -69,8 +71,9 @@ export default function CallToActionButton({
           return;
         }
 
-        if (window.fbq) {
-          window.fbq("track", "InitiateCheckout");
+        const consent = document.cookie.includes("spor17-consent=true");
+        if (consent && window.fbq) {
+        window.fbq("track", "InitiateCheckout");
         }
 
         // 🔹 Vis toast
