@@ -75,10 +75,17 @@ men vi vil ikke spore aktivitet for markedsføringsformål eller avansert matchi
           <li>
             <strong>Sikkerhet og forebygging av svindel:</strong> For å beskytte kontoer og forhindre ulovlig aktivitet.
           </li>
-          <li><strong>Markedsføring og annonsering:</strong> Med ditt samtykke kan vi bruke Meta Pixel til å analysere 
-og tilpasse annonsering på Facebook/Instagram, inkludert avansert matching av informasjon 
-du har oppgitt til oss (f.eks. e-postadresse).
+          
+<li>
+  <strong>Markedsføring og annonsering:</strong> 
+  Vi bruker Meta Pixel for å forstå hvordan besøkende bruker nettsiden vår og for å kunne vise mer relevante annonser på Facebook og Instagram. 
+  Sporing aktiveres kun dersom du har samtykket til bruk av markedsførings-cookies. 
+  Vi sporer handlinger som for eksempel at et produkt legges i handlekurven eller at en bruker klikker seg videre til betaling («Initiate Checkout»). 
+  
+  Selve betalings- og utsjekkingsprosessen håndteres av Shopify, og vi sender ikke personopplysninger eller hendelser videre til Meta etter at du forlater spor17.no for å fullføre kjøpet. 
+  All informasjon behandles i samsvar med gjeldende personvernregler (GDPR).
 </li>
+
           <li>
             <strong>Kommunikasjon med deg:</strong> For kundeservice, henvendelser og oppfølging.
           </li>
@@ -191,7 +198,7 @@ du har oppgitt til oss (f.eks. e-postadresse).
 
         <p className="text-sm text-gray-500 mt-4">
           For formål som gjelder gjeldende personvernlovgivning, er Spor 17 behandlingsansvarlig for dine
-          personopplysninger. Sist oppdatert: 11.11.2025.
+          personopplysninger. Sist oppdatert: 13.11.2025.
         </p>
       </div>
     </div>
