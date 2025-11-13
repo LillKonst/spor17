@@ -43,12 +43,14 @@ export default function ImageCarouselSwiper({ images }: { images: ProductImage[]
               className="w-full h-auto object-contain p-5"
             />
 
-            {hovered === i && (
-                <div className="absolute left-6 top-85 w-60 h-20 inset-0 rounded-2xl flex flex-col items-center justify-center bg-black/30 text-white text-sm transition-opacity duration-300">
-                  <ZoomIn className="w-6 h-6 mb-2 opacity-80" />
-                  <span>Doobeltklikk for å zoome inn</span>
-                </div>
-              )}
+          {hovered === i && window.innerWidth >= 640 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-2 rounded-lg flex items-center justify-center bg-black/50 text-white text-sm transition-opacity duration-300">
+              <ZoomIn className="w-5 h-5 mr-2 opacity-80" />
+              <span className="text-sm">Dobbeltklikk for å zoome inn</span>
+            </div>
+          )}
+
+
             </div>
           </SwiperSlide>
         ))}

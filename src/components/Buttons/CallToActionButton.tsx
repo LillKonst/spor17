@@ -2,6 +2,13 @@ import { useState } from "react";
 import { useCart } from "../../hooks/useCart";
 import AddedToCartModal from "../AddToCartModal/AddToCartModal";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+
 interface CallToActionProps {
   variantId?: string;
   type: "addToCart" | "checkout";
@@ -60,6 +67,10 @@ export default function CallToActionButton({
         if (!checkoutUrl) {
           alert("Fant ikke checkout-URL. Prøv å oppdatere siden.");
           return;
+        }
+
+        if (window.fbq) {
+          window.fbq("track", "InitiateCheckout");
         }
 
         // 🔹 Vis toast
