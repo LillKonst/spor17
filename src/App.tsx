@@ -14,6 +14,7 @@ import PrivacyPolicy from "./routes/Policy/PrivacyPolicy";
 import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import MetaPixel from "./components/MetaPixel/MetaPixel";
+import GoogleAnalytics from "./components/GoogleAnalytics/GoogleAnalytics";
 
 function App() {
   
@@ -49,6 +50,7 @@ function App() {
       </div>
       <CookieBanner />
       <MetaPixel pixelId="1523394162215243" />
+      <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
     </div>
     </HeadProvider>
   )
