@@ -21,11 +21,32 @@ function App() {
 
   return (
     <HeadProvider>
-    <Title>Spor 17</Title>
-    <Meta name="description" content="Velkommen til Spor 17" />
-    <Meta property="og:title" content="Spor 17" />
+    <Title>Spor 17 - Unike julekort</Title>
+    <Meta name="description" content="Oppdag unike julekort fra Spor 17. Enkle og stemningsfulle design som gjør julehilsenen personlig. Rask levering – perfekt til jul!" />
+    <Meta property="og:title" content="Spor 17 - Unike julekort" />
+    <Meta property="og:description" content="Enkle, stemningsfulle og håndtegnede julekort fra Spor 17. Gjør julehilsenen ekstra personlig." />
     <Meta property="og:image" content="/images/mainimgspor17.png" />
     <Link rel="icon" href="/fav-icon.svg" />
+    <script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: `
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Spor 17",
+  "url": "https://spor17.no",
+  "description": "Unike, enkle og stemningsfulle julekort.",
+  "logo": "https://spor17.no/fav-icon.svg",
+  "sameAs": [
+    "https://www.instagram.com/spor17.no",
+    "https://www.facebook.com/profile.php?id=61583399043251"
+  ]
+}
+`
+  }}
+/>
+
     <ScrollToTop />
     <div className="bg-background h-full relative">
        <div className="bg-customRed p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
