@@ -1,9 +1,9 @@
-import WriteCardDisplay from "../../images/info-box.jpg";
+import WriteCardDisplay from "../../images/IMG_1075-200kb.jpg";
 import { Link } from "react-router-dom";
 
 export default function InfoBoxHome() {
   return (
-    <div className="bg-white p-5 md:p-10 my-10 rounded-lg flex flex-col gap-5 md:flex-row w-full px-12">
+    <div className="bg-white p-2 sm:p-5 md:p-10 my-10 rounded-lg flex flex-col gap-5 md:flex-row w-full px-5 sm:px-12">
       <div className="flex flex-row gap-3 md:gap-5 flex-1 md:ps-12">
         <img src={WriteCardDisplay} alt="2 pakker med kort" className="rounded-lg"/>
       </div>
