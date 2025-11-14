@@ -76,6 +76,15 @@ export default function CallToActionButton({
         window.fbq("track", "InitiateCheckout");
         }
 
+        if (consent && window.gtag) {
+          window.gtag("event", "conversion", {
+          send_to: "AW-17729664837/GoUcCJ70778bEMXulIZC",
+          value: 1.0,
+          currency: "NOK",
+          });
+        }
+
+
         // 🔹 Vis toast
         setShowToast(true);
 
