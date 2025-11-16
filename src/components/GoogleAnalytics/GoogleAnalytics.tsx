@@ -14,11 +14,10 @@ interface GoogleAnalyticsProps {
 
 export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
   useEffect(() => {
-    const consent = document.cookie.includes("spor17-consent=true");
-
-    if (consent && !window.dataLayer) {
-      // Opprett dataLayer
+  function initGA() {
+     if (!window.dataLayer) {
       window.dataLayer = [];
+
       window.gtag = function (...args: unknown[]) {
         window.dataLayer!.push(args);
       };
@@ -26,13 +25,23 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
       window.gtag("js", new Date());
       window.gtag("config", measurementId);
 
-      // Last inn Google Analytics-skriptet
       const script = document.createElement("script");
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
       document.head.appendChild(script);
     }
-  }, [measurementId]);
+  }
+
+  const cookie = document.cookie.includes("spor17-consent=1");
+  if (cookie) initGA();
+
+  window.addEventListener("ga-consent-given", initGA);
+
+  return () => {
+    window.removeEventListener("ga-consent-given", initGA);
+  };
+}, [measurementId]);
+
 
   return null;
 }

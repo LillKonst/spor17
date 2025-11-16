@@ -9,6 +9,8 @@ export default function CookieBanner() {
       declineButtonText="Avslå"
       enableDeclineButton
       cookieName="spor17-consent"
+      onAccept={() => window.dispatchEvent(new Event("ga-consent-given"))}
+      onDecline={() => window.dispatchEvent(new Event("ga-consent-denied"))}
       style={{ background: "#F7F7F7", color: "#000000" }}
       buttonStyle={{ background: "#A5EB9F", color: "#000000", fontSize: "14px" }}
       declineButtonStyle={{ background: "#777", color: "#fff", fontSize: "14px" }}

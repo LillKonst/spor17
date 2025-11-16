@@ -1,4 +1,3 @@
-// src/components/MetaPixel/MetaPixel.tsx
 import { useEffect } from "react";
 
 declare global {
@@ -12,7 +11,6 @@ interface MetaPixelProps {
   pixelId: string;
 }
 
-// Typing for Meta Pixel queue-funksjon
 interface FbqFunction {
   (...args: unknown[]): void;
   queue?: unknown[][];
@@ -22,33 +20,38 @@ interface FbqFunction {
 
 export default function MetaPixel({ pixelId }: MetaPixelProps) {
   useEffect(() => {
-    const consent = document.cookie.includes("spor17-consent=true");
+    function initPixel() {
+      if (window.fbq) return;
 
-    if (consent && !window.fbq) {
-      // Init Meta Pixel
-      const initPixel = () => {
-        const n: FbqFunction = function (...args: unknown[]) {
-          (n.queue = n.queue || []).push(args);
-        };
-        n.queue = [];
-        n.loaded = true;
-        n.version = "2.0";
-
-        window.fbq = n;
-        window._fbq = n;
-
-        const t = document.createElement("script");
-        t.async = true;
-        t.src = "https://connect.facebook.net/en_US/fbevents.js";
-        const s = document.getElementsByTagName("script")[0];
-        s?.parentNode?.insertBefore(t, s);
+      const fbq: FbqFunction = function (...args: unknown[]) {
+        (fbq.queue = fbq.queue || []).push(args);
       };
+      fbq.loaded = true;
+      fbq.version = "2.0";
+      fbq.queue = [];
 
-      initPixel();
+      window.fbq = fbq;
+      window._fbq = fbq;
 
-      window.fbq!("init", pixelId);
-      window.fbq!("track", "PageView");
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://connect.facebook.net/en_US/fbevents.js";
+      document.head.appendChild(script);
+
+      window.fbq("init", pixelId);
+      window.fbq("track", "PageView");
     }
+
+    // Last Pixel hvis cookie allerede finnes
+    const consent = document.cookie.includes("spor17-consent=1");
+    if (consent) initPixel();
+
+    // Last Pixel umiddelbart når bruker klikker “Godta”
+    window.addEventListener("ga-consent-given", initPixel);
+
+    return () => {
+      window.removeEventListener("ga-consent-given", initPixel);
+    };
   }, [pixelId]);
 
   return null;
