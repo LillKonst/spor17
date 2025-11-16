@@ -2,16 +2,25 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
 import type { Product } from "../../hooks/fetchProduct";
-// import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
 import ImageCarouselSwiper from "../../components/ImageCarousel/Carousel";
-
+// import ProductSlider from "../../components/ProductSlider/ProductSlider";
+// import { fetchAllProducts } from "../../hooks/fetchAllProducts";
 
 
 export default function ProductSpecific() {
   const { handle } = useParams<{ handle: string }>();
   const [product, setProduct] = useState<Product | null>(null);
+  // const [allProducts, setAllProducts] = useState<Product[]>([]);
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   fetchAllProducts().then(data => {
+  //     setAllProducts(data);
+  //     setLoading(false);
+  //   });
+  // }, []);
 
   useEffect(() => {
     if (!handle) return;
@@ -37,10 +46,13 @@ export default function ProductSpecific() {
           type="addToCart"
           variantId={variantId}
           className="text-black bg-customGreen hover:bg-customHover mx-2"
-          productName={product.title} // 👈 her!
+          productName={product.title}
         />
       </div>
       </div>
+      {/* <div>
+        {!loading && <ProductSlider products={allProducts} />}
+      </div> */}
     </div>
   );
 }

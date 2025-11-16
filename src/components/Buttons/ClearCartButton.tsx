@@ -40,7 +40,6 @@ export default function ClearCartButton({ onConfirm }: ClearCartButtonProps) {
         </svg>
       </button>
 
-
       {showConfirm && (
         <div className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-300 shadow-lg rounded-lg p-4 z-10">
           <p className="text-sm mb-4">Er du sikker på at du vil tømme handlekurven?</p>

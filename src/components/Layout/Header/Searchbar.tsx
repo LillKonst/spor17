@@ -155,8 +155,8 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
         to={`/produkt/${product.handle}`}
         onClick={() => {
           if (window.innerWidth < 1024) {
-          onSelectResult?.(); // lukk hovedmeny på mobil
-          setIsOpen(false);   // lukk dropdown på mobil
+          onSelectResult?.(); 
+          setIsOpen(false);   
           }
           }}
         className="flex items-center gap-3 p-3 hover:bg-gray-50 transition"
