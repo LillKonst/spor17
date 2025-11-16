@@ -55,7 +55,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="pt-15 xxxs:pt-12 xxs:pt-10 mb-3 px-2 flex flex-row items-center justify-between relative xxs:mb-3">
+    <div className="pt-5 mb-3 px-2 flex flex-row items-center justify-between relative xxs:mb-3">
       <Link to="/" className="flex items-center lg:ms-5 ">
         <img src={logo} alt="Spor 17 logo" className="w-[110px] md:w-[135px] xl:w-[150px]" />
       </Link>
@@ -107,23 +107,23 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
               className={`${
                 isMenuOpen || isDesktop ? "flex" : "hidden"
-              } absolute lg:static top-[100px] sm:top[100px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
+              } absolute lg:static top-[75px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
                 bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
                 gap-5 lg:items-center lg:justify-between lg:space-x-4 z-40`}
             >
               <nav className="lg:self-center lg:mt-5 lg:ms-8">
-                <ul className="flex flex-col lg:flex-row text-xl pt-5 md:pt-0">
-                  <li className="w-full p-5 border-t-2 border-b-2 border-gray-200 md:p-0 md:px-5 md:border-0">
+                <ul className="flex flex-col lg:flex-row lg:gap-5 text-xl pt-5 md:pt-0">
+                  <li className="w-full p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/produkter" onClick={() => setIsMenuOpen(false)} className="hover:underline">
                       Produkter
                     </Link>
                   </li>
-                  <li className="w-full p-5 border-t-2 border-b-2 border-gray-200 md:p-0 md:px-5 md:border-0">
+                  <li className="w-full p-5 border-t-2 border-b-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/om" onClick={() => setIsMenuOpen(false)} className="hover:underline">
                       Om Oss
                     </Link>
                   </li>
-                  <li className="w-full p-5 border-t-2 border-b-2 border-gray-200 md:p-0 md:px-5 md:border-0">
+                  <li className="w-full p-5 border-b-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/kontakt" onClick={() => setIsMenuOpen(false)} className="hover:underline">
                       Kontakt
                     </Link>
