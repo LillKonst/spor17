@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { shopifyFetch } from "../../../hooks/api";
 import { Link } from "react-router-dom";
+import { mainImageMap } from "../../../hooks/mainProductImage";
 
 interface Product {
   id: string;
@@ -122,7 +123,7 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
 
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-md mt-2">
+    <div ref={containerRef} className="relative w-full max-w-md mt-2 px-3">
       {/* 🔍 Input */}
       <div className="lg:mx-5 bg-white rounded-lg p-2 flex items-center gap-2 border border-gray-300">
         <svg
@@ -155,20 +156,21 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
         to={`/produkt/${product.handle}`}
         onClick={() => {
           if (window.innerWidth < 1024) {
-          onSelectResult?.(); // lukk hovedmeny på mobil
-          setIsOpen(false);   // lukk dropdown på mobil
+          onSelectResult?.(); 
+          setIsOpen(false);   
           }
           }}
         className="flex items-center gap-3 p-3 hover:bg-gray-50 transition"
       >
-        {product.images?.edges[0]?.node?.url && (
-          <img
-            src={product.images.edges[0].node.url}
-            alt={product.images.edges[0].node.altText || product.title}
-            className="w-10 h-10 object-cover rounded"
-          />
-        )}
-        <span className="text-gray-800">{product.title}</span>
+        {mainImageMap[product.id] && (
+  <img
+    src={mainImageMap[product.id]}
+    alt={product.title}
+    className="w-16 h-16 object-cover rounded"
+  />
+)}
+
+        <span className="text-gray-800 text-xl">{product.title}</span>
       </Link>
     ))}
   </div>

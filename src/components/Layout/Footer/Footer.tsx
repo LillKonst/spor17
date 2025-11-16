@@ -3,7 +3,7 @@ import logo from "../../../images/plain-logo.svg";
 
 export default function Footer() {
   return(
-    <div className="mt-40 flex flex-col gap-5 items-center pt-10 pb-3 w-full">
+    <div className="mt-40 p-5 flex flex-col gap-5 items-center pt-10 pb-3 w-full">
       <div className="flex flex-col lg:flex-row w-full justify-between gap-5">
         <Link to="/" className="flex-1 flex flex-col mb-12 lg:px-10 items-center">
           <img src={logo} alt="logo" className="w-full"/>

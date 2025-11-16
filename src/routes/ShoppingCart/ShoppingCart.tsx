@@ -108,7 +108,7 @@ export default function ShoppingCart() {
       />
 
       <div className="flex flex-col sm:flex-row justify-between gap-4 mt-6">
-        <p className="text-xl">
+        <p className="text-sm xxs:text-md sm:text-xl">
           Total (inkl. tax og duty): {totalAmount} {cart.cost.currencyCode}
         </p>
         {cart.checkoutUrl && (

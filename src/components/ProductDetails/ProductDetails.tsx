@@ -15,7 +15,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           {Math.round(Number(price.amount))} {price.currencyCode}
         </h2>
       </div>
-      <p className="md:text-xl text-customRed">Åpningstilbud! Få 20% ved kjøp av 2 eller flere julekortpakker. 20% trekkes fra i kassen.</p>
       <div
         className="font-Garamond md:text-lg mt-4 text-gray-700 whitespace-pre-line"
         dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}

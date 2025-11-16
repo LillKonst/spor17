@@ -17,6 +17,7 @@ export interface Product {
   variants: {
     edges: {
       node: {
+        id: string;
         priceV2: {
           amount: string;
           currencyCode: string;
@@ -42,7 +43,7 @@ export async function fetchAllProducts(): Promise<Product[]> {
             handle
             title
             description
-            images(first: 1) {
+            images(first: 4) {
               edges {
                 node {
                   url
@@ -53,6 +54,7 @@ export async function fetchAllProducts(): Promise<Product[]> {
             variants(first: 1) {
               edges {
                 node {
+                  id
                   priceV2 {
                     amount
                     currencyCode
@@ -67,5 +69,6 @@ export async function fetchAllProducts(): Promise<Product[]> {
   `;
 
   const data = await shopifyFetch<ProductsResponse>(query);
+  console.log("Produkter fra API:", data);
   return data.products.edges.map(edge => edge.node);
 }
