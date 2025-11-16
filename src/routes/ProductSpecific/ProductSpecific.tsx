@@ -35,7 +35,9 @@ export default function ProductSpecific() {
     <div className="flex flex-col lg:flex-row gap-5 bg-white rounded-lg p-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
       <div className="">
         <ImageCarouselSwiper
-          images={product.images.edges.map(edge => edge.node)}
+          productId={product.id}
+          productHandle={product.handle} 
+          images={product.images.edges.map(edge => edge.node)} 
         />
       </div>
       <div className="flex flex-col xs:p-5 gap-5">

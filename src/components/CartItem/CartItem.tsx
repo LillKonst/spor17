@@ -17,10 +17,10 @@ export default function CartItem({
         <img
           src={line.image}
           alt={line.title}
-          className="w-full sm:w-54 sm:h-54 object-cover rounded -mt-4"
+          className="w-full sm:w-54 sm:h-54 object-cover rounded "
         />
       )}
-      <div className="w-full flex-1 -mt-3 xxs:-mt-5">
+      <div className="w-full flex-1 mt-2">
         <p className="font-semibold">{line.title}</p>
         <p>
           Pris: {Math.round(Number(line.price.amount))} {line.price.currencyCode}

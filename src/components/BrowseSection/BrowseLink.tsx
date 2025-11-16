@@ -26,7 +26,7 @@ export default function BrowseLink({ product }: ProductLinkProps) {
   "gid://shopify/Product/8864304300195": pepperkake,
   };
 
-   const image = productImages[product.id];
+  const image = productImages[product.id];
 
 
   return (
@@ -35,7 +35,7 @@ export default function BrowseLink({ product }: ProductLinkProps) {
         <img 
           src={image} 
           alt={product.title} 
-          className="w-16 h-16" 
+          className="w-20 h-20 md:w-24 md:h-24" 
         />
         </Link>
     </li>
