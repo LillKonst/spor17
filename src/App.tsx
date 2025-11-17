@@ -48,6 +48,9 @@ function App() {
 />
 
     <ScrollToTop />
+    <CookieBanner />
+      <MetaPixel pixelId="1523394162215243" />
+      <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
     <div className="bg-background h-full relative">
        {/* <div className="bg-customRed p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
           <p className="text-xs md:text-sm lg:text-md text-white">ÅPNINGSTILBUD T.O.M 16. NOVEMBER ! 20% VED KJØP AV 2 ELLER FLERE JULEKORTPAKKER</p>
@@ -69,9 +72,6 @@ function App() {
         </Route>
       </Routes>
       </div>
-      <CookieBanner />
-      <MetaPixel pixelId="1523394162215243" />
-      <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
     </div>
     </HeadProvider>
   )
