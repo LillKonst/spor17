@@ -9,22 +9,36 @@ declare global {
 
 export default function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   useEffect(() => {
+    // console.log("GoogleAnalytics mounted, cookie:", document.cookie);
     function initGA() {
-      if (window.dataLayer) return;
+  if (window.dataLayer) return;
 
-      window.dataLayer = [];
-      window.gtag = function (...args: unknown[]) {
-        window.dataLayer!.push(args);
-      };
+  window.dataLayer = [];
+  window.gtag = function (...args: unknown[]) {
+    window.dataLayer!.push(args);
+  };
 
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  
+  script.onload = () => {
+  // console.log("gtag loaded, now configuring GA");
+  if (window.gtag) {
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId);
+  } else {
+    console.warn("gtag is undefined after script load");
+  }
+};
 
-      window.gtag("js", new Date());
-      window.gtag("config", measurementId);
-    }
+
+  document.head.appendChild(script);
+  // console.log("initGA called, script appended");
+}
+
+
+    
 
     // Last GA kun hvis bruker har gitt samtykke
     const hasConsent = document.cookie.includes("spor17-consent=true");
@@ -37,6 +51,7 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
       window.removeEventListener("ga-consent-given", initGA);
     };
   }, [measurementId]);
+  
 
   return null;
 }
