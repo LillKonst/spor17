@@ -55,7 +55,7 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="pt-5 mb-3 px-2 flex flex-row items-center justify-between relative xxs:mb-3">
+    <div className="pt-8 md:pt-10 mb-3 px-2 flex flex-row items-center justify-between relative xxs:mb-3">
       <Link to="/" className="flex items-center lg:ms-5 ">
         <img src={logo} alt="Spor 17 logo" className="w-[110px] md:w-[135px] xl:w-[150px]" />
       </Link>
@@ -107,7 +107,7 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
               className={`${
                 isMenuOpen || isDesktop ? "flex" : "hidden"
-              } absolute lg:static top-[75px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
+              } absolute lg:static top-[75px] md:top-[90px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
                 bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
                 gap-5 lg:items-center lg:justify-between lg:space-x-4 z-40`}
             >
