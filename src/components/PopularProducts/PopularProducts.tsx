@@ -59,7 +59,7 @@ export default function PopularProducts () {
                   )}
                 </Link>
                 <div className="flex flex-1 xs:flex-2 flex-col justify-between my-3">
-                  <div>
+                  <div className="ms-3">
                     <Link to={`/produkt/${product.handle}`} className="md:text-md xs:text-lg">
                     {product.title.slice(0, 10)}
                     <br />

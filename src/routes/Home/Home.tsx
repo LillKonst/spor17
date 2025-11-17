@@ -1,7 +1,8 @@
 import BrowseSection from "../../components/BrowseSection/BrowseSection";
-import InfoBoxHome from "../../components/Reviews/Reviews";
 import MainImg from "../../components/MainImg/MainImg";
 import PopularProducts from "../../components/PopularProducts/PopularProducts";
+import InfoBox from "../../components/InfoBox/InfoBox";
+import Reviews from "../../components/Reviews/Reviews";
 // import InstagramFeed from "../../components/InstagramFeed/InstagramFeed";
 // import InstagramSection from "../../components/InstagramFeed/InstagramSection";
 
@@ -12,7 +13,8 @@ export default function Home() {
       <MainImg />
       <BrowseSection />
       <PopularProducts />
-      <InfoBoxHome />
+      <InfoBox />
+      <Reviews />
  
     </div>
   );

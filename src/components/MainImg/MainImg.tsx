@@ -36,12 +36,12 @@ export default function MainImg() {
   return (
     <Link to="/produkter" className="relative w-full lg:p-12 lg:mx-20 lg:rounded">
       <img src={mainImage} alt="Bilde av alle julekortene samlet." className="w-full lg:rounded-t"/>
-      <div className="w-full bg-customGreen p-5 rounded-b flex gap-2 items-center">
+      <div className="bg-customHover w-full px-5 py-3 rounded-b flex gap-2 items-center">
         <h1 className="text-xs xxxs:text-xl md:text-2xl font-bold">Julekort</h1> 
-        <h2 className="text-xs xxs:text-xl md:text-2xl">Rett hjem på 1-2-3</h2> 
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-        </svg> 
+        <h2 className="text-xs xxxs:text-xl md:text-2xl"> 10 kort - 249 kr</h2> 
+        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
+          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+        </svg>  */}
       </div>
     </Link>
   );
