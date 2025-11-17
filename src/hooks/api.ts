@@ -6,12 +6,16 @@ export interface ShopifyResponse<T> {
   errors?: { message: string }[];
 }
 
-export async function shopifyFetch<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
-  if (import.meta.env.DEV) {
-  console.log("Shopify Query:", query);
-  console.log("Shopify Variables:", variables);
-}
-  
+export async function shopifyFetch<T>(
+  query: string,
+  variables?: Record<string, unknown>
+): Promise<T> {
+  // 🔹 Her kan du fjerne console.log helt
+  // if (import.meta.env.DEV) {
+  //   console.log("Shopify Query:", query);
+  //   console.log("Shopify Variables:", variables);
+  // }
+
   const res = await fetch(`https://${SHOPIFY_DOMAIN}/api/2025-07/graphql.json`, {
     method: "POST",
     headers: {

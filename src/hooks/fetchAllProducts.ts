@@ -69,6 +69,5 @@ export async function fetchAllProducts(): Promise<Product[]> {
   `;
 
   const data = await shopifyFetch<ProductsResponse>(query);
-  console.log("Produkter fra API:", data);
   return data.products.edges.map(edge => edge.node);
 }
