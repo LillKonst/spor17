@@ -2,11 +2,10 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    dataLayer: unknown[];
-    gtag: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
-
 
 export default function GoogleAnalytics({ measurementId }: { measurementId: string }) {
   useEffect(() => {
@@ -27,11 +26,11 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
       window.gtag("config", measurementId);
     }
 
-    // Hvis cookie finnes (uansett verdi)
-    const cookie = document.cookie.includes("spor17-consent");
-    if (cookie) initGA();
+    // Last GA kun hvis bruker har gitt samtykke
+    const hasConsent = document.cookie.includes("spor17-consent=true");
+    if (hasConsent) initGA();
 
-    // Hvis bruker trykker på godta-knappen
+    // Lytt etter godkjenning fra CookieBanner
     window.addEventListener("ga-consent-given", initGA);
 
     return () => {
