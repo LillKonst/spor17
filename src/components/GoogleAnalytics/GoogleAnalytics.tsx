@@ -91,7 +91,7 @@ export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps)
     function enableGA() {
       // Kjør config først når samtykke er gitt
       window.gtag("config", measurementId);
-      console.log("GA enabled for measurementId:", measurementId);
+      // console.log("GA enabled for measurementId:", measurementId);
     }
 
     // Hvis cookie allerede finnes
