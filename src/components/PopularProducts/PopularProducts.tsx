@@ -71,10 +71,14 @@ export default function PopularProducts () {
                     </h2>
                   )}
                   </div>
-                  <CallToActionButton type="addToCart"
+                  <div className="flex flex-col gap-2 max-w-[140px]">
+                    <CallToActionButton type="addToCart"
                     variantId={variantId}
-                    className="text-black bg-customGreen hover:bg-customHover mx-2 text-sm"
+                    className="text-black bg-customGreen hover:bg-customHover mx-2 text-sm w-full"
                     productName={product.title}/>
+                    <Link to={`/produkt/${product.handle}`} className="p-2 px-3 mx-2 text-sm rounded border-2 border-gray-200 w-full text-center">Se Detaljer</Link>
+                  </div>
+                  
                 </div>
               </div>
             </li>

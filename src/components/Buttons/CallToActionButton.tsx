@@ -110,7 +110,7 @@ export default function CallToActionButton({
   return (
     <div className="relative">
       <button
-        className={`bg-customGreen hover:bg-customHover p-2 px-5 rounded-lg w-fit ${className || ""}`}
+        className={`bg-customGreen hover:bg-customHover p-2 px-3 rounded w-fit ${className || ""}`}
         onClick={handleClick}
         disabled={loading}
       >

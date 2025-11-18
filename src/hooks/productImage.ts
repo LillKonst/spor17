@@ -1,12 +1,12 @@
 // src/data/productImages.ts
-import litenby from "../images/by-produktbilde.jpg";
-import pakker from "../images/pakker-produktbilde.jpg";
-import rødthus from "../images/hus-produktbilde.jpg";
-import jenteundermisteltein from "../images/jente-produktbilde.jpg";
-import venterpånissen from "../images/venter-produktbilde.jpg";
-import juletre from "../images/juletre-produktbilde.jpg";
-import snømann from "../images/snømann-produktbilde.jpg";
-import pepperkake from "../images/pepperkake-produktbilde.jpg";
+import litenby from "../images/kort-bilde-by.jpg";
+import pakker from "../images/kort-bilde-pakker.jpg";
+import rødthus from "../images/kort-bilde-hus.jpg";
+import jenteundermisteltein from "../images/kort-bilde-jente.jpg";
+import venterpånissen from "../images/kort-bilde-venter.jpg";
+import juletre from "../images/kort-bilde-juletre.jpg";
+import snømann from "../images/kort-bilde-snømann.jpg";
+import pepperkake from "../images/kort-bilde-pepperkake.jpg";
 
 export interface ProductImageData {
   main: string;    
