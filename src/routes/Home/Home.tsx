@@ -11,9 +11,11 @@ export default function Home() {
   return(
     <div className="z-10 lg:px-5">
       <MainImg />
-      <BrowseSection />
       <PopularProducts />
-      <InfoBox />
+      <div className="flex flex-col md:flex-row md:gap-5 md:mx-5">
+        <BrowseSection />
+        <InfoBox />
+      </div>
       <Reviews />
  
     </div>

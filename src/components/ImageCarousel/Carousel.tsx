@@ -72,7 +72,7 @@ const finalOrdered = orderedImages.filter(i => i && i.url) as ProductImage[];
 
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center mx-5">
       {/* Hovedbilde */}
       <Swiper
         modules={[Navigation, Thumbs, Zoom]}

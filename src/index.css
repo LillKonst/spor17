@@ -45,3 +45,41 @@ h1, h2, h3, h4, div, a {
 p {
   font-family: "CourierPrime", sans-serif;
 }
+
+
+/* Embla base helpers (lette) */
+.embla__viewport { overflow: hidden; width: 100%; }
+.embla__container { display: flex; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+.embla__slide { position: relative; min-width: 100%; box-sizing: border-box; display: flex; justify-content: center; align-items: center; }
+
+/* Thumbnail container */
+.embla__thumb-viewport { overflow: hidden; }
+.embla__thumb-container { display: flex; }
+
+/* zoomed state: we separate scale from translate so panning works via translate */
+.embla__image {
+  transition: transform 0.25s ease;
+  will-change: transform;
+  touch-action: none; /* important for pointer drag */
+}
+
+/* when zoomed, we add scale via a class on the img and transform-origin is set inline on dblclick */
+.embla__image.is-zoomed {
+  scale: 2; /* using modern scale property is fine; fallback below */
+  transform: scale(2); /* fallback for browsers */
+  cursor: zoom-out;
+}
+
+/* simple selected thumbnail style (you can override with Tailwind) */
+.embla__slide-thumb--selected { border-color: #000 !important; }
+
+/* ensure images don't select text on double-tap */
+img { -webkit-user-drag: none; -webkit-user-select: none; user-select: none; }
+
+/* Zoomed state (double click) */
+img.is-zoomed {
+  transform: scale(2);
+  transition: transform 200ms ease;
+  cursor: zoom-out;
+  /* transform-origin set inline from doubleclick handler */
+}

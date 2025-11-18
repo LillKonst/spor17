@@ -4,13 +4,13 @@ import logo from "../../../images/plain-logo.svg";
 export default function Footer() {
   return(
     <div className="mt-40 p-5 flex flex-col gap-5 items-center pt-10 pb-3 w-full">
-      <div className="flex flex-col lg:flex-row w-full justify-between gap-5">
+      <div className="flex flex-col lg:flex-row w-full justify-between gap-5 lg:items-center">
         <Link to="/" className="flex-1 flex flex-col mb-12 lg:px-10 items-center">
-          <img src={logo} alt="logo" className="w-full"/>
+          <img src={logo} alt="logo" className="w-[150px]"/>
           <p className="text-sm m-3">© alle rettigheter reservert SPOR 17</p>
         </Link>
 
-        <div className="flex-2 flex flex-col md:flex-row gap-5 xl:gap-10 items-start justify-center lg:justify-start lg:mt-12">
+        <div className="flex-2 flex flex-col md:flex-row gap-5 xl:gap-10 items-start justify-center lg:justify-start lg:mt-12 lg:mb-12">
       <div>
         <h2 className="text-2xl mb-2">Kundeservice</h2>
         <div className="flex flex-col">
