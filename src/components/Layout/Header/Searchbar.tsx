@@ -143,7 +143,7 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           placeholder="Hva ser du etter?"
-          className="flex-1 outline-none text-black placeholder-grey-800 font-CourierPrime"
+          className="flex-1 outline-none text-black placeholder-grey-800 font-Raleway"
         />
       </div>
 
