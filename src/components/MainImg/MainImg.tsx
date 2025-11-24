@@ -30,7 +30,7 @@ import { Link } from "react-router-dom";
 //   );
 // }
 
-import mainImage from "../../images/DSC_0043-main.jpg";
+import mainImage from "../../images/DSC_0043-main.JPG";
 import snowmanimg from "../../images/20251118_135330-cut.jpg";
 
 export default function MainImg() {
