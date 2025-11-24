@@ -31,7 +31,7 @@ export default function BrowseSection() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="m-2 flex flex-col justify-center items-center">
+    <div className="m-2 my-3 mb-8 flex flex-col justify-center items-center">
       <h2 className="xxxs:text-lg sm:text-2xl m-5">Utforsk våre motiver</h2>
       <ul className="flex flex-wrap gap-4 justify-center items-center">
         {products.map((product) => (

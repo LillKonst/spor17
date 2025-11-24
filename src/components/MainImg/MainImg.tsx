@@ -35,24 +35,36 @@ import snowmanimg from "../../images/20251118_135330-cut.jpg";
 
 export default function MainImg() {
   return (
-    <div className="w-full lg:px-12 flex flex-col lg:flex-row gap-5">
-      <div className="relative lg:rounded">
+    <div className="w-full lg:px-12 flex flex-col lg:flex-row gap-5 mb-5 ">
+      <Link to="/produkt/julekort-snomann-10stk" className="relative lg:rounded">
         <img src={mainImage} alt="En hånd gir et julekort med snømann til en annen hånd." className="w-full lg:rounded-t"/>
-        <h1 className="absolute bottom-0 left-0 bg-black/50 p-5 text-white text-xs xxxs:text-md xs:text-2xl font-bold">Gi en personlig hilsen til jul</h1> 
-      </div>
+        <h1 className="absolute bottom-0 left-0 bg-black/50 p-5 text-white text-xs xxxs:text-md xxs:text-lg xs:text-2xl md:text-3xl font-bold">Gi en personlig hilsen til jul</h1> 
+      </Link>
       
       <div className="w-full flex lg:flex-col gap-2 sm:gap-5 px-3">
         <div className="w-full flex-1 h-full rounded">
           <img src={snowmanimg} alt="Snømann kort ligger utover bordet" className="w-full h-auto object-cover" />
         </div>
         <div className="flex flex-col gap-1 flex-1 justify-between">
-           <Link to="/produkter" className="flex flex-1 gap-1 bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
+           <Link to="/produkter" className="flex flex-1 gap-1 bg-customGreen hover:bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
         </svg> Velg ditt motiv</Link>
-        <Link to="/produkter" className="flex flex-1 gap-1 bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
+        <Link to="#"
+  onClick={(e) => {
+    e.preventDefault();
+    document
+      .getElementById("populære-kort")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }} className="flex flex-1 gap-1 bg-customGreen hover:bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
         </svg> Populære kort</Link>
-        <Link to="/produkter" className="flex flex-1 gap-1 bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
+        <Link to="#"
+  onClick={(e) => {
+    e.preventDefault();
+    document
+      .getElementById("vår-favoritt")
+      ?.scrollIntoView({ behavior: "smooth" });
+  }} className="flex flex-1 gap-1 bg-customGreen hover:bg-customHover rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
         </svg> Vår favoritt</Link>
         </div>
