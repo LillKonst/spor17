@@ -39,7 +39,7 @@ export default function PopularProducts () {
 
   return (
     <div className="bg-white w-full p-5">
-      <h2 className="xxxs:text-lg sm:text-2xl m-5">Populære Kort</h2>
+      <h2 className="xxxs:text-lg sm:text-2xl m-5 text-center">Populære Kort</h2>
       <ul className="flex flex-col sm:flex-row flex-wrap gap-5">
          {products.map(product => {
           const displayImage = productImages[product.id]?.main;
