@@ -37,7 +37,7 @@
       // gtag("config", "G-CJ2ETBFSC2");
     </script>
     <!-- Meta Pixel Code -->
-    <!-- <script>
+    <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -61,9 +61,12 @@
         "script",
         "https://connect.facebook.net/en_US/fbevents.js"
       );
-      fbq("init", "1523394162215243");
-      fbq("track", "PageView");
-    </script> -->
+
+      fbq("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
