@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../../hooks/fetchAllProducts";
-import { productImages } from "../../hooks/productImage";
+import { mainImageMap } from "../../hooks/mainProductImage"; 
+
 
 interface ProductLinkProps {
   product: Product;
 }
 
 export default function ProductLink({ product }: ProductLinkProps) {
-  const imageUrl = productImages[product.id]?.main;
+  const imageUrl = mainImageMap[product.id];
+
 
   return (
     <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded bg-white flex flex-col shadow">

@@ -1,6 +1,6 @@
 export default function InfoBox() {
   return (
-    <div className="bg-customGreen m-2 xxxs:m-5 rounded p-5 sm:w-[500px] sm:mx-auto">
+    <div className="bg-white shadow xxxs:m-5 rounded p-5 sm:w-[500px] sm:mx-auto">
       <h2 className="text-xl mb-3">Hva du får</h2>
       <ul className="flex flex-col gap-5">
         <li>
