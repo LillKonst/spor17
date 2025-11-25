@@ -8,7 +8,6 @@ export default function CookieBanner() {
       'analytics_storage': 'granted',
       'ad_storage': 'granted'
     });
-    window.gtag?.('event', 'page_view');
 
     // Trigger Meta Pixel eller andre scripts her hvis nødvendig
     window.dispatchEvent(new Event("ga-consent-given"));

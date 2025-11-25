@@ -63,6 +63,7 @@
 // }
 
 
+// src/components/MetaPixel/MetaPixel.tsx
 import { useEffect } from "react";
 
 declare global {
@@ -72,10 +73,6 @@ declare global {
   }
 }
 
-interface MetaPixelProps {
-  pixelId: string;
-}
-
 interface FbqFunction {
   (...args: unknown[]): void;
   queue?: unknown[][];
@@ -83,41 +80,106 @@ interface FbqFunction {
   version?: string;
 }
 
-export default function MetaPixel({ pixelId }: MetaPixelProps) {
+interface MetaPixelProps {
+  pixelId: string;
+  debug?: boolean;
+}
+
+export default function MetaPixel({ pixelId, debug = false }: MetaPixelProps) {
   useEffect(() => {
-    function initPixel() {
-      if (window.fbq) return;
+    if (!pixelId) return;
 
-      const fbqFunction: FbqFunction = function (...args: unknown[]) {
-        (fbqFunction.queue = fbqFunction.queue || []).push(args);
+    const src = "https://connect.facebook.net/en_US/fbevents.js";
+
+    const log = (...args: unknown[]) => {
+      if (debug) console.debug("[MetaPixel]", ...args);
+    };
+
+    /** Oppretter en fbq placeholder som følger TS-interfacet */
+    const createFbqPlaceholder = (): FbqFunction => {
+      const fbqFn: FbqFunction = (...args: unknown[]): void => {
+        if (!fbqFn.queue) fbqFn.queue = [];
+        fbqFn.queue.push(args);
       };
-      fbqFunction.queue = [];
-      fbqFunction.loaded = true;
-      fbqFunction.version = "2.0";
 
-      window.fbq = fbqFunction;
-      window._fbq = fbqFunction;
+      fbqFn.queue = [];
+      fbqFn.loaded = true;
+      fbqFn.version = "2.0";
 
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = "https://connect.facebook.net/en_US/fbevents.js";
-      script.onload = () => {
+      window.fbq = fbqFn;
+      window._fbq = fbqFn;
+
+      return fbqFn;
+    };
+
+    const doInit = () => {
+      try {
+        if (!window.fbq) createFbqPlaceholder();
+
         window.fbq?.("init", pixelId);
         window.fbq?.("track", "PageView");
-      };
 
-      document.head.appendChild(script);
-    }
+        log("Pixel init + PageView fired for", pixelId);
+      } catch (err) {
+        console.warn("[MetaPixel] Failed to init:", err);
+      }
+    };
 
-    const hasConsent = document.cookie.includes("spor17-consent=true");
-    if (hasConsent) initPixel();
+    const initPixelIfConsented = () => {
+      const hasConsent = document.cookie.includes("spor17-consent=true");
+      if (!hasConsent) {
+        log("No consent. Pixel not loaded.");
+        return;
+      }
 
-    window.addEventListener("ga-consent-given", initPixel);
+      const existingScript = document.querySelector(
+        `script[src="${src}"]`
+      ) as HTMLScriptElement | null;
+
+      // Hvis script er lastet og fbq finnes → init umiddelbart
+      if (existingScript && typeof window.fbq === "function") {
+        log("Script found + fbq available → init now");
+        doInit();
+        return;
+      }
+
+      // Opprett placeholder
+      createFbqPlaceholder();
+
+      // Hvis script ikke finnes — lag det
+      if (!existingScript) {
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = src;
+
+        script.onload = () => {
+          log("fbevents.js loaded → init");
+          doInit();
+        };
+
+        script.onerror = (e) => console.error("[MetaPixel] load error:", e);
+
+        document.head.appendChild(script);
+        log("Inserted fbevents.js");
+      } else {
+        // Script er der, men fbq ikke klar
+        existingScript.addEventListener("load", doInit);
+        setTimeout(() => {
+          if (window.fbq) doInit();
+        }, 300);
+      }
+    };
+
+    // Init hvis allerede godkjent
+    initPixelIfConsented();
+
+    // Lytt på cookiebanner-event
+    window.addEventListener("ga-consent-given", initPixelIfConsented);
 
     return () => {
-      window.removeEventListener("ga-consent-given", initPixel);
+      window.removeEventListener("ga-consent-given", initPixelIfConsented);
     };
-  }, [pixelId]);
+  }, [pixelId, debug]);
 
   return null;
 }
