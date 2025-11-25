@@ -29,13 +29,14 @@ export default function CallToActionButton({
         const updatedCart = await addItem(variantId, 1);
 
         const consent = document.cookie.includes("spor17-consent=true");
-    if (consent && window.fbq) {
-      window.fbq("track", "AddToCart", {
-        content_name: productName,
-        content_ids: [variantId],
-        content_type: "product",
-      });
-    }
+
+        if (consent && window.fbq) {
+          window.fbq("track", "AddToCart", {
+            content_name: productName,
+            content_ids: [variantId],
+            content_type: "product",
+          });
+        }
 
         const totalItems = updatedCart.lines.reduce(
           (sum, line) => sum + line.quantity,
@@ -55,7 +56,7 @@ export default function CallToActionButton({
     if (type === "checkout") {
       setLoading(true);
       try {
-        await fetchCart();
+        const fetchedCart = await fetchCart();
         const currentCartId = localStorage.getItem("cartId");
 
         if (!currentCartId) {
@@ -63,7 +64,6 @@ export default function CallToActionButton({
           return;
         }
 
-        const fetchedCart = await fetchCart();
         const checkoutUrl = fetchedCart?.checkoutUrl || cart?.checkoutUrl;
 
         if (!checkoutUrl) {
@@ -72,18 +72,27 @@ export default function CallToActionButton({
         }
 
         const consent = document.cookie.includes("spor17-consent=true");
+
+        // 🔹 Meta Pixel InitiateCheckout
         if (consent && window.fbq) {
-        window.fbq("track", "InitiateCheckout");
+          window.fbq("track", "InitiateCheckout");
         }
 
+        // 🔹 Google Ads conversion med totalverdi
         if (consent && window.gtag) {
+          const cartValue =
+          fetchedCart?.lines.reduce((sum, line) => {
+          const price = Number(line.price || 0);
+          return sum + line.quantity * price;
+          }, 0) || 1.0;
+
+
           window.gtag("event", "conversion", {
-          send_to: "AW-17729664837/GoUcCJ70778bEMXulIZC",
-          value: 1.0,
-          currency: "NOK",
+            send_to: "AW-17729664837/GoUcCJ70778bEMXulIZC",
+            value: cartValue,
+            currency: "NOK",
           });
         }
-
 
         // 🔹 Vis toast
         setShowToast(true);
@@ -92,7 +101,6 @@ export default function CallToActionButton({
         setTimeout(() => {
           window.location.href = checkoutUrl;
         }, 1500);
-
       } catch (err) {
         console.error("Feil ved navigering til checkout:", err);
       } finally {
@@ -110,7 +118,9 @@ export default function CallToActionButton({
   return (
     <div className="relative">
       <button
-        className={`bg-customGreen hover:bg-customHover p-2 px-3 rounded w-fit ${className || ""}`}
+        className={`bg-customGreen hover:bg-customHover p-2 px-3 rounded w-fit ${
+          className || ""
+        }`}
         onClick={handleClick}
         disabled={loading}
       >
