@@ -89,19 +89,16 @@ export default function MetaPixel({ pixelId, debug = false }: MetaPixelProps) {
   useEffect(() => {
     if (!pixelId) return;
 
-    const src = "https://connect.facebook.net/en_US/fbevents.js";
+    const PIXEL_SCRIPT_SRC = "https://connect.facebook.net/en_US/fbevents.js";
 
-    const log = (...args: unknown[]) => {
-      if (debug) console.debug("[MetaPixel]", ...args);
-    };
+    const log = (...args: unknown[]) => debug && console.debug("[MetaPixel]", ...args);
 
-    /** Oppretter en fbq placeholder som følger TS-interfacet */
+    /** Opprett fbq placeholder for TypeScript */
     const createFbqPlaceholder = (): FbqFunction => {
-      const fbqFn: FbqFunction = (...args: unknown[]): void => {
-        if (!fbqFn.queue) fbqFn.queue = [];
+      const fbqFn: FbqFunction = (...args: unknown[]) => {
+        fbqFn.queue = fbqFn.queue || [];
         fbqFn.queue.push(args);
       };
-
       fbqFn.queue = [];
       fbqFn.loaded = true;
       fbqFn.version = "2.0";
@@ -112,54 +109,76 @@ export default function MetaPixel({ pixelId, debug = false }: MetaPixelProps) {
       return fbqFn;
     };
 
-    /** Kall init og PageView */
-    const doInit = () => {
+    /** Init Pixel og send PageView */
+    const initPixel = () => {
+      if (!window.fbq) createFbqPlaceholder();
+
       try {
-        if (!window.fbq) createFbqPlaceholder();
+        // Init med Pixel ID
         window.fbq?.("init", pixelId);
+
+        // PageView
         window.fbq?.("track", "PageView");
-        log("Pixel init + PageView fired for", pixelId);
+
+        log("Pixel initialized and PageView tracked for", pixelId);
       } catch (err) {
-        console.warn("[MetaPixel] Failed to init:", err);
+        console.warn("[MetaPixel] init failed:", err);
       }
     };
 
-    /** Last pixel kun hvis samtykke */
-    const initPixelIfConsented = () => {
+    /** Oppdater consent */
+    const updateConsent = () => {
       const hasConsent = document.cookie.includes("spor17-consent=true");
-      if (!hasConsent) {
-        log("No consent. Pixel not loaded.");
+
+      if (!window.fbq) createFbqPlaceholder();
+
+      if (hasConsent) {
+        // Bruk nytt consent API
+        window.fbq?.("consent", "grant", {
+          ad_storage: "granted",
+          analytics_storage: "granted",
+        });
+        initPixel();
+        log("Consent granted and pixel fired");
+      } else {
+        window.fbq?.("consent", "revoke", {
+          ad_storage: "denied",
+          analytics_storage: "denied",
+        });
+        log("Consent denied");
+      }
+    };
+
+    /** Last inn script hvis det ikke finnes */
+    const loadPixelScript = () => {
+      if (document.querySelector(`script[src="${PIXEL_SCRIPT_SRC}"]`)) {
+        log("Pixel script already exists");
         return;
       }
 
-      const existingScript = document.querySelector(
-        `script[src="${src}"]`
-      ) as HTMLScriptElement | null;
+      const script = document.createElement("script");
+      script.src = PIXEL_SCRIPT_SRC;
+      script.async = true;
+      script.onload = () => {
+        log("Pixel script loaded");
+        updateConsent();
+      };
+      script.onerror = (e) => console.error("[MetaPixel] failed to load script:", e);
 
-      if (!existingScript) {
-        createFbqPlaceholder();
-        const script = document.createElement("script");
-        script.async = true;
-        script.src = src;
-        script.onload = doInit;
-        script.onerror = (e) => console.error("[MetaPixel] load error:", e);
-        document.head.appendChild(script);
-        log("Inserted fbevents.js");
-      } else if (typeof window.fbq === "function") {
-        doInit();
-      } else {
-        existingScript.addEventListener("load", doInit);
-      }
+      document.head.appendChild(script);
+      log("Pixel script appended to head");
     };
 
-    // Init hvis allerede godkjent
-    initPixelIfConsented();
+    // Init på mount
+    loadPixelScript();
 
-    // Lytt på cookiebanner-event
-    window.addEventListener("ga-consent-given", initPixelIfConsented);
+    // Lytt etter cookie-samtykke
+    window.addEventListener("ga-consent-given", updateConsent);
+    window.addEventListener("ga-consent-denied", updateConsent);
 
     return () => {
-      window.removeEventListener("ga-consent-given", initPixelIfConsented);
+      window.removeEventListener("ga-consent-given", updateConsent);
+      window.removeEventListener("ga-consent-denied", updateConsent);
     };
   }, [pixelId, debug]);
 
