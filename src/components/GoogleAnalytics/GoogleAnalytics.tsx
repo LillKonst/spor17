@@ -73,39 +73,23 @@ interface GoogleAnalyticsProps {
 export default function GoogleAnalytics({ measurementId }: GoogleAnalyticsProps) {
   // ⚡ Last alltid scriptet i HTML
   useEffect(() => {
-    if (!document.querySelector(`#ga-script-${measurementId}`)) {
-      const script = document.createElement("script");
-      script.async = true;
-      script.id = `ga-script-${measurementId}`;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-      document.head.appendChild(script);
+  function enableGA() {
+    window.gtag("consent", "update", {
+      analytics_storage: "granted",
+      ad_storage: "granted"
+    });
 
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function (...args: unknown[]) {
-        window.dataLayer.push(args);
-      };
-      window.gtag("js", new Date());
-      // ⚠ Ikke konfigurer GA før brukeren har gitt samtykke
-    }
+    window.gtag("config", measurementId);
+  }
 
-    function enableGA() {
-      // Kjør config først når samtykke er gitt
-      window.gtag("config", measurementId);
-      // console.log("GA enabled for measurementId:", measurementId);
-    }
+  if (document.cookie.includes("spor17-consent=true")) {
+    enableGA();
+  }
 
-    // Hvis cookie allerede finnes
-    if (document.cookie.includes("spor17-consent=true")) {
-      enableGA();
-    }
+  window.addEventListener("ga-consent-given", enableGA);
+  return () => window.removeEventListener("ga-consent-given", enableGA);
+}, [measurementId]);
 
-    // Event når bruker klikker "Godta"
-    window.addEventListener("ga-consent-given", enableGA);
-
-    return () => {
-      window.removeEventListener("ga-consent-given", enableGA);
-    };
-  }, [measurementId]);
 
   return null;
 }
