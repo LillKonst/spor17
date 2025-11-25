@@ -23,3 +23,16 @@ declare module '*.png' {
 }
 
 
+declare global {
+  interface Window {
+    fbq?: FbqFunction;
+    _fbq?: FbqFunction;
+  }
+}
+
+interface FbqFunction {
+  (...args: unknown[]): void;
+  queue?: unknown[][];
+  loaded?: boolean;
+  version?: string;
+}
