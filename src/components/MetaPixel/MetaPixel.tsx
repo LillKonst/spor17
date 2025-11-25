@@ -112,19 +112,19 @@ export default function MetaPixel({ pixelId, debug = false }: MetaPixelProps) {
       return fbqFn;
     };
 
+    /** Kall init og PageView */
     const doInit = () => {
       try {
         if (!window.fbq) createFbqPlaceholder();
-
         window.fbq?.("init", pixelId);
         window.fbq?.("track", "PageView");
-
         log("Pixel init + PageView fired for", pixelId);
       } catch (err) {
         console.warn("[MetaPixel] Failed to init:", err);
       }
     };
 
+    /** Last pixel kun hvis samtykke */
     const initPixelIfConsented = () => {
       const hasConsent = document.cookie.includes("spor17-consent=true");
       if (!hasConsent) {
@@ -136,37 +136,19 @@ export default function MetaPixel({ pixelId, debug = false }: MetaPixelProps) {
         `script[src="${src}"]`
       ) as HTMLScriptElement | null;
 
-      // Hvis script er lastet og fbq finnes → init umiddelbart
-      if (existingScript && typeof window.fbq === "function") {
-        log("Script found + fbq available → init now");
-        doInit();
-        return;
-      }
-
-      // Opprett placeholder
-      createFbqPlaceholder();
-
-      // Hvis script ikke finnes — lag det
       if (!existingScript) {
+        createFbqPlaceholder();
         const script = document.createElement("script");
         script.async = true;
         script.src = src;
-
-        script.onload = () => {
-          log("fbevents.js loaded → init");
-          doInit();
-        };
-
+        script.onload = doInit;
         script.onerror = (e) => console.error("[MetaPixel] load error:", e);
-
         document.head.appendChild(script);
         log("Inserted fbevents.js");
+      } else if (typeof window.fbq === "function") {
+        doInit();
       } else {
-        // Script er der, men fbq ikke klar
         existingScript.addEventListener("load", doInit);
-        setTimeout(() => {
-          if (window.fbq) doInit();
-        }, 300);
       }
     };
 
