@@ -53,7 +53,7 @@ function App() {
       <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
     <div className="bg-background h-full relative">
        <div className="bg-customRed p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
-          <p className="text-xs md:text-sm lg:text-md text-white">Fast frakt 39 kr</p>
+          <p className="text-xs md:text-sm lg:text-md text-white">Fast frakt 39 kr - Bestill før 10. desember for å få pakken hjem før jul </p>
         </div>
       <div>
         
