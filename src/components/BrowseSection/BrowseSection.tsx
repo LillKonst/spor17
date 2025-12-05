@@ -37,7 +37,7 @@ export default function BrowseSection() {
         {products.map((product) => (
           <BrowseLink key={product.id} product={product} />
         ))}
-        <Link to="/produkter" className="bg-customGreen p-3 py-2 rounded m-5">Se alle julekort</Link>
+        <Link to="/produkter" className="bg-customRed hover:bg-customRedHover text-white p-3 py-2 rounded m-5">Se alle julekort</Link>
       </ul>
 
     </div>

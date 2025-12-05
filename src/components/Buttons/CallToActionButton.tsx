@@ -118,7 +118,7 @@ export default function CallToActionButton({
   return (
     <div className="relative">
       <button
-        className={`bg-customGreen hover:bg-customHover p-2 px-3 rounded w-fit ${
+        className={`bg-customRed hover:bg-customRedHover text-white p-2 px-3 rounded w-fit ${
           className || ""
         }`}
         onClick={handleClick}
@@ -135,7 +135,7 @@ export default function CallToActionButton({
 
       {/* 🔹 Toast for checkout */}
       {showToast && (
-        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-customGreen text-black px-5 py-3 rounded shadow-lg transition-opacity duration-300">
+        <div className="fixed top-5 left-1/2 -translate-x-1/2 bg-customRed hover:bg-customRedHover text-white px-5 py-3 rounded shadow-lg transition-opacity duration-300">
           Tar deg med til en sikker betalingsside...
         </div>
       )}
