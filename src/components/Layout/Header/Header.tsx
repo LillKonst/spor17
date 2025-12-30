@@ -61,9 +61,11 @@ export default function Header() {
       </Link>
 
       <div className="flex gap-5 items-center lg:w-full">
+        <div className="lg:order-2">
         <Searchbar onSelectResult={() => {
                 if (window.innerWidth < 1024) setIsMenuOpen(false);
               }} />
+        </div>
         {/* 🛍 Handlekurv */}
         <Link to="handlekurv" onClick={() => setIsMenuOpen(false)} className="relative lg:order-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
