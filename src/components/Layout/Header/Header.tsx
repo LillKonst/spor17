@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import logo from "../../../images/plain-logo.svg";
+import logo from "../../../images/LOGO26.svg";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
@@ -55,12 +55,15 @@ export default function Header() {
   }, []);
 
   return (
-    <div className="pt-12 xxs:pt-8 md:pt-10 mb-3 px-2 flex flex-row items-center justify-between relative xxs:mb-3">
+    <div className="pt-12 xxs:pt-10 mb-3 px-5 flex flex-row items-center justify-between relative xxs:mb-3">
       <Link to="/" className="flex items-center lg:ms-5 ">
-        <img src={logo} alt="Spor 17 logo" className="w-[110px] md:w-[135px] xl:w-[150px]" />
+        <img src={logo} alt="Spor 17 logo" className="w-[120px] md:w-[135px] xl:w-[150px]" />
       </Link>
 
       <div className="flex gap-5 items-center lg:w-full">
+        <Searchbar onSelectResult={() => {
+                if (window.innerWidth < 1024) setIsMenuOpen(false);
+              }} />
         {/* 🛍 Handlekurv */}
         <Link to="handlekurv" onClick={() => setIsMenuOpen(false)} className="relative lg:order-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-bag relative" viewBox="0 0 16 16">
@@ -107,32 +110,30 @@ export default function Header() {
               transition={{ type: "spring", stiffness: 80, damping: 15 }}
               className={`${
                 isMenuOpen || isDesktop ? "flex" : "hidden"
-              } absolute lg:static top-[90px] xxs:top-[75px] md:top-[90px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
+              } absolute lg:static top-[90px] xxs:top-[90px] md:top-[90px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
                 bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
                 gap-5 lg:items-center lg:justify-between lg:space-x-4 z-40`}
             >
-              <nav className="lg:self-center lg:mt-5 lg:ms-8">
+              <nav className="lg:self-center lg:mt-5 lg:ms-8 w-full">
                 <ul className="flex flex-col lg:flex-row lg:gap-5 text-xl pt-5 md:pt-0">
                   <li className="w-full p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/produkter" onClick={() => setIsMenuOpen(false)} className="hover:underline">
-                      Produkter
+                      shop
+                    </Link>
+                  </li>
+                  <li className="w-full p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">
+                    <Link to="/kontakt" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+                      Kunstnere
                     </Link>
                   </li>
                   <li className="w-full p-5 border-t-2 border-b-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/om" onClick={() => setIsMenuOpen(false)} className="hover:underline">
-                      Om Oss
+                      Om Spor 17
                     </Link>
                   </li>
-                  <li className="w-full p-5 border-b-2 border-gray-200 lg:p-0 lg:border-0">
-                    <Link to="/kontakt" onClick={() => setIsMenuOpen(false)} className="hover:underline">
-                      Kontakt
-                    </Link>
-                  </li>
+                  
                 </ul>
               </nav>
-              <Searchbar onSelectResult={() => {
-                if (window.innerWidth < 1024) setIsMenuOpen(false);
-              }} />
 
             </motion.div>
           )}

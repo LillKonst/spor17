@@ -34,11 +34,12 @@
   --font-CourierPrime: "CourierPrime", "sans-serif";
   --font-Raleway: "Raleway", "sans-serif";
 
-  --color-background: #F7F7F7;
+  --color-background: #FEFEFE;
   --color-customGreen: #A5EB9F;
   --color-customHover: #93D38E;
   --color-customRed: #F24242;
   --color-customRedHover: #D83B3B;
+  --color-customPink: #DFB2C6;
 
   --breakpoint-xs: 500px;
   --breakpoint-xxs: 400px;

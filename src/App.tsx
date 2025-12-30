@@ -52,8 +52,8 @@ function App() {
       <MetaPixel pixelId="1523394162215243" />
       <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
     <div className="bg-background h-full relative">
-       <div className="bg-customGreen p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
-          <p className="text-xs md:text-sm lg:text-md">Fast frakt 39 kr - Bestill før 16. desember for å få pakken hjem før jul </p>
+       <div className="bg-customPink p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
+          <h2 className="text-sm md:text-sm lg:text-md">Frakt fra 39 kr </h2>
         </div>
       <div>
         
