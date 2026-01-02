@@ -118,7 +118,7 @@ export default function CallToActionButton({
   return (
     <div className="relative">
       <button
-        className={`bg-ctaPink hover:bg-customPink text-customWhite p-2 px-3 rounded w-fit ${
+        className={`bg-ctaPink hover:bg-customPink text-customWhite text-xl p-3 px-4 rounded w-fit ${
           className || ""
         }`}
         onClick={handleClick}
