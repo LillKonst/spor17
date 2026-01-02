@@ -4,6 +4,15 @@ export interface Product {
   id: string;
   handle: string;
   title: string;
+  productType: string;
+  collections: {
+    edges: {
+      node: {
+        handle: string;
+        title: string;
+      };
+    }[];
+  };
   descriptionHtml: string;
   images: { edges: { node: { url: string; altText: string | null } }[] };
   variants: { edges: { node: { id: string; priceV2: { amount: string; currencyCode: string } } }[] };
@@ -20,6 +29,15 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
         id
         handle
         title
+        productType
+        collections(first: 1) {
+          edges {
+            node {
+              handle
+              title
+            }
+          }
+        }
         descriptionHtml
         images(first: 10) {   # hent opptil 10 bilder, eller 4 hvis du alltid har 4
           edges {

@@ -5,6 +5,7 @@ export interface Product {
   id: string;
   handle: string;
   title: string;
+  productType: string;
   description: string;
   images: {
     edges: {
@@ -42,6 +43,7 @@ export async function fetchAllProducts(): Promise<Product[]> {
             id
             handle
             title
+            productType
             description
             images(first: 4) {
               edges {

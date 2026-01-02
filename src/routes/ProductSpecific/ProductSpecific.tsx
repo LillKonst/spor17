@@ -9,7 +9,7 @@ import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 //import InfoBox from "../../components/InfoBox/InfoBox";
 // import ProductSlider from "../../components/ProductSlider/ProductSlider";
 // import { fetchAllProducts } from "../../hooks/fetchAllProducts";
-
+import LinkTree from "../../components/LinkTree/LinkTree";
 
 export default function ProductSpecific() {
   const { handle } = useParams<{ handle: string }>();
@@ -34,12 +34,20 @@ export default function ProductSpecific() {
 
   const variantId = product.variants.edges[0].node.id;
   const price = product.variants.edges[0].node.priceV2;
-  
+  const collection = product.collections.edges[0]?.node;
+
   return (
     <div className="">
-      <div className="mx-5">kommer et link tree</div>
-    <div className="py-5 flex flex-col lg:flex-row gap-5 items-center m-3 p-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
-      <div className="mx-5">
+      <LinkTree
+        product={{
+        title: product.title,
+        productType: product.productType,
+        collection,
+        }}
+      />
+
+    <div className="flex flex-col lg:flex-row gap-5 items-center my-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
+      <div className="">
         <ImageCarousel
           productId={product.id}
           productHandle={product.handle}
