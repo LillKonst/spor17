@@ -6,7 +6,7 @@ import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import CallToActionButton from "../../components/Buttons/CallToActionButton";
 // import ImageCarouselSwiper from "../../components/ImageCarousel/Carousel";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
-import InfoBox from "../../components/InfoBox/InfoBox";
+//import InfoBox from "../../components/InfoBox/InfoBox";
 // import ProductSlider from "../../components/ProductSlider/ProductSlider";
 // import { fetchAllProducts } from "../../hooks/fetchAllProducts";
 
@@ -37,6 +37,7 @@ export default function ProductSpecific() {
   
   return (
     <div className="">
+      <div className="mx-5">kommer et link tree</div>
     <div className="py-5 flex flex-col lg:flex-row gap-5 items-center m-3 p-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
       <div className="mx-5">
         <ImageCarousel
@@ -47,25 +48,35 @@ export default function ProductSpecific() {
       </div>
 
       <div className="mt-5 flex flex-col items-start self-start gap-1">
+        <h3>kort - barnebursdag</h3>
       <h1 className="text-2xl ms-3">{product.title}</h1>
       <h2 className="text-xl md:text-2xl font-bold mb-5 ms-3">
           {Math.round(Number(price.amount))} {price.currencyCode}
         </h2>
+        <div>fargevalg</div>
+        <div>str valg</div>
         <CallToActionButton
           type="addToCart"
           variantId={variantId}
-          className="text-black bg-customGreen hover:bg-customHover mx-2"
+          className="text-customWhite bg-ctaPink hover:bg-customPink mx-2"
           productName={product.title}
         />
+        <div>
+          <ul>
+            <li>frakt</li>
+            <li>frakt</li>
+            <li>frakt</li>
+          </ul>
+        </div>
         <p className="my-3 text-sm px-3">Merk: Vi er en liten, ny bedrift og er foreløpig ikke MVA-registrert. Prisene du ser er derfor endelige, uten tillegg av merverdiavgift.</p>
-        <div className="self-start"><InfoBox /></div>
+        {/* <div className="self-start"><InfoBox /></div> */}
         </div>
         </div>
       <div className="flex flex-col xs:p-5 gap-5">
         <ProductDetails product={product} />
         <div className="xs:px-10">
         
-      
+      <div>produkt slider</div>
       </div>
       {/* <div>
         {!loading && <ProductSlider products={allProducts} />}
