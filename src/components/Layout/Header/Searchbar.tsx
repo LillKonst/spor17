@@ -306,6 +306,8 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const desktopRef = useRef<HTMLDivElement | null>(null);
+  
 
   const abortRef = useRef<AbortController | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
@@ -349,21 +351,27 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
   /* ---------------- CLICK OUTSIDE ---------------- */
 
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
-        setMobileOpen(false);
-        setIsOpen(false);
-      }
-    }
+  function handleClickOutside(e: MouseEvent) {
+    const target = e.target as Node;
 
-    if (mobileOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
+    const clickedDesktop =
+      desktopRef.current && desktopRef.current.contains(target);
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [mobileOpen]);
+    const clickedMobile =
+      overlayRef.current && overlayRef.current.contains(target);
+
+    if (!clickedDesktop && !clickedMobile) {
+      setIsOpen(false);
+      setMobileOpen(false);
+    }
+  }
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
 
   /* ---------------- RENDER ---------------- */
 
@@ -391,7 +399,7 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
         </button>
 
         {/* Desktop search */}
-        <div className="hidden lg:block w-full max-w-md">
+        <div ref={desktopRef} className="hidden lg:block w-[300px]">
           <div className="bg-white rounded-lg p-2 flex items-center gap-2 border border-gray-300">
             <input
               type="text"
