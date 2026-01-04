@@ -47,9 +47,10 @@ export default function ProductSpecific() {
     <div className="flex flex-col lg:flex-row gap-5 items-center my-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
       <div className="">
         <ImageCarousel
-          productId={product.id}
-          productHandle={product.handle}
-          images={product.images.edges.map(edge => edge.node)}
+          images={product.images.edges.map(edge => ({
+          url: edge.node.url,
+          altText: edge.node.altText,
+          }))}
         />
       </div>
 
