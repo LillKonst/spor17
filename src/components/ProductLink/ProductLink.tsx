@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../../hooks/fetchAllProducts";
-import { mainImageMap } from "../../hooks/mainProductImage"; 
 
 
 interface ProductLinkProps {
@@ -8,7 +7,7 @@ interface ProductLinkProps {
 }
 
 export default function ProductLink({ product }: ProductLinkProps) {
-  const imageUrl = mainImageMap[product.id];
+  const imageUrl = product.images.edges[0]?.node.url;
 
 
   return (
@@ -18,16 +17,14 @@ export default function ProductLink({ product }: ProductLinkProps) {
             {imageUrl && (
             <img
               src={imageUrl}
-              alt={product.title} 
+              alt={product.title}
               className="w-full h-full object-cover"
             />
           )}
             </div>
             <div className=" mx-4 py-5 flex flex-col justify-center">
           <h2 className="text-lg xxxs:text-2xl xs:text-xl">
-            {product.title.slice(0, 10)}
-            <br />
-            {product.title.slice(10)}
+            {product.title}
           </h2>
           <h2 className="font-bold text-lg xxxs:text-2xl xs:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
           {product.variants.edges[0].node.priceV2.currencyCode}</h2>

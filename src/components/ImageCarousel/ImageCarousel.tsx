@@ -287,10 +287,10 @@ export default function ImageCarousel({
   return (
     <div className="flex flex-col items-center">
       {/* MAIN */}
-      <div className="relative w-full max-w-lg overflow-hidden mx-5 h-[400px]" ref={mainRef}>
+      <div className="relative w-full max-w-lg overflow-hidden h-[500px]" ref={mainRef}>
         <div className="flex h-full">
           {finalOrdered.map((img, i) => (
-            <div className="flex-shrink-0 w-full px-5 h-[380px] flex items-center justify-center" key={i}>
+            <div className="flex-shrink-0 w-full h-[500px] flex items-center justify-center" key={i}>
   <div
     className="relative w-full h-full flex items-center justify-center"
     onMouseEnter={() => setHoveredIndex(i)}
@@ -300,7 +300,7 @@ export default function ImageCarousel({
       ref={(el) => { imgRefs.current[i] = el ?? null; }}
       src={img.url}
       alt={img.altText ?? "Produktbilde"}
-      className="max-h-full max-w-full object-contain cursor-zoom-in touch-none"
+      className="max-h-full max-w-full object-contain aspect-[4/5] cursor-zoom-in touch-none"
       draggable={false}
       onDoubleClick={(e: React.MouseEvent<HTMLImageElement>) => handleDoubleClick(e, i)}
       onPointerDown={(e) => handlePointerDown(e, i)}
