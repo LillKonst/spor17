@@ -27,7 +27,7 @@ export default function LinkTree({ product }: LinkTreeProps) {
   // Mobilvisning: bare de to siste
   const mobileLinks = showAll ? links : links.slice(-2);
   return (
-    <nav className="text-sm text-gray-500 px-5 py-3">
+    <nav className="text-sm text-gray-500 px-5">
       <ul className="flex flex-wrap gap-2 items-center">
          {/* Desktop visning */}
         <li className="hidden sm:flex gap-2 items-center">

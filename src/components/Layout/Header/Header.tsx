@@ -119,8 +119,8 @@ export default function Header() {
               <nav className="lg:self-center lg:mt-5 lg:ms-8 w-full">
                 <ul className="flex flex-col lg:flex-row lg:gap-5 text-xl pt-5 md:pt-0 lg:justify-end">
                   <li className="w-full lg:w-fit p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">
-                    <Link to="/produkter" onClick={() => setIsMenuOpen(false)} className="hover:underline">
-                      shop
+                    <Link to="/kort" onClick={() => setIsMenuOpen(false)} className="hover:underline">
+                      Kort
                     </Link>
                   </li>
                   <li className="w-full lg:w-fit p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">

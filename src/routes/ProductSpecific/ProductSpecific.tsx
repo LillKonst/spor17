@@ -80,7 +80,7 @@ export default function ProductSpecific() {
         .map(tag => (
           <span
             key={tag}
-            className="border-1 border-gray-500 ms-2 text-gray-700 px-2 py-1 rounded-full me-2"
+            className="ms-3"
           >
             {tag}
           </span>
