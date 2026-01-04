@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { shopifyFetch } from "../../../hooks/api";
 import { Link } from "react-router-dom";
-import { mainImageMap } from "../../../hooks/mainProductImage";
 
 interface Product {
   id: string;
@@ -166,13 +165,13 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
                   to={`/produkt/${product.handle}`}
                   className="flex items-center gap-3 p-3 hover:bg-gray-50"
                 >
-                  {mainImageMap[product.id] && (
-                    <img
-                      src={mainImageMap[product.id]}
-                      alt={product.title}
-                      className="w-12 h-12 object-cover rounded"
-                    />
-                  )}
+                   {product.images.edges[0]?.node.url && (
+    <img
+      src={product.images.edges[0].node.url}
+      alt={product.title}
+      className="w-12 h-12 object-cover rounded"
+    />
+  )}
                   <span>{product.title}</span>
                 </Link>
               ))}
@@ -235,13 +234,13 @@ export default function Searchbar({ onSelectResult }: SearchbarProps) {
                   }}
                   className="flex items-center gap-3 p-3 hover:bg-gray-50"
                 >
-                  {mainImageMap[product.id] && (
-                    <img
-                      src={mainImageMap[product.id]}
-                      alt={product.title}
-                      className="w-14 h-14 object-cover rounded"
-                    />
-                  )}
+                   {product.images.edges[0]?.node.url && (
+    <img
+      src={product.images.edges[0].node.url}
+      alt={product.title}
+      className="w-12 h-12 object-cover rounded"
+    />
+  )}
                   <span className="text-lg">{product.title}</span>
                 </Link>
               ))}

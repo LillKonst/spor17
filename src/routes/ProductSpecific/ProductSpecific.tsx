@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
 import type { Product } from "../../hooks/fetchProduct";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import CallToActionButton from "../../components/Buttons/CallToActionButton";
+import AddToCartButton from "../../components/Buttons/AddToCartButton";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import LinkTree from "../../components/LinkTree/LinkTree";
 import Reviews from "../../components/Reviews/Reviews";
-import ColorVariants from "../../components/ColorVariants/ColorVariants";
+// import ColorVariants from "../../components/notInUse/ColorVariants/ColorVariants";
 
 export interface ProductVariant {
   id: string;
@@ -19,7 +19,7 @@ export interface ProductVariant {
 export default function ProductSpecific() {
   const { handle } = useParams<{ handle: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
+  // const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
 
 
   useEffect(() => {
@@ -47,9 +47,10 @@ export default function ProductSpecific() {
     <div className="flex flex-col lg:flex-row gap-5 items-center my-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
       <div className="">
         <ImageCarousel
-          productId={product.id}
-          productHandle={product.handle}
-          images={product.images.edges.map(edge => edge.node)}
+          images={product.images.edges.map(edge => ({
+          url: edge.node.url,
+          altText: edge.node.altText,
+          }))}
         />
       </div>
 
@@ -92,20 +93,18 @@ export default function ProductSpecific() {
           {Math.round(Number(price.amount))} {price.currencyCode}
         </h2>
 
-        <ColorVariants
+        {/* <ColorVariants
   variants={product.variants.edges.map(edge => edge.node)}
   selectedVariantId={selectedVariant?.id}
   onSelectVariant={setSelectedVariant}
-/>
+/> */}
         {/* <div>fargevalg</div>
         <div>str valg</div> */}
         
-        <CallToActionButton
-          type="addToCart"
-          variantId={variantId}
-          className="text-customWhite bg-ctaPink hover:bg-customPink mx-2"
-          productName={product.title}
-        />
+        <AddToCartButton
+            variantId={variantId}
+            productName={product.title}
+          />
         <div className="m-5">
         <ul className="mx-5 list-disc">
             <li>Frakt fra 39 kr</li>
