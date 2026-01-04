@@ -1,46 +1,49 @@
-import { useState, useEffect } from "react";
-import { CartContext } from "../../hooks/CartContext";
-import type { Cart } from "../../hooks/shopifyCart";
-import { createCart, addToCart, getCart, updateCartLine } from "../../hooks/shopifyCart";
-import type { ReactNode, ReactElement } from "react";
+// import { useEffect } from "react";
+// import { CartContext } from "../../hooks/cartContext";
+// import { useCart } from "../../hooks/useCart";
+// import type { ReactNode, ReactElement } from "react";
+
+// interface CartProviderProps {
+//   children: ReactNode;
+// }
+
+// export function CartProvider({ children }: CartProviderProps): ReactElement {
+//   const { cart, fetchCart, addItem, changeQuantity, removeAllItems } = useCart();
+
+//   // Hent cart når provider mountes
+//   useEffect(() => {
+//     fetchCart();
+//   }, [fetchCart]);
+
+//   return (
+//     <CartContext.Provider value={{ cart, addItem, changeQuantity, removeAllItems, fetchCart }}>
+//       {children}
+//     </CartContext.Provider>
+//   );
+// }
+
+import { CartContext } from "../../hooks/cartContext";
+import { useCart } from "../../hooks/useCart";
+import type { ReactNode } from "react";
+import { useEffect } from "react";
 
 interface CartProviderProps {
   children: ReactNode;
 }
 
-export function CartProvider({ children }: CartProviderProps): ReactElement {
-  const [cart, setCart] = useState<Cart | null>(null);
+export function CartProvider({ children }: CartProviderProps) {
+  const { cart, addItem, removeAllItems, changeQuantity, fetchCart } = useCart();
 
-  const updateItemQuantity = async (lineId: string, quantity: number) => {
-  if (!cart) return;
-  const updated = await updateCartLine(cart.id, lineId, quantity);
-  setCart(updated);
-};
-
-
-  // Her henter vi cart fra localStorage når komponenten mountes
+  // Hent cart når provider mountes
   useEffect(() => {
-    const storedId = localStorage.getItem("cartId");
-    if (storedId) {
-      getCart(storedId).then((cart) => setCart(cart));
-    }
-  }, []);
-
-  const addItem = async (variantId: string, quantity: number) => {
-    if (!cart) {
-      const newCart = await createCart(variantId, quantity);
-      setCart(newCart);
-      localStorage.setItem("cartId", newCart.id);
-    } else {
-      const updated = await addToCart(cart.id, variantId, quantity);
-      setCart(updated);
-    }
-  };
+    fetchCart();
+  }, [fetchCart]);
 
   return (
-    <CartContext.Provider value={{ cart, addItem, updateItemQuantity }}>
-  {children}
-</CartContext.Provider>
-
+    <CartContext.Provider
+      value={{ cart, addItem, removeAllItems, changeQuantity }}
+    >
+      {children}
+    </CartContext.Provider>
   );
 }

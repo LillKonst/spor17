@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Product } from "../../hooks/fetchAllProducts";
+import type { Product } from "../../../hooks/fetchAllProducts";
 
 import litenby from "../../images/litenby.svg";
 import pakker from "../../images/pakker.svg";

@@ -17,7 +17,7 @@ export default function CallToActionButton({
   className,
   productName,
 }: CallToActionProps) {
-  const { cart, addItem, fetchCart } = useCart();
+  const { cart, addItem } = useCart();
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);

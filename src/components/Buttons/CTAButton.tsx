@@ -1,4 +1,3 @@
-// components/CTAButton/CTAButton.tsx
 interface CTAButtonProps {
   label: string;
   onClick: () => void;

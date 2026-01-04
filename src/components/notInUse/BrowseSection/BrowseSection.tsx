@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchAllProducts } from "../../hooks/fetchAllProducts";
-import type { Product } from "../../hooks/fetchAllProducts";
+import { fetchAllProducts } from "../../../hooks/fetchAllProducts";
+import type { Product } from "../../../hooks/fetchAllProducts";
 import BrowseLink from "./BrowseLink";
 import { Link } from "react-router-dom";
 

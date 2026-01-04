@@ -11,7 +11,7 @@ export default function ProductLink({ product }: ProductLinkProps) {
 
 
   return (
-    <li key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded bg-white flex flex-col shadow">
+    <div key={product.id} className="transition-transform ease-out duration-200 hover:scale-102 rounded bg-white flex flex-col shadow">
             <Link to={`/produkt/${product.handle}`}>
             <div className="w-full aspect-[3/4] rounded-lg overflow-hidden">
             {imageUrl && (
@@ -30,6 +30,6 @@ export default function ProductLink({ product }: ProductLinkProps) {
           {product.variants.edges[0].node.priceV2.currencyCode}</h2>
         </div>
         </Link>
-          </li>
+      </div>
   );
 }

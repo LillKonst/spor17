@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
 import type { Product } from "../../hooks/fetchProduct";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
-import CallToActionButton from "../../components/Buttons/CallToActionButton";
+import AddToCartButton from "../../components/Buttons/AddToCartButton";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import LinkTree from "../../components/LinkTree/LinkTree";
 import Reviews from "../../components/Reviews/Reviews";
@@ -100,12 +100,10 @@ export default function ProductSpecific() {
         {/* <div>fargevalg</div>
         <div>str valg</div> */}
         
-        <CallToActionButton
-          type="addToCart"
-          variantId={variantId}
-          className="text-customWhite bg-ctaPink hover:bg-customPink mx-2"
-          productName={product.title}
-        />
+        <AddToCartButton
+            variantId={variantId}
+            productName={product.title}
+          />
         <div className="m-5">
         <ul className="mx-5 list-disc">
             <li>Frakt fra 39 kr</li>
