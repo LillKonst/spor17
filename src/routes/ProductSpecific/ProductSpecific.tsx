@@ -7,7 +7,7 @@ import AddToCartButton from "../../components/Buttons/AddToCartButton";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
 import LinkTree from "../../components/LinkTree/LinkTree";
 import Reviews from "../../components/Reviews/Reviews";
-import ColorVariants from "../../components/ColorVariants/ColorVariants";
+// import ColorVariants from "../../components/notInUse/ColorVariants/ColorVariants";
 
 export interface ProductVariant {
   id: string;
@@ -19,7 +19,7 @@ export interface ProductVariant {
 export default function ProductSpecific() {
   const { handle } = useParams<{ handle: string }>();
   const [product, setProduct] = useState<Product | null>(null);
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
+  // const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
 
 
   useEffect(() => {
@@ -92,11 +92,11 @@ export default function ProductSpecific() {
           {Math.round(Number(price.amount))} {price.currencyCode}
         </h2>
 
-        <ColorVariants
+        {/* <ColorVariants
   variants={product.variants.edges.map(edge => edge.node)}
   selectedVariantId={selectedVariant?.id}
   onSelectVariant={setSelectedVariant}
-/>
+/> */}
         {/* <div>fargevalg</div>
         <div>str valg</div> */}
         

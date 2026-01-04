@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
 import type { Product } from "../../hooks/fetchAllProducts";
 import { Link } from "react-router-dom";
-import CallToActionButton from "../Buttons/CallToActionButton";
+import CallToActionButton from "../notInUse/CallToActionButton";
 import { productImages } from "../../hooks/productImage";
 
 export default function PopularProducts () {

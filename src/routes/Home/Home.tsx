@@ -6,7 +6,7 @@ import Reviews from "../../components/Reviews/Reviews";
 // import Favorite from "../../components/Favorite/Favorite";
 // import InstagramFeed from "../../components/InstagramFeed/InstagramFeed";
 // import InstagramSection from "../../components/InstagramFeed/InstagramSection";
-import WriteCardDisplay from "../../images/IMG_1075-200kb.jpg";
+// import WriteCardDisplay from "../../images/IMG_1075-200kb.jpg";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 
 import { useEffect, useState } from "react";
@@ -62,7 +62,7 @@ export default function Home() {
       </div>
      
       <div className="bg-white sm:p-5 my-10 rounded-lg flex flex-col gap-5 lg:flex-row w-full lg:px-20 self-center justify-center items-center lg:max-w-[1200px] mx-auto">
-      <div className="w-full relative md:max-w-[450px]">
+      {/* <div className="w-full relative md:max-w-[450px]">
         <img src={WriteCardDisplay} alt="2 pakker med kort" className="w-full md:rounded"/>
         <div className="absolute top-[15%] left-[4%] right-[43%]">
           <h3 className="font-bold text-[1vh] xxxs:text-[2vh] xs:text-[3vh] sm:text-2xl">
@@ -70,7 +70,7 @@ export default function Home() {
         </h3>
         </div>
         
-      </div>
+      </div> */}
       <Reviews />
     </div>
  
