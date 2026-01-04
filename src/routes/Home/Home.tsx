@@ -8,17 +8,41 @@ import Favorite from "../../components/Favorite/Favorite";
 // import InstagramFeed from "../../components/InstagramFeed/InstagramFeed";
 // import InstagramSection from "../../components/InstagramFeed/InstagramSection";
 import WriteCardDisplay from "../../images/IMG_1075-200kb.jpg";
+import ProductSlider from "../../components/ProductSlider/ProductSlider";
+
+import { useEffect, useState } from "react";
+import { fetchAllProducts } from "../../hooks/fetchAllProducts";
+import type { Product } from "../../hooks/fetchAllProducts"; 
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function load() {
+      const data = await fetchAllProducts();
+      setProducts(data);
+      setLoading(false);
+    }
+
+    load();
+  }, []);
+
+  if (loading) return null;
   
   return(
     <div className="z-10 lg:px-5">
       <TopInfo />
       <MainImg />
-      <BrowseSection />
-      <div id="populære-kort">
+      <ProductSlider
+        title="Nyheter - Bursdagskort"
+        products={products.slice(0, 8)}
+        className="ml-5"
+      />
+   
+      {/* <div id="populære-kort">
         <PopularProducts/>
-      </div>
+      </div> */}
       
       <div id="vår-favoritt" className="flex flex-col md:flex-row md:gap-5 md:mx-5">
         <InfoBox />
