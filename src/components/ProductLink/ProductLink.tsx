@@ -22,8 +22,8 @@ export default function ProductLink({ product }: ProductLinkProps) {
             />
           )}
             </div>
-            <div className=" mx-4 py-5 flex flex-col justify-center">
-          <h2 className="text-lg xxxs:text-2xl xs:text-xl">
+            <div className=" mx-4 py-5 flex flex-col justify-center h-[100px] xs:h-[120px] ">
+          <h2 className="text-lg xxxs:text-xl xs:text-xl">
             {product.title}
           </h2>
           <h2 className="font-bold text-lg xxxs:text-2xl xs:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
