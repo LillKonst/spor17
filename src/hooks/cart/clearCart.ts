@@ -1,6 +1,9 @@
 import type { Cart } from "./types";
 import { shopifyFetch } from "../api";
 import { getCart } from "./getCart";
+import { normalizeCart } from "./normalizeCart";
+import type { ShopifyCart } from "./types";
+
 
 export async function clearCart(cartId: string): Promise<Cart> {
   // 🔹 Først henter vi carten for å finne alle line IDs som må fjernes
@@ -69,7 +72,7 @@ export async function clearCart(cartId: string): Promise<Cart> {
   // ✅ Type assertion slik at TypeScript vet hva `response` er
   const data = response as {
     cartLinesRemove: {
-      cart: Cart;
+      cart: ShopifyCart;
       userErrors: { field: string[]; message: string }[];
     };
   };
@@ -78,5 +81,6 @@ export async function clearCart(cartId: string): Promise<Cart> {
     console.error("Shopify error:", data.cartLinesRemove.userErrors);
   }
 
-  return data.cartLinesRemove.cart;
+  return normalizeCart(data.cartLinesRemove.cart);
+
 }

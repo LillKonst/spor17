@@ -1,7 +1,9 @@
 // components/Buttons/AddToCartButton.tsx
 import { useState } from "react";
-import { useCart } from "../../hooks/useCart";
+import { useContext } from "react";
 import AddedToCartModal from "../AddToCartModal/AddToCartModal";
+import { CartContext } from "../../hooks/cartContext";
+
 
 interface AddToCartButtonProps {
   variantId: string;
@@ -16,7 +18,7 @@ export default function AddToCartButton({
   className,
   quantity = 1,
 }: AddToCartButtonProps) {
-  const { addItem } = useCart();
+  const { addItem } = useContext(CartContext);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 

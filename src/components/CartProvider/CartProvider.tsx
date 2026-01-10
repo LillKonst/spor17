@@ -32,17 +32,14 @@ interface CartProviderProps {
 }
 
 export function CartProvider({ children }: CartProviderProps) {
-  const { cart, addItem, removeAllItems, changeQuantity, fetchCart } = useCart();
+  const cartApi = useCart();
 
-  // Hent cart når provider mountes
   useEffect(() => {
-    fetchCart();
-  }, [fetchCart]);
+    cartApi.fetchCart();
+  }, []);
 
   return (
-    <CartContext.Provider
-      value={{ cart, addItem, removeAllItems, changeQuantity }}
-    >
+    <CartContext.Provider value={cartApi}>
       {children}
     </CartContext.Provider>
   );

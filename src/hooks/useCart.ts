@@ -139,11 +139,16 @@ export function useCart() {
     let updatedCart: Cart;
 
     if (cartId) {
-      updatedCart = await addToCart(cartId, variantId, quantity);
-    } else {
-      updatedCart = await createCart(variantId, quantity);
-      localStorage.setItem("cartId", updatedCart.id);
-    }
+  console.log("Adding to existing cart:", cartId, variantId, quantity);
+  updatedCart = await addToCart(cartId, variantId, quantity);
+} else {
+  console.log("Creating new cart for variant:", variantId, quantity);
+  updatedCart = await createCart(variantId, quantity);
+  console.log("Created cart:", updatedCart.id);
+  localStorage.setItem("cartId", updatedCart.id);
+}
+console.log("Updated cart:", updatedCart);
+
 
     setCart(updatedCart);
     return updatedCart;
