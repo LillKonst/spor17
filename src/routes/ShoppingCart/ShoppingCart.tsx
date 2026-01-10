@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { CartContext } from "../../hooks/cartContext";
+import { cartContext } from "../../hooks/cartContext";
 import CartItemList from "../../components/CartItemList/CartItemList";
 import CheckoutButton from "../../components/Buttons/CheckoutButton";
 import ClearCartButton from "../../components/Buttons/ClearCartButton";
 import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
-  const { cart, changeQuantity, removeAllItems } = useContext(CartContext);
+  const { cart, changeQuantity, removeAllItems } = useContext(cartContext);
   const [loadingLine, setLoadingLine] = useState<string | null>(null);
 
   // 🔹 Oppdater antall på enkeltlinje

@@ -3,7 +3,7 @@ import logo from "../../../images/LOGO26.svg";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
-import { CartContext } from "../../../hooks/cartContext";
+import { cartContext } from "../../../hooks/CartContext";
 
 export function RouteNotFound() {
   return <div>Page not found</div>;
@@ -14,7 +14,7 @@ export default function Header() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(cartContext);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -116,7 +116,7 @@ export default function Header() {
                   </li>
                   <li className="w-full lg:w-fit p-5 border-t-2 border-gray-200 lg:p-0 lg:border-0">
                     <Link to="/kontakt" onClick={() => setIsMenuOpen(false)} className="hover:underline">
-                      Kunstnere
+                      Kontakt
                     </Link>
                   </li>
                   <li className="w-full lg:w-fit p-5 border-t-2 border-b-2 border-gray-200 lg:p-0 lg:border-0">
