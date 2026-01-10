@@ -55,11 +55,12 @@ export async function getCart(cartId: string): Promise<Cart> {
 
   const data = await shopifyFetch<Response>(query, { id: cartId });
 
-  // Hvis cart mangler, returner en tom cart
-  if (!data.cart) {
-    console.warn("Cart not found for id:", cartId);
-    return normalizeCart(null);
-  }
+ if (!data.cart) {
+  console.warn("Cart not found for id:", cartId);
+  localStorage.removeItem("cartId");
+  return normalizeCart(null);
+}
+
 
   return normalizeCart(data.cart);
 }

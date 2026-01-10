@@ -1,8 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import logo from "../../../images/LOGO26.svg";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
+import { CartContext } from "../../../hooks/cartContext";
 
 export function RouteNotFound() {
   return <div>Page not found</div>;
@@ -13,7 +14,7 @@ export default function Header() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
   const menuRef = useRef<HTMLDivElement | null>(null);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const [cartCount, setCartCount] = useState<number>(0);
+  const { cart } = useContext(CartContext);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -40,19 +41,9 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
-  useEffect(() => {
-    const storedCount = localStorage.getItem("cartCount");
-    if (storedCount) setCartCount(Number(storedCount));
+  const cartCount =
+  cart?.lines.reduce((sum, line) => sum + line.quantity, 0) ?? 0;
 
-    const handleCartCountUpdated = () => {
-      const updatedCount = localStorage.getItem("cartCount");
-      if (updatedCount) setCartCount(Number(updatedCount));
-    };
-
-    window.addEventListener("cartCountUpdated", handleCartCountUpdated);
-    return () =>
-      window.removeEventListener("cartCountUpdated", handleCartCountUpdated);
-  }, []);
 
   return (
     <div className="pt-12 xxs:pt-10 mb-3 px-5 flex flex-row items-center justify-between relative xxs:mb-3">
