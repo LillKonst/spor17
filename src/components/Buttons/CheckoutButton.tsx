@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import CTAButton from "./CTAButton";
-import { CartContext } from "../../hooks/cartContext";
+import { cartContext } from "../../hooks/cartContext";
 
 export default function CheckoutButton() {
-  const { cart } = useContext(CartContext);
+  const { cart } = useContext(cartContext);
   const [loading, setLoading] = useState(false);
 
   const handleCheckout = async () => {

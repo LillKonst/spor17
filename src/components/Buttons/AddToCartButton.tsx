@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import AddedToCartModal from "../AddToCartModal/AddToCartModal";
-import { CartContext } from "../../hooks/cartContext";
+import { cartContext } from "../../hooks/cartContext";
 
 
 interface AddToCartButtonProps {
@@ -18,7 +18,7 @@ export default function AddToCartButton({
   className,
   quantity = 1,
 }: AddToCartButtonProps) {
-  const { addItem } = useContext(CartContext);
+  const { addItem } = useContext(cartContext);
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
