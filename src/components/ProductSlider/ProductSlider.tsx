@@ -1,46 +1,59 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
 import ProductLink from "../ProductLink/ProductLink";
 import type { Product } from "../../hooks/fetchAllProducts";
 
 interface ProductSliderProps {
   products: Product[];
+  title?: string;
+  className?: string;
 }
 
-export default function ProductSlider({ products }: ProductSliderProps) {
+export default function ProductSlider({
+  products,
+  title,
+  className,
+}: ProductSliderProps) {
+  if (!products.length) return null;
+
   return (
-    <div className="bg-white p-5 rounded-lg my-10 ">
-      <h2 className="text-2xl md:text-3xl m-2 p-2 ">Våre Julekort</h2>
-    <Swiper
-      modules={[Navigation, Pagination]}
-      spaceBetween={20}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1400: { slidesPerView: 4 },
-      }}
-      className="w-full pb-10"
-    >
-      {products.map((product) => (
-        <SwiperSlide key={product.id}>
-          <ProductLink product={product} />
-        </SwiperSlide>
-      ))}
-    </Swiper>
-     <style>{`
-        .swiper-pagination {
-          position: relative !important;
-          margin-top: 20px;
-        }
-      `}</style>
-    </div>
+    <section className={className}>
+      {title && (
+        <h2 className="text-2xl md:text-3xl mb-4 px-2">
+          {title}
+        </h2>
+      )}
+
+      <div className="overflow-x-auto">
+        <ul
+          className="
+            flex gap-4
+            snap-x snap-mandatory
+            overflow-x-auto
+            pb-4
+          "
+        >
+          {products.map((product) => (
+            <li
+              key={product.id}
+              className="
+                min-w-[75%] xs:min-w-[45%] md:min-w-[30%] lg:min-w-[22%]
+                snap-start
+              "
+            >
+              <ProductLink product={product} />
+            </li>
+          ))}
+        </ul>
+
+        {/* 🔹 Minimal indikator */}
+        <div className="flex justify-center gap-1 mt-2">
+          {products.slice(0, 5).map((_, i) => (
+            <span
+              key={i}
+              className="h-1 w-6 bg-gray-300 rounded-full"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

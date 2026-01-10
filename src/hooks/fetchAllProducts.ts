@@ -5,7 +5,17 @@ export interface Product {
   id: string;
   handle: string;
   title: string;
+  productType: string;
   description: string;
+   collections?: {
+    edges: {
+      node: {
+        handle: string;
+        title: string;
+      };
+    }[];
+  };
+  tags: string[];
   images: {
     edges: {
       node: {
@@ -42,7 +52,17 @@ export async function fetchAllProducts(): Promise<Product[]> {
             id
             handle
             title
+            productType
             description
+            tags
+            collections(first: 20) {
+              edges {
+                node {
+                  handle
+                  title
+               }
+              }
+            }
             images(first: 4) {
               edges {
                 node {

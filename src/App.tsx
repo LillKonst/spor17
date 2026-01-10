@@ -15,6 +15,7 @@ import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import MetaPixel from "./components/MetaPixel/MetaPixel";
 import GoogleAnalytics from "./components/GoogleAnalytics/GoogleAnalytics";
+import AllCards from "./routes/AllCards/AllCards";
 
 function App() {
   
@@ -51,9 +52,9 @@ function App() {
     <CookieBanner />
       <MetaPixel pixelId="1523394162215243" />
       <GoogleAnalytics measurementId="G-CJ2ETBFSC2" />
-    <div className="bg-background h-full relative">
-       <div className="bg-customGreen p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
-          <p className="text-xs md:text-sm lg:text-md">Fast frakt 39 kr - Bestill før 16. desember for å få pakken hjem før jul </p>
+    <div className="bg-customWhite h-full relative">
+       <div className="bg-customPink p-1 absolute top-0 left-0 right-0 md:h-7 w-full text-center z-0 mb-10">
+          <h2 className="text-sm md:text-sm lg:text-md">Frakt fra 39 kr </h2>
         </div>
       <div>
         
@@ -61,6 +62,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
           <Route path="/produkter" element={<AllProducts />} />
+          <Route path="/kort" element={<AllCards />} />
           <Route path="/om" element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route  path="/produkt/:handle" element={<ProductSpecific />} />

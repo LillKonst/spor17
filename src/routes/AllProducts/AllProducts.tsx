@@ -1,5 +1,5 @@
-import ProductListAll from "../../components/ProductListAll/ProductListAll"
+import ProductList from "../../components/ProductList/ProductList"
 
 export default function AllProducts() {
-  return <ProductListAll />;
+  return <ProductList />;
 }

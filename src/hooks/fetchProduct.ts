@@ -1,12 +1,29 @@
 import { shopifyFetch } from "./api";
 
+export interface ProductVariant {
+  id: string;
+  title: string;
+  priceV2: { amount: string; currencyCode: string };
+  selectedOptions: { name: string; value: string }[];
+}
+
 export interface Product {
   id: string;
   handle: string;
   title: string;
+  productType: string;
+  collections: {
+    edges: {
+      node: {
+        handle: string;
+        title: string;
+      };
+    }[];
+  };
   descriptionHtml: string;
+  tags: string[];
   images: { edges: { node: { url: string; altText: string | null } }[] };
-  variants: { edges: { node: { id: string; priceV2: { amount: string; currencyCode: string } } }[] };
+  variants: { edges: { node: ProductVariant }[] };
 }
 
 interface ProductResponse {
@@ -20,7 +37,17 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
         id
         handle
         title
+        productType
+        collections(first: 1) {
+          edges {
+            node {
+              handle
+              title
+            }
+          }
+        }
         descriptionHtml
+        tags
         images(first: 10) {   # hent opptil 10 bilder, eller 4 hvis du alltid har 4
           edges {
           node {
@@ -29,13 +56,18 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
           }
           }
         }
-        variants(first: 1) {
+        variants(first: 10) {
           edges {
             node {
             id
+            title
               priceV2 {
                 amount
                 currencyCode
+              }
+                selectedOptions {
+                name
+                value
               }
             }
           }

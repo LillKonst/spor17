@@ -30,45 +30,25 @@ import { Link } from "react-router-dom";
 //   );
 // }
 
-import mainImage from "../../images/DSC_0043-main.JPG";
-import snowmanimg from "../../images/20251118_135330-cut.jpg";
+import { useNavigate } from "react-router-dom";
+import mainImage from "../../images/forside-red-kvalitet-fokus.JPG";
+import CTAButton from "../Buttons/CTAButton";
 
 export default function MainImg() {
+  const navigate = useNavigate();
+
   return (
-    <div className="w-full lg:px-12 flex flex-col lg:flex-row gap-5 mb-5 xl:max-h-[500px]">
-      <Link to="/produkt/julekort-snomann-10stk" className="relative lg:rounded h-fit">
-        <img src={mainImage} alt="En hånd gir et julekort med snømann til en annen hånd." className="w-full lg:rounded-t relative"/>
-        <h1 className="absolute bottom-0 left-0 bg-black/50 p-3 text-white text-xs xxxs:text-md xxs:text-lg xs:text-2xl md:text-3xl font-bold">Gi en personlig hilsen til jul</h1> 
+    <div className="w-full lg:px-12 flex flex-col md:flex-row mb-5 md:h-[500px] xl:max-h-[500px]">
+      <Link to="/produkt/bursdagskort-ta-litt-kake-dino-10-stk" className="md:w-1/2 2xl:w-3/5 md:order-2">
+        <img src={mainImage} alt="2 barn utveksler en bursdagspresant." className="md:order-1 w-full h-[300px] md:h-full object-cover"/>
       </Link>
-      
-      <div className="w-full flex lg:flex-col gap-2 sm:gap-5 px-3 xl:max-h-[500px]">
-        <div className="w-full flex-1 h-full rounded">
-          <img src={snowmanimg} alt="Snømann kort ligger utover bordet" className="w-full h-auto object-cover" />
-        </div>
-        <div className="flex flex-col gap-1 flex-1 justify-between">
-           <Link to="/produkter" className="flex flex-1 gap-1 bg-customRed hover:bg-customRedHover text-white rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
-          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-        </svg> Velg ditt motiv</Link>
-        <Link to="#"
-  onClick={(e) => {
-    e.preventDefault();
-    document
-      .getElementById("populære-kort")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }} className="xl:hidden flex flex-1 gap-1 bg-customRed hover:bg-customRedHover text-white rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
-          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-        </svg> Populære kort</Link>
-        <Link to="#"
-  onClick={(e) => {
-    e.preventDefault();
-    document
-      .getElementById("vår-favoritt")
-      ?.scrollIntoView({ behavior: "smooth" });
-  }} className="xl:hidden flex flex-1 gap-1 bg-customRed hover:bg-customRedHover text-white rounded text-xs xxxs:text-sm xxs:text-lg sm:text-2xl items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" className="bi bi-arrow-right hidden xxxs:flex" viewBox="0 0 16 16">
-          <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-        </svg> Vår favoritt</Link>
-        </div>
-      </div>        
+      <div className="bg-customBlue p-5 sm:p-10 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-10 md:h-full md:w-1/2 2xl:w-2/5">
+        <h1 className="text-customWhite text-2xl sm:text-5xl text-center lg:text-5xl xl:text-7xl">Barnebursdag for alle penga!</h1>
+        <CTAButton 
+          label="Handle nå"
+          onClick={() => navigate("/kort")} 
+          />
+      </div>
     </div>
   );
 }
