@@ -1,20 +1,82 @@
-import aboutImg from "../../images/til-home2.jpg";
+// import aboutImg from "../../images/til-home2.jpg";
 
 export default function About() {
-  return(
-    <div className="bg-white mx-2 md:mx-12 p-5 md:p-10 rounded-lg flex flex-col lg:flex-row gap-2">
-      <div className="my-5 md:my-10 lg:flex-3">
-        <h2 className="text-xl lg:text-2xl my-5">Hei, og velkommen til spor17.no!</h2>
-        <p className="lg:text-lg mb-5">Spor 17 er en nyoppstartet plattform skapt med kjærlighet for norsk design, kvalitet og estetikk. Vi tror at det personlige uttrykket betyr noe – både når du gir og når du mottar.</p>
-        <p className="lg:text-lg mb-5">Akkurat nå tilbyr vi en serie julekort, designet digitalt i Norge og trykket lokalt. Kortene kommer i pakker på 10 med tilhørende konvolutter, og passer perfekt til deg som ønsker å spre litt ekstra varme og omtanke i juletiden.</p>
-        <p className="lg:text-lg mb-5">Dette er bare begynnelsen! Målet vårt er å utvide sortimentet etter hvert – med flere kort, plakater og andre designprodukter som bærer samme verdier: enkelhet, kvalitet og et tydelig norsk uttrykk.</p>
-        <p className="lg:text-lg mb-5">Takk for at du stikker innom – vi håper du finner noe du liker, og at kortene våre får være en liten del av dine fine øyeblikk.</p>
-        <p className="lg:text-2xl mb-5">XO Spor 17</p>
+  return (
+    <div className="bg-white mx-2 md:mx-12 px-5 md:px-10 rounded-lg flex flex-col lg:flex-row gap-6">
+      <div className="my-5 lg:flex-3">
+        <h2 className="text-xl lg:text-2xl mb-5">
+          Hei – så fint at du er her 💗
+        </h2>
+
+        <p className="lg:text-lg mb-5">
+          Spor 17 er et lite, kreativt prosjekt – og et ganske personlig ett.
+          Bak Spor 17 står jeg, Lill.
+        </p>
+
+        <p className="lg:text-lg mb-5">
+          Jeg har i mange år jobbet profesjonelt i dansebransjen, og kreativitet
+          har alltid vært en naturlig del av hverdagen min. Etter hvert tok jeg
+          også steget inn i frontend-utvikling, og sommeren 2025 begynte en ny idé
+          å ta form: å samle det jeg liker best – design, form, ro og uttrykk – i
+          ett prosjekt.
+        </p>
+
+        <p className="lg:text-lg mb-10">
+          Spor 17 ble starten på det.
+        </p>
+
+        <h3 className="text-lg lg:text-xl font-semibold mb-3">
+          Enkle kort, laget med omtanke
+        </h3>
+
+        <p className="lg:text-lg mb-5">
+          Jeg designer kort med et ønske om å holde det enkelt og ærlig. Motiver
+          som får puste, ord som kan bety noe, og produkter som er ment å brukes –
+          ikke bare kjøpes.
+        </p>
+
+        <p className="lg:text-lg mb-10">
+          Reisen startet med åtte julekort. Nå kommer det gradvis flere typer
+          kort, og etter hvert også plakater i sortimentet. Alt designes av meg og produseres på bestilling, slik at jeg kan jobbe fleksibelt og bærekraftig i liten skala.
+        </p>
+
+        <h3 className="text-lg lg:text-xl font-semibold mb-3">
+          Et lite brand – med rom for mer
+        </h3>
+
+        <p className="lg:text-lg mb-10">
+          Spor 17 er ikke et stort firma, og det er heller ikke meningen. Det er
+          en plattform der kreativiteten min får ta plass – og der det etter
+          hvert også kan bli rom for flere uttrykk og kanskje flere kunstnere.
+        </p>
+
+        <h3 className="text-lg lg:text-xl font-semibold mb-3">
+          Takk for at du støtter noe lite
+        </h3>
+
+        <p className="lg:text-lg mb-5">
+          Når du handler hos Spor 17, støtter du meg og mitt lille prosjekt. Det
+          betyr mer enn du kanskje tror.
+        </p>
+
+        <p className="lg:text-lg mb-8">
+          Jeg håper kortene mine får være med på å markere små og store øyeblikk –
+          og kanskje gjøre dem litt finere.
+        </p>
+
+        <p className="lg:text-xl font-medium">
+          Med varme,<br />
+          Lill / Spor 17
+        </p>
       </div>
-      <div className="w-full lg:flex-2 max-h-[550px] md:w-[500px]">
-        <img src={aboutImg} alt="bilde" className="rounded w-full h-full object-cover"/>
-      </div>
-      
+
+      {/* <div className="w-full lg:flex-2 max-h-[550px] md:w-[500px]">
+        <img
+          src={aboutImg}
+          alt="Lill – Spor 17"
+          className="rounded w-full h-full object-cover"
+        />
+      </div> */}
     </div>
   );
 }

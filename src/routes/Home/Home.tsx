@@ -1,14 +1,12 @@
 import MainImg from "../../components/MainImg/MainImg";
-// import InfoBox from "../../components/InfoBox/InfoBox";
 import Reviews from "../../components/Reviews/Reviews";
-// import TopInfo from "../../components/TopInfo/TopInfo";
-// import Favorite from "../../components/Favorite/Favorite";
+import Favorite from "../../components/Favorite/Favorite";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
 import type { Product } from "../../hooks/fetchAllProducts"; 
 import WriteCard from "../../components/WriteCard/WriteCard";
-// import InfoBox from "../../components/InfoBox/InfoBox";
+import HomeAbout from "../../components/HomeAbout/HomeAbout";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -41,30 +39,17 @@ export default function Home() {
   
   return(
     <div className="z-10 lg:px-5">
-      {/* <TopInfo /> */}
       <MainImg />
       <ProductSlider
         title="Nyheter - Bursdagskort"
         products={birthdayCards}
         className="ml-5"
       />
-     
-      {/* <div className="w-full flex justify-center">
-      <div id="vår-favoritt" className="flex flex-col md:flex-row lg:mx-5 lg:h-[350px] lg:w-[1000px] mx-auto">
-        <Favorite />
-        <InfoBox />
     
-      </div>
-</div> */}
+      <Favorite />     
       <WriteCard />
-
-
-      
-      
-     
       <Reviews />
-    <h2>Her kommer en Om Spor 17 seksjon</h2>
- 
+      <HomeAbout />
     </div>
   );
 }
