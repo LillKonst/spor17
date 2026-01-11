@@ -27,25 +27,10 @@ export default function Favorite() {
   const price = variant?.priceV2;
 
   return (
-    <div className="flex flex-col gap-3 items-center mx-auto p-5 md:py-0 px-5 my-5 flex-1">
+    <div className="w-full flex flex-col gap-3 items-center justify-center mx-auto p-5 md:py-0 px-5 my-5 flex-1">
       <h2 className="text-2xl m-5">Vår favoritt</h2>
 
-        <div className="ms-2 mb-5">
-            <Link
-              to={`/produkt/${product.handle}`}
-              className="text-xl"
-            >
-              {product.title}
-            </Link>
-
-            {price && (
-              <h2 className="text-xl">
-                {Math.round(Number(price.amount))} {price.currencyCode}
-              </h2>
-            )}
-          </div>
-
-      <div className="w-full sm:w-[500px] md:w-[400px] flex flex-col xs:flex-row gap-3">
+      <div className="flex flex-col md:flex-row">
         {/* Produktbilde */}
         <Link
           to={`/produkt/${product.handle}`}
@@ -59,9 +44,8 @@ export default function Favorite() {
             />
           )}
         </Link>
-
-        {/* Info + CTA */}
-        <div className="self-center xs:h-full flex flex-col my-3 xs:justify-between">
+        
+         <div className="self-center xs:h-full flex flex-col my-3 xs:justify-between">
           <div className="ms-2 mb-5">
             <Link
               to={`/produkt/${product.handle}`}
