@@ -22,7 +22,7 @@
 //   );
 // }
 
-import { cartContext } from "../../hooks/cartContext";
+import { cartContext } from "../../hooks/CartContext";
 import { useCart } from "../../hooks/useCart";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
