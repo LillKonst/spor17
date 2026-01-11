@@ -1,4 +1,4 @@
-import type { CartLine } from "../../hooks/shopifyCart";
+import type { CartLine } from "../../hooks/cart/types";
 
 interface CartItemProps {
   line: CartLine;

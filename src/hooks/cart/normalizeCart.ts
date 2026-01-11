@@ -23,7 +23,7 @@ export function normalizeCart(raw: ShopifyCart | null): Cart {
     quantity: e.node.quantity,
     merchandiseId: e.node.merchandise.id,
     title: e.node.merchandise.product.title,
-    image: e.node.merchandise.product.images.edges[0]?.node.url,
+    image: e.node.merchandise.image?.url ?? e.node.merchandise.product.images.edges[0]?.node.url,
     price: e.node.merchandise.priceV2,
   })),
 

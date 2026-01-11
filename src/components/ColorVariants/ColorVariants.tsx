@@ -1,6 +1,15 @@
 // src/components/ColorVariants.tsx
 import React from "react";
 
+const COLOR_MAP: Record<string, string> = {
+  gul: "#FFEA64",    
+  grønn: "#6EE76E",  
+  blå: "#3B82F6",  
+  rosa: "#EC4899",  
+  svart: "#000000",
+  hvit: "#FFFFFF",
+};
+
 export interface ProductVariant {
   id: string;
   title: string;
@@ -18,35 +27,39 @@ const ColorVariants: React.FC<ColorVariantsProps> = ({
   selectedVariantId,
   onSelectVariant,
 }) => {
-  // Filtrer ut farge-varianter
-  const colorVariants = variants.filter((v) =>
-    v.selectedOptions.some((opt) => opt.name.toLowerCase() === "farge")
+  const colorVariants = variants.filter((variant) =>
+    variant.selectedOptions.some(
+      (opt) => opt.name.toLowerCase() === "farge"
+    )
   );
 
-  if (colorVariants.length === 0) return null; // Ingen farge-alternativer
+  if (colorVariants.length === 0) return null;
 
   return (
-    <div className="flex gap-2 items-center mt-2">
+    <div className="flex gap-2 items-center mt-3 p-5">
       {colorVariants.map((variant) => {
         const colorOption = variant.selectedOptions.find(
           (opt) => opt.name.toLowerCase() === "farge"
         )?.value;
 
-        // Enkel sikkerhet, hvis farge ikke finnes
         if (!colorOption) return null;
 
-        // Velg om denne sirkelen er aktiv
+        const colorKey = colorOption.trim().toLowerCase();
         const isSelected = variant.id === selectedVariantId;
 
         return (
           <button
             key={variant.id}
             onClick={() => onSelectVariant(variant)}
-            className={`w-8 h-8 rounded-full border-2 focus:outline-none transition-transform ${
-              isSelected ? "scale-110 border-black" : "border-gray-300"
-            }`}
-            style={{ backgroundColor: colorOption.toLowerCase() }}
-            aria-label={colorOption}
+            className={`
+              w-8 h-8 rounded-full border-2 transition-all
+              ${isSelected ? "scale-120 border-gray-400 ring-2 ring-gray-400/20" : "border-gray-300"}
+            `}
+            style={{
+              backgroundColor: COLOR_MAP[colorKey] ?? "#e5e7eb",
+            }}
+            aria-label={`Velg farge ${colorOption}`}
+            title={colorOption}
           />
         );
       })}

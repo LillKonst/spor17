@@ -59,6 +59,8 @@ export default function Favorite() {
                 {Math.round(Number(price.amount))} {price.currencyCode}
               </h2>
             )}
+
+            
           </div>
 
 
