@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchAllProducts, type Product } from "../../hooks/fetchAllProducts";
 import { Link } from "react-router-dom";
-import CallToActionButton from "../Buttons/CallToActionButton";
-import { productImages } from "../../hooks/productImage";
+import AddToCartButton from "../Buttons/AddToCartButton";
 
-const favoriteProductId = "gid://shopify/Product/8864308461731";
+const favoriteProductId = "gid://shopify/Product/8961455030435";
 
 export default function Favorite() {
   const [product, setProduct] = useState<Product | null>(null);
@@ -23,23 +22,38 @@ export default function Favorite() {
   if (loading) return <p>Laster produkt…</p>;
   if (!product) return <p>Kunne ikke hente produkt</p>;
 
-  const displayImage = productImages[product.id]?.main;
+  const imageUrl = product.images.edges[0]?.node.url;
   const variant = product.variants.edges[0]?.node;
   const price = variant?.priceV2;
 
   return (
-    <div className="flex flex-col gap-3 items-center mx-auto p-5">
-      <h2 className="xxxs:text-lg sm:text-2xl m-5">Vår favoritt</h2>
+    <div className="flex flex-col gap-3 items-center mx-auto p-5 md:py-0 px-5 my-5 flex-1">
+      <h2 className="text-2xl m-5">Vår favoritt</h2>
 
-      <div className="w-full xs:w-[380px] flex flex-col xxxs:flex-row gap-3">
+        <div className="ms-2 mb-5">
+            <Link
+              to={`/produkt/${product.handle}`}
+              className="text-xl"
+            >
+              {product.title}
+            </Link>
+
+            {price && (
+              <h2 className="text-xl">
+                {Math.round(Number(price.amount))} {price.currencyCode}
+              </h2>
+            )}
+          </div>
+
+      <div className="w-full sm:w-[500px] md:w-[400px] flex flex-col xs:flex-row gap-3">
         {/* Produktbilde */}
         <Link
           to={`/produkt/${product.handle}`}
           className="flex-1 w-full aspect-[3/4] rounded overflow-hidden"
         >
-          {displayImage && (
+          {imageUrl && (
             <img
-              src={displayImage}
+              src={imageUrl}
               alt={product.title}
               className="w-full h-full object-cover"
             />
@@ -47,17 +61,17 @@ export default function Favorite() {
         </Link>
 
         {/* Info + CTA */}
-        <div className="flex flex-1 xs:flex-2 flex-col justify-between my-3">
-          <div className="ms-3">
+        <div className="self-center xs:h-full flex flex-col my-3 xs:justify-between">
+          <div className="ms-2 mb-5">
             <Link
               to={`/produkt/${product.handle}`}
-              className="md:text-md xs:text-lg"
+              className="text-xl xxxs:text-md md:text-md xs:text-lg"
             >
               {product.title}
             </Link>
 
             {price && (
-              <h2 className="text-lg md:text-xl">
+              <h2 className="text-xl">
                 {Math.round(Number(price.amount))} {price.currencyCode}
               </h2>
             )}
@@ -65,17 +79,16 @@ export default function Favorite() {
 
 
 
-          <div className="flex flex-col gap-2 max-w-[140px]">
-            <CallToActionButton
-              type="addToCart"
-              variantId={variant?.id}
-              productName={product.title}
-              className="text-black bg-customGreen hover:bg-customHover mx-2 text-sm w-full"
+          <div className="flex flex-col gap-2 max-w-[200px]">
+            <AddToCartButton 
+            variantId={variant.id}
+            productName={product.title}
+            
             />
 
             <Link
               to={`/produkt/${product.handle}`}
-              className="p-2 px-3 mx-2 text-sm rounded border-2 border-gray-200 w-full text-center"
+              className="p-2 px-3 text-sm rounded border-2 border-gray-200 w-[195px] text-center"
             >
               Se detaljer
             </Link>
