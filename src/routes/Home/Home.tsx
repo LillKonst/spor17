@@ -1,17 +1,14 @@
 import MainImg from "../../components/MainImg/MainImg";
-// import PopularProducts from "../../components/PopularProducts/PopularProducts";
 // import InfoBox from "../../components/InfoBox/InfoBox";
 import Reviews from "../../components/Reviews/Reviews";
 // import TopInfo from "../../components/TopInfo/TopInfo";
 // import Favorite from "../../components/Favorite/Favorite";
-// import InstagramFeed from "../../components/InstagramFeed/InstagramFeed";
-// import InstagramSection from "../../components/InstagramFeed/InstagramSection";
-// import WriteCardDisplay from "../../images/IMG_1075-200kb.jpg";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
-
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
 import type { Product } from "../../hooks/fetchAllProducts"; 
+import WriteCard from "../../components/WriteCard/WriteCard";
+// import InfoBox from "../../components/InfoBox/InfoBox";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -51,28 +48,22 @@ export default function Home() {
         products={birthdayCards}
         className="ml-5"
       />
-   
-      {/* <div id="populære-kort">
-        <PopularProducts/>
-      </div> */}
-      
-      <div id="vår-favoritt" className="flex flex-col md:flex-row md:gap-5 md:mx-5">
-        {/* <InfoBox /> */}
-        {/* <Favorite /> */}
-      </div>
      
-      <div className="bg-white sm:p-5 my-10 rounded-lg flex flex-col gap-5 lg:flex-row w-full lg:px-20 self-center justify-center items-center lg:max-w-[1200px] mx-auto">
-      {/* <div className="w-full relative md:max-w-[450px]">
-        <img src={WriteCardDisplay} alt="2 pakker med kort" className="w-full md:rounded"/>
-        <div className="absolute top-[15%] left-[4%] right-[43%]">
-          <h3 className="font-bold text-[1vh] xxxs:text-[2vh] xs:text-[3vh] sm:text-2xl">
-          Skriv noen varme ord til de du er glad i  
-        </h3>
-        </div>
-        
-      </div> */}
+      {/* <div className="w-full flex justify-center">
+      <div id="vår-favoritt" className="flex flex-col md:flex-row lg:mx-5 lg:h-[350px] lg:w-[1000px] mx-auto">
+        <Favorite />
+        <InfoBox />
+    
+      </div>
+</div> */}
+      <WriteCard />
+
+
+      
+      
+     
       <Reviews />
-    </div>
+    <h2>Her kommer en Om Spor 17 seksjon</h2>
  
     </div>
   );
