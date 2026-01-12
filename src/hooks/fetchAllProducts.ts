@@ -1,6 +1,13 @@
 // src/hooks/fetchAllProducts.ts
 import { shopifyFetch } from "./api";
 
+export interface ProductVariant {
+  id: string;
+  title: string;
+  priceV2: { amount: string; currencyCode: string };
+  selectedOptions: { name: string; value: string }[];
+}
+
 export interface Product {
   id: string;
   handle: string;
@@ -28,10 +35,12 @@ export interface Product {
     edges: {
       node: {
         id: string;
+        title: string;
         priceV2: {
           amount: string;
           currencyCode: string;
         };
+        selectedOptions: { name: string; value: string }[];
       };
     }[];
   };
@@ -71,14 +80,19 @@ export async function fetchAllProducts(): Promise<Product[]> {
                 }
               }
             }
-            variants(first: 1) {
+            variants(first: 10) {
               edges {
                 node {
                   id
+                  title
                   priceV2 {
                     amount
                     currencyCode
                   }
+                    selectedOptions {
+                name
+                value
+              }
                 }
               }
             }

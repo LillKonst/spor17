@@ -48,8 +48,11 @@ export default function Home() {
     
       <Favorite />     
       <WriteCard />
-      <Reviews />
-      <HomeAbout />
+      <div className="xs:px-10">
+        <Reviews />
+      </div>
+      
+      <HomeAbout /> 
     </div>
   );
 }

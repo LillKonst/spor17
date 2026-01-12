@@ -147,9 +147,6 @@ product.variants.edges.forEach((edge, idx) => {
   <Reviews />
 </div>
         
-    
-
-    
       </div>
      
         

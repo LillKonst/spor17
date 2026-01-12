@@ -1,5 +1,5 @@
 import ContactForm from "../../components/ContactForm/ContactForm";
-import ContactImg from "../../images/kontakt-img.jpg";
+// import ContactImg from "../../images/kontakt-img.jpg";
 
 export default function Contact() {
   return (
@@ -9,7 +9,7 @@ export default function Contact() {
         <h1 className="text-xl lg:text-2xl mb-3">Kontakt oss</h1>
         <p className="mb-5">Kontakt oss via epost: post@spor17.no, eller send oss en direkte beskjed via vårt kontaktskjema. Vi gleder oss til å motta både spørsmål og tilbakemeldigner!</p>
         <div className="rounded-xl overflow-hidden w-full md:max-w-[400px] self-center">
-          <img src={ContactImg} alt="bilde" className="w-full object-cover"/>
+          {/* <img src={ContactImg} alt="bilde" className="w-full object-cover"/> */}
         </div>
           
       </div>

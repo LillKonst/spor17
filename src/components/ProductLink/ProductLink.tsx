@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import type { Product } from "../../hooks/fetchAllProducts";
+import ColorVariantsMini from "../ColorVariants/ColorVariantsMini";
 
 
 interface ProductLinkProps {
   product: Product;
+  
 }
 
 export default function ProductLink({ product }: ProductLinkProps) {
@@ -28,6 +30,14 @@ export default function ProductLink({ product }: ProductLinkProps) {
           </h2>
           <h2 className="font-bold text-lg xxxs:text-2xl xs:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
           {product.variants.edges[0].node.priceV2.currencyCode}</h2>
+          <ColorVariantsMini
+            variants={product.variants.edges.map(edge => ({
+            id: edge.node.id,
+            title: edge.node.title,         
+            priceV2: edge.node.priceV2,
+            selectedOptions: edge.node.selectedOptions,
+            }))}
+          />
         </div>
         </Link>
       </div>
