@@ -1,7 +1,11 @@
-import { Link } from "react-router-dom";
 import MarkusCard from "../../images/markus-skriver-kort.JPG";
+import { COLLECTION_HANDLES } from "../../constants/collections";
+import CTAButton from "../Buttons/CTAButton";
+import { useNavigate } from "react-router-dom";
+
 
 export default function WriteCard () {
+  const navigate = useNavigate();
   return (
     <div className="my-16 px-5">
   <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
@@ -25,12 +29,13 @@ export default function WriteCard () {
         Det er noen som har tenkt på deg, skrevet til deg og valgt med omtanke.
       </p>
 
-      <Link
-        to="/kolleksjon/barnebursdag"
-        className="w-fit mt-4 bg-ctaPink text-white px-6 py-3 rounded"
-      >
-        Se bursdagskortene
-      </Link>
+      <CTAButton
+                label="Se bursdagskortene"
+                onClick={() =>
+                  navigate(`/kolleksjon/${COLLECTION_HANDLES.BARNEBURSDAG}`)
+                }
+                className="w-fit"
+              />
     </div>
   </div>
   </div>

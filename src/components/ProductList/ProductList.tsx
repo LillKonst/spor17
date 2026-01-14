@@ -26,6 +26,12 @@ export default function ProductList({
       const data = await fetchAllProducts();
 
       let filtered = data;
+
+      console.log("📦 ProductList props", {
+  productType,
+  collectionHandle,
+});
+
       
 
       if (productType) {
@@ -41,6 +47,9 @@ if (collectionHandle) {
     )
   );
 }
+
+console.log("✅ Filtrerte produkter:", filtered.length);
+
 
       
       {/* TODO: Legg til filtere når flere kolleksjoner lanseres */}
