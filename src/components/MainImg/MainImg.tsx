@@ -15,7 +15,7 @@ export default function MainImg() {
         <h1 className="text-customWhite text-3xl sm:text-5xl text-center lg:text-5xl xl:text-7xl">Små kort. Store øyeblikk.</h1>
         <CTAButton 
           label="Handle nå"
-          onClick={() => navigate("/kort")} 
+          onClick={() => navigate("/kolleksjon/")} 
           />
       </div>
     </div>

@@ -28,7 +28,7 @@ export default function ProductLink({ product }: ProductLinkProps) {
           <h2 className="text-lg xxxs:text-xl xs:text-xl">
             {product.title}
           </h2>
-          <h2 className="font-bold text-lg xxxs:text-2xl xs:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
+          <div className="flex justify-between"><h2 className="font-bold text-lg xxxs:text-2xl xs:text-xl">{Math.round(Number(product.variants.edges[0].node.priceV2.amount))}{" "}
           {product.variants.edges[0].node.priceV2.currencyCode}</h2>
           <ColorVariantsMini
             variants={product.variants.edges.map(edge => ({
@@ -38,6 +38,7 @@ export default function ProductLink({ product }: ProductLinkProps) {
             selectedOptions: edge.node.selectedOptions,
             }))}
           />
+        </div>
         </div>
         </Link>
       </div>

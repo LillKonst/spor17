@@ -1,10 +1,10 @@
-import type { ProductVariant } from "./ColorVariants"; // vi kan bruke samme interface
+import type { ProductVariant } from "../../hooks/fetchProduct";
 
 const COLOR_MAP: Record<string, string> = {
-  gul: "#FFEA64",
-  grønn: "#6EE76E",
-  blå: "#3B82F6",
-  rosa: "#EC4899",
+  gul: "#FFEA64",    
+  grønn: "#6EE76E",  
+  blå: "#ABD8FF",  
+  lilla: "#D8ACFF",  
   svart: "#000000",
   hvit: "#FFFFFF",
 };

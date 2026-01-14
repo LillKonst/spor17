@@ -14,7 +14,7 @@ export interface Product {
   title: string;
   productType: string;
   description: string;
-   collections?: {
+   collections: {
     edges: {
       node: {
         handle: string;

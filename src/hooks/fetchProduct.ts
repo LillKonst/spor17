@@ -5,6 +5,7 @@ export interface ProductVariant {
   title: string;
   priceV2: { amount: string; currencyCode: string };
   selectedOptions: { name: string; value: string }[];
+  image?: { url: string; altText: string | null };
 }
 
 export interface Product {
@@ -69,6 +70,10 @@ export async function fetchProduct(handle: string): Promise<Product | null> {
                 name
                 value
               }
+                image {
+        url
+        altText
+      }
             }
           }
         }

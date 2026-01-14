@@ -1,6 +1,6 @@
 import MainImg from "../../components/MainImg/MainImg";
 import Reviews from "../../components/Reviews/Reviews";
-import Favorite from "../../components/Favorite/Favorite";
+// import Favorite from "../../components/Favorite/Favorite";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
@@ -46,7 +46,7 @@ export default function Home() {
         className="ml-5"
       />
     
-      <Favorite />     
+      {/* <Favorite />      */}
       <WriteCard />
       <div className="xs:px-10">
         <Reviews />

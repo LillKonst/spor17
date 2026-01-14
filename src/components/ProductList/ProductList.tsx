@@ -7,11 +7,15 @@ import ProductLink from "../ProductLink/ProductLink";
 
 interface ProductListProps {
   productType?: string;
-  // artist?: string | null;
-  // collection?: string | null;
+  collectionHandle?: string;
 }
+
 // export default function ProductList({ productType, artist, collection }: ProductListProps) {
-export default function ProductList({ productType }: ProductListProps) {
+export default function ProductList({
+  productType,
+  collectionHandle,
+}: ProductListProps) {
+
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -22,22 +26,25 @@ export default function ProductList({ productType }: ProductListProps) {
       const data = await fetchAllProducts();
 
       let filtered = data;
+      
 
       if (productType) {
-        filtered = filtered.filter(
-          (p) => p.productType?.toLowerCase() === productType.toLowerCase()
-        );
-      }
+  filtered = filtered.filter(
+    (p) => p.productType?.toLowerCase() === productType.toLowerCase()
+  );
+}
+
+if (collectionHandle) {
+  filtered = filtered.filter((p) =>
+    p.collections.edges.some(
+      (c) => c.node.handle === collectionHandle
+    )
+  );
+}
+
       
       {/* TODO: Legg til filtere når flere kolleksjoner lanseres */}
 
-      // if (collection) {
-      //   filtered = filtered.filter((p) =>
-      //     p.collections.edges.some(
-      //       (c) => c.node.handle === collection
-      //     )
-      //   );
-      // }
 
       // if (artist) {
       //   filtered = filtered.filter((p) =>
@@ -55,7 +62,8 @@ export default function ProductList({ productType }: ProductListProps) {
   }
 
   loadProducts();
-}, [productType]); // legg til "artist, collections"
+}, [productType, collectionHandle]);
+ // legg til "artist, collections"
 
 
   if (loading) return <p>Laster produkter...</p>;

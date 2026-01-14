@@ -15,7 +15,6 @@ import ShippingAndReturns from "./routes/Policy/ShippingAndReturns";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import MetaPixel from "./components/MetaPixel/MetaPixel";
 import GoogleAnalytics from "./components/GoogleAnalytics/GoogleAnalytics";
-import AllCards from "./routes/AllCards/AllCards";
 
 function App() {
   
@@ -62,7 +61,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="" element={<Home />} />
           <Route path="/produkter" element={<AllProducts />} />
-          <Route path="/kort" element={<AllCards />} />
+          <Route path="/produkter/:productType" element={<AllProducts />} />
+          <Route path="/kolleksjon/:handle" element={<AllProducts />} />
           <Route path="/om" element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
           <Route  path="/produkt/:handle" element={<ProductSpecific />} />

@@ -26,7 +26,7 @@ export default function WriteCard () {
       </p>
 
       <Link
-        to="/kort"
+        to="/kolleksjon/barnebursdag"
         className="w-fit mt-4 bg-ctaPink text-white px-6 py-3 rounded"
       >
         Se bursdagskortene
