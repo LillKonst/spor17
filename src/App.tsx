@@ -26,7 +26,18 @@ function App() {
     <Meta property="og:title" content="Spor 17 - Unike julekort" />
     <Meta property="og:description" content="Enkle, stemningsfulle og håndtegnede julekort fra Spor 17. Gjør julehilsenen ekstra personlig." />
     <Meta property="og:image" content="/images/mainimgspor17.png" />
-    <Link rel="icon" href="/fav-icon.svg" />
+    <Link
+      rel="icon"
+      href="/favicon-light.svg"
+      media="(prefers-color-scheme: light)"
+    />
+    <Link
+      rel="icon"
+      href="/favicon-dark.svg"
+      media="(prefers-color-scheme: dark)"
+    />
+    <Link rel="icon" href="/favicon.svg" />
+
     <script
   type="application/ld+json"
   dangerouslySetInnerHTML={{

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function HomeAbout() {
   return (
-    <section className="mx-2 lg:mx-12 p-5 lg:p-10 rounded-lg flex flex-col sm:flex-row gap-5 items-center sm:items-stretch  lg:max-w-[1000px]">
+    <section className="mx-2 xl:mx-12 p-5 lg:p-10 rounded-lg flex flex-col sm:flex-row gap-5 items-center sm:items-stretch  lg:max-w-[1000px]">
       <div className="">
         <img 
           src={aboutImg} 
@@ -14,8 +14,8 @@ export default function HomeAbout() {
 
     <div className="flex flex-col gap-5 md:flex-1 md:h-[400px] lg:h-[500px]">
       <Link 
-          to="/om"  className=" flex flex-col justify-center bg-customBlue hover:scale-103 rounded p-5 h-full lg:py-10">
-        <h2 className="text-2xl lg:text-4xl mb-5">Hei – så fint at du er her 💗</h2>
+          to="/om"  className=" flex flex-col justify-center bg-customPink hover:scale-103 rounded p-5 h-full lg:py-10">
+        <h2 className="text-xl xs:text-2xl lg:text-4xl mb-5">Hei – så fint at du er her 💗</h2>
         <p className="lg:mb-4 text-lg md:text-2xl">
           Jeg heter Lill og lager illustrerte kort til små og store øyeblikk.
           
@@ -26,7 +26,7 @@ export default function HomeAbout() {
       
       <Link 
           to="/kontakt" 
-          className="bg-ctaPink hover:scale-103 text-white px-6 py-3 rounded lg:py-12 text-lg md:text-2xl transition text-center"
+          className="border-2 border-ctaPink hover:scale-103 text-customBlack px-6 py-3 rounded lg:py-12 text-lg md:text-2xl transition text-center"
         >
           Eller stille et spørsmål?
         </Link>

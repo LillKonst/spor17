@@ -1,6 +1,6 @@
 import MainImg from "../../components/MainImg/MainImg";
 import Reviews from "../../components/Reviews/Reviews";
-// import Favorite from "../../components/Favorite/Favorite";
+import Favorite from "../../components/Favorite/Favorite";
 import ProductSlider from "../../components/ProductSlider/ProductSlider";
 import { useEffect, useState } from "react";
 import { fetchAllProducts } from "../../hooks/fetchAllProducts";
@@ -45,13 +45,8 @@ export default function Home() {
         products={birthdayCards}
         className="ml-5"
       />
-    
-      {/* <Favorite />      */}
-      
-      <div className="xs:px-10">
-        
-      </div>
       <div className="flex flex-col items-center md:px-10">
+        <Favorite />
         <WriteCard />
         <Reviews />
         <HomeAbout /> 
