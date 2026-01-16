@@ -3,7 +3,7 @@ import logo from "../../../images/LOGO26.svg";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Searchbar from "./Searchbar";
-import { cartContext } from "../../../hooks/CartContext";
+import { cartContext } from "../../../hooks/cartContext";
 
 export function RouteNotFound() {
   return <div>Page not found</div>;

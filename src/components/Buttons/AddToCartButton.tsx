@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import AddedToCartModal from "../AddToCartModal/AddToCartModal";
-import { cartContext } from "../../hooks/CartContext";
+import { cartContext } from "../../hooks/cartContext";
 
 
 interface AddToCartButtonProps {
