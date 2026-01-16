@@ -65,7 +65,7 @@ function App() {
           <Route path="/kolleksjon/:handle" element={<AllProducts />} />
           <Route path="/om" element={<About />} />
           <Route path="/kontakt" element={<Contact />} />
-          <Route  path="/produkt/:handle" element={<ProductSpecific />} />
+          <Route path="/produkt/:handle" element={<ProductSpecific />} />
           <Route path="/handlekurv" element={<ShoppingCart />} />
           <Route path="/kjøpsbetingelser" element={<Policy/>} />
           <Route path="/sikkerhet-personvern" element={<PrivacyPolicy/>} />
