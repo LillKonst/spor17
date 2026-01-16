@@ -22,7 +22,7 @@
 //   );
 // }
 
-import { CartContext } from "../../hooks/cartContext";
+import { cartContext } from "../../hooks/CartContext";
 import { useCart } from "../../hooks/useCart";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
@@ -39,8 +39,8 @@ export function CartProvider({ children }: CartProviderProps) {
   }, []);
 
   return (
-    <CartContext.Provider value={cartApi}>
+    <cartContext.Provider value={cartApi}>
       {children}
-    </CartContext.Provider>
+    </cartContext.Provider>
   );
 }

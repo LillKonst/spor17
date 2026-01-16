@@ -24,7 +24,7 @@ export default function ReviewSlider({ reviews, title, className }: ReviewSlider
           {reviews.map((review) => (
             <li
               key={review.id}
-              className="min-w-[75%] xs:min-w-[45%] md:min-w-[30%] lg:min-w-[22%] snap-start bg-white p-5 rounded-lg shadow flex flex-col justify-start"
+              className="min-w-[75%] sm:min-w-[45%] lg:min-w-[32%] xl:min-w-[25%] snap-start bg-white p-5 rounded-lg shadow flex flex-col justify-start"
             >
               <p className="text-xl font-bold mb-2">{review.name}</p>
               <p className="text-base">{review.text}</p>

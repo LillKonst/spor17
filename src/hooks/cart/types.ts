@@ -32,6 +32,7 @@ export interface ShopifyCartLine {
     merchandise: {
       id: string;
       title: string;
+      image?: { url: string; altText: string | null };
       priceV2: { amount: string; currencyCode: string };
       product: {
         title: string;
