@@ -83,7 +83,7 @@ export default function Header() {
           <button
             ref={buttonRef}
             onClick={toggleMenu}
-            className="text-md p-2 text-black font-semibold rounded-lg bg-white shadow-lg relative z-50"
+            className="text-md p-2 text-black font-semibold rounded-lg bg-customWhite shadow-lg relative z-50"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
               <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
@@ -104,7 +104,7 @@ export default function Header() {
               className={`${
                 isMenuOpen || isDesktop ? "flex" : "hidden"
               } absolute lg:static top-[90px] xxs:top-[100px] md:top-[90px] left-0 right-0 h-screen sm:left-50 md:left-90 lg:left-0 lg:h-[70px] md:p-5 lg:p-0 
-                bg-background lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
+                bg-customWhite lg:bg-transparent lg:w-full flex flex-col lg:flex-row 
                 gap-5 lg:items-center lg:justify-between lg:space-x-4 z-40`}
             >
               <nav className="lg:self-center lg:mt-5 lg:ms-8 w-full">
