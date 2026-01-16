@@ -35,11 +35,11 @@ export default function ContactForm() {
 
   
   return(
-     <div className="bg-white px-10 mt-10 flex flex-col gap-3 flex-1">
+     <div className="border-2 border-customBlue p-10 rounded mt-10 flex flex-col gap-3 flex-1">
       <h2 className="text-2xl mb-4 text-center">Send oss en melding her</h2>
 
       {submitted ? (
-        <p className="bg-customGreen text-black text-center p-5 rounded-2xl">
+        <p className="bg-customBlue text-black text-center p-5 rounded-2xl">
           Takk for meldingen din! Vi tar kontakt så snart vi kan.
         </p>
       ) : (
@@ -67,7 +67,7 @@ export default function ContactForm() {
               name="name"
               type="text"
               required
-              className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
+              className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:bg-customWhite"
             />
           </div>
 
@@ -80,7 +80,7 @@ export default function ContactForm() {
               name="email"
               type="email"
               required
-              className=" font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
+              className=" font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:bg-customWhite"
             />
           </div>
 
@@ -93,7 +93,7 @@ export default function ContactForm() {
               name="message"
               rows={5}
               required
-              className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-green-200"
+              className="font-Garamond w-full border border-gray-300 rounded-lg p-2 focus:ring focus:bg-customWhite"
             ></textarea>
           </div>
 

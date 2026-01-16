@@ -1,4 +1,4 @@
-// import aboutImg from "../../images/til-home2.jpg";
+import aboutImg from "../../images/about-img.jpg";
 
 export default function About() {
   return (
@@ -70,13 +70,13 @@ export default function About() {
         </p>
       </div>
 
-      {/* <div className="w-full lg:flex-2 max-h-[550px] md:w-[500px]">
+      <div className="w-full lg:flex-2 max-h-[550px] md:w-[500px] md:m-10">
         <img
           src={aboutImg}
           alt="Lill – Spor 17"
           className="rounded w-full h-full object-cover"
         />
-      </div> */}
+      </div>
     </div>
   );
 }

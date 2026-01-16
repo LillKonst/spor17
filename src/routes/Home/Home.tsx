@@ -41,18 +41,21 @@ export default function Home() {
     <div className="z-10 lg:px-5">
       <MainImg />
       <ProductSlider
-        title="Nyheter - Bursdagskort"
+        title="Ny serie - Bursdagsglede"
         products={birthdayCards}
         className="ml-5"
       />
     
       {/* <Favorite />      */}
-      <WriteCard />
-      <div className="xs:px-10">
-        <Reviews />
-      </div>
       
-      <HomeAbout /> 
+      <div className="xs:px-10">
+        
+      </div>
+      <div className="flex flex-col items-center md:px-10">
+        <WriteCard />
+        <Reviews />
+        <HomeAbout /> 
+      </div>
     </div>
   );
 }

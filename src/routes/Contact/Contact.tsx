@@ -3,7 +3,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 
 export default function Contact() {
   return (
-    <div className="bg-white rounded w-full p-2 md:p-10 flex flex-col lg:flex-row gap-5">
+    <div className="w-full p-2 md:p-10 flex flex-col lg:flex-row gap-5">
       
       <div className="flex-1 p-2 md:p-10 flex flex-col gap-5">
         <h1 className="text-xl lg:text-2xl mb-3">Kontakt oss</h1>

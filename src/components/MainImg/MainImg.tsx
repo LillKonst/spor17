@@ -13,7 +13,7 @@ export default function MainImg() {
         <img src={mainImage} alt="2 barn utveksler en bursdagspresant." className="md:order-1 w-full h-[300px] md:h-full object-cover"/>
       </Link>
       <div className="bg-customBlue p-5 sm:p-10 flex flex-col items-center justify-center gap-4 sm:gap-6 md:gap-10 md:h-full md:w-1/2 2xl:w-2/5">
-        <h1 className="text-customWhite text-3xl sm:text-5xl text-center lg:text-5xl xl:text-7xl">Små kort. Store øyeblikk.</h1>
+        <h1 className="text-3xl sm:text-5xl text-center lg:text-5xl xl:text-7xl">Små kort. Store øyeblikk.</h1>
         <CTAButton
           label="Handle nå"
           onClick={() =>

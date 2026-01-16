@@ -34,15 +34,11 @@
   --font-CourierPrime: "CourierPrime", "sans-serif";
   --font-Raleway: "Raleway", "sans-serif";
 
-  --color-background: #FEFEFE;
-  --color-customGreen: #A5EB9F;
-  --color-customHover: #93D38E;
-  --color-customRed: #F24242;
-  --color-customRedHover: #D83B3B;
-  --color-customPink: #DFB2C6;
-  --color-ctaPink: #DB0662;
-  --color-customWhite: #FEFEFE;
-  --color-customBlue: #9CC0DA;
+  --color-customPink: #F0D7E2;
+  --color-ctaPink: #C91863;
+  --color-customWhite: #FAFAF9;
+  --color-customBlue: #EEEAE6;
+  --color-customBlack: #262626;
 
   --breakpoint-xs: 500px;
   --breakpoint-xxs: 400px;
