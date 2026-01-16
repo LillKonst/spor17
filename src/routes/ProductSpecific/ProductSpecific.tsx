@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchProduct } from "../../hooks/fetchProduct";
-import type { Product } from "../../hooks/fetchProduct";
+import type { Product, ProductVariant } from "../../hooks/fetchProduct";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
 import AddToCartButton from "../../components/Buttons/AddToCartButton";
 import ImageCarousel from "../../components/ImageCarousel/ImageCarousel";
@@ -9,12 +9,6 @@ import LinkTree from "../../components/LinkTree/LinkTree";
 import Reviews from "../../components/Reviews/Reviews";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import ColorVariants from "../../components/ColorVariants/ColorVariants";
-
-export interface ProductVariant {
-  id: string;
-  title: string;
-  selectedOptions: { name: string; value: string }[];
-}
 
 
 export default function ProductSpecific() {
@@ -47,7 +41,31 @@ product.variants.edges.forEach((edge, idx) => {
   // const variantId = product.variants.edges[0].node.id;
   const price = product.variants.edges[0].node.priceV2;
   const collection = product.collections.edges[0]?.node;
-  const activeVariant = selectedVariant ?? product.variants.edges[0].node;
+ 
+  const variants: ProductVariant[] = product.variants.edges.map(edge => edge.node);
+  const activeVariant = selectedVariant ?? variants[0];
+
+  const allImages = product.images.edges.map(edge => ({
+  url: edge.node.url,
+  altText: edge.node.altText,
+}));
+
+let imagesToShow = allImages;
+
+// Hvis produktet har flere varianter og selectedVariant har et bilde
+if (product.variants.edges.length > 1 && selectedVariant?.image) {
+  const variantImage = {
+    url: selectedVariant.image.url,
+    altText: selectedVariant.image.altText,
+  };
+  // Legg variantbildet først, fjern duplikat hvis det finnes i produktbilder
+  imagesToShow = [
+    variantImage,
+    ...allImages.filter(img => img.url !== variantImage.url),
+  ];
+}
+
+
 
 
 
@@ -63,12 +81,10 @@ product.variants.edges.forEach((edge, idx) => {
 
       <div className="flex flex-col lg:flex-row gap-5 items-center my-3 pb-12 md:py-5 md:px-5 lg:px-10 justify-center">
         
-          <ImageCarousel
-            images={product.images.edges.map(edge => ({
-            url: edge.node.url,
-            altText: edge.node.altText,
-            }))}
-          />
+          <ImageCarousel images={imagesToShow} />
+
+
+
        
 
         <div className="mt-5 lg:mt-10 flex flex-col items-start self-start gap-1">
@@ -111,10 +127,12 @@ product.variants.edges.forEach((edge, idx) => {
           </h2>
 
         <ColorVariants
-            variants={product.variants.edges.map((edge) => edge.node)}
-            selectedVariantId={selectedVariant?.id}
-            onSelectVariant={setSelectedVariant}
-          />
+          variants={variants}
+          selectedVariantId={selectedVariant?.id}
+          onSelectVariant={setSelectedVariant}
+        />
+
+
         
       
         <div>
@@ -147,9 +165,6 @@ product.variants.edges.forEach((edge, idx) => {
   <Reviews />
 </div>
         
-    
-
-    
       </div>
      
         

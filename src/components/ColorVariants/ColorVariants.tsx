@@ -1,20 +1,15 @@
 // src/components/ColorVariants.tsx
 import React from "react";
+import type { ProductVariant } from "../../hooks/fetchProduct";
 
 const COLOR_MAP: Record<string, string> = {
   gul: "#FFEA64",    
   grønn: "#6EE76E",  
-  blå: "#3B82F6",  
-  rosa: "#EC4899",  
+  blå: "#ABD8FF",  
+  lilla: "#D8ACFF",  
   svart: "#000000",
   hvit: "#FFFFFF",
 };
-
-export interface ProductVariant {
-  id: string;
-  title: string;
-  selectedOptions: { name: string; value: string }[];
-}
 
 interface ColorVariantsProps {
   variants: ProductVariant[];
@@ -34,6 +29,7 @@ const ColorVariants: React.FC<ColorVariantsProps> = ({
   );
 
   if (colorVariants.length === 0) return null;
+  
 
   return (
     <div className="flex gap-2 items-center mt-3 p-5">

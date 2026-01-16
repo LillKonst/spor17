@@ -45,25 +45,21 @@ export default function Favorite() {
           )}
         </Link>
         
-         <div className="self-center xs:h-full flex flex-col my-3 xs:justify-between">
+        <div className="self-center xs:h-full flex flex-col my-3 xs:justify-between lg:mx-10">
           <div className="ms-2 mb-5">
             <Link
               to={`/produkt/${product.handle}`}
-              className="text-xl xxxs:text-md md:text-md xs:text-lg"
+              className="text-xl xxxs:text-md md:text-md xs:text-lg lg:text-2xl"
             >
               {product.title}
             </Link>
 
             {price && (
-              <h2 className="text-xl">
+              <h2 className="text-xl lg:text-2xl">
                 {Math.round(Number(price.amount))} {price.currencyCode}
               </h2>
-            )}
-
-            
+            )}    
           </div>
-
-
 
           <div className="flex flex-col gap-2 max-w-[200px]">
             <AddToCartButton 
