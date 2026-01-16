@@ -1,28 +1,5 @@
-// import { useEffect } from "react";
-// import { CartContext } from "../../hooks/cartContext";
-// import { useCart } from "../../hooks/useCart";
-// import type { ReactNode, ReactElement } from "react";
-
-// interface CartProviderProps {
-//   children: ReactNode;
-// }
-
-// export function CartProvider({ children }: CartProviderProps): ReactElement {
-//   const { cart, fetchCart, addItem, changeQuantity, removeAllItems } = useCart();
-
-//   // Hent cart når provider mountes
-//   useEffect(() => {
-//     fetchCart();
-//   }, [fetchCart]);
-
-//   return (
-//     <CartContext.Provider value={{ cart, addItem, changeQuantity, removeAllItems, fetchCart }}>
-//       {children}
-//     </CartContext.Provider>
-//   );
-// }
-
-import { cartContext } from "../../hooks/CartContext";
+import { cartContext } from "../../hooks/cartContext";
+import type { CartContextType } from "../../hooks/cartContext";
 import { useCart } from "../../hooks/useCart";
 import type { ReactNode } from "react";
 import { useEffect } from "react";
@@ -36,10 +13,17 @@ export function CartProvider({ children }: CartProviderProps) {
 
   useEffect(() => {
     cartApi.fetchCart();
-  }, []);
+  }, [cartApi]); // ✅ legg til cartApi som dependency
+
+  const contextValue: CartContextType = {
+    cart: cartApi.cart,
+    addItem: cartApi.addItem,
+    changeQuantity: cartApi.changeQuantity,
+    removeAllItems: cartApi.removeAllItems,
+  };
 
   return (
-    <cartContext.Provider value={cartApi}>
+    <cartContext.Provider value={contextValue}>
       {children}
     </cartContext.Provider>
   );
