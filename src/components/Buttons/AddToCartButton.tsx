@@ -76,7 +76,7 @@ export default function AddToCartButton({
       <button
         onClick={handleClick}
         disabled={loading}
-        className={`bg-ctaPink hover:bg-customPink text-customWhite text-xl p-3 px-4 rounded w-fit ${className || ""}`}
+        className={`bg-ctaPink hover:scale-110 text-customWhite text-xl p-3 px-4 rounded w-fit ${className || ""}`}
       >
         {loading ? "Legger til..." : "Legg i handlekurv"}
       </button>

@@ -17,7 +17,7 @@ export default function CTAButton({
     <button
       onClick={onClick}
       disabled={loading || disabled}
-      className={`bg-ctaPink hover:bg-customPink text-customWhite text-xl p-3 px-4 rounded ${className || ""}`}
+      className={`bg-ctaPink hover:scale-110 text-customWhite text-xl p-3 px-4 rounded ${className || ""}`}
     >
       {loading ? "Laster..." : label}
     </button>
