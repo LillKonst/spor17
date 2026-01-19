@@ -21,10 +21,10 @@ function App() {
 
   return (
     <HeadProvider>
-    <Title>Spor 17 - Unike julekort</Title>
-    <Meta name="description" content="Oppdag unike julekort fra Spor 17. Enkle og stemningsfulle design som gjør julehilsenen personlig. Rask levering – perfekt til jul!" />
-    <Meta property="og:title" content="Spor 17 - Unike julekort" />
-    <Meta property="og:description" content="Enkle, stemningsfulle og håndtegnede julekort fra Spor 17. Gjør julehilsenen ekstra personlig." />
+    <Title>Spor 17 - Unike bursdagskort</Title>
+    <Meta name="description" content="Oppdag unike bursdagskort fra Spor 17. Enkle og stemningsfulle design som gjør din bursdagshilsen mer personlig. Rask levering – perfekt til feiring!" />
+    <Meta property="og:title" content="Spor 17 - Unike bursdagskort" />
+    <Meta property="og:description" content="Morsommme og søte illustrerte bursagskort. Gjør en hver bursdagshilsen litt mer gøy." />
     <Meta property="og:image" content="/images/mainimgspor17.png" />
     <Link
       rel="icon"

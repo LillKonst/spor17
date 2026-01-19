@@ -9,16 +9,12 @@ export default function About() {
         </h2>
 
         <p className="lg:text-lg mb-5">
-          Spor 17 er et lite, kreativt prosjekt – og et ganske personlig ett.
+          Spor 17 er et lite, kreativt prosjekt med fokus på form og uttrykk.
           Bak Spor 17 står jeg, Lill.
         </p>
 
         <p className="lg:text-lg mb-5">
-          Jeg har i mange år jobbet profesjonelt i dansebransjen, og kreativitet
-          har alltid vært en naturlig del av hverdagen min. Etter hvert tok jeg
-          også steget inn i frontend-utvikling, og sommeren 2025 begynte en ny idé
-          å ta form: å samle det jeg liker best – design, form, ro og uttrykk – i
-          ett prosjekt.
+          Kreativitet har alltid vært en naturlig del av livet mitt. Jeg har jobbet profesjonelt med dans i mange år, og senere også med frontend-utvikling. Etter hvert vokste ønsket om å samle det jeg liker best – design, uttrykk, struktur og stillhet – i ett prosjekt.
         </p>
 
         <p className="lg:text-lg mb-10">
@@ -29,35 +25,28 @@ export default function About() {
           Enkle kort, laget med omtanke
         </h3>
 
-        <p className="lg:text-lg mb-5">
-          Jeg designer kort med et ønske om å holde det enkelt og ærlig. Motiver
-          som får puste, ord som kan bety noe, og produkter som er ment å brukes –
-          ikke bare kjøpes.
+        <p className="lg:text-lg mb-10">
+          Jeg designer kort med et ønske om å holde det enkelt og ærlig.
+          Motiver som får puste, ord med mening, og produkter som er ment å brukes – ikke bare kjøpes.
+          Alt designes av meg og produseres på bestilling, slik at jeg kan jobbe fleksibelt og bærekraftig i liten skala.
         </p>
 
-        <p className="lg:text-lg mb-10">
-          Reisen startet med åtte julekort. Nå kommer det gradvis flere typer
-          kort, og etter hvert også plakater i sortimentet. Alt designes av meg og produseres på bestilling, slik at jeg kan jobbe fleksibelt og bærekraftig i liten skala.
-        </p>
 
         <h3 className="text-lg lg:text-xl font-semibold mb-3">
-          Et lite brand – med rom for mer
-        </h3>
-
-        <p className="lg:text-lg mb-10">
-          Spor 17 er ikke et stort firma, og det er heller ikke meningen. Det er
-          en plattform der kreativiteten min får ta plass – og der det etter
-          hvert også kan bli rom for flere uttrykk og kanskje flere kunstnere.
-        </p>
-
-        <h3 className="text-lg lg:text-xl font-semibold mb-3">
-          Takk for at du støtter noe lite
+          Et lite brand i utvikling
         </h3>
 
         <p className="lg:text-lg mb-5">
-          Når du handler hos Spor 17, støtter du meg og mitt lille prosjekt. Det
-          betyr mer enn du kanskje tror.
+          Reisen startet med åtte julekort. Nå kommer det gradvis flere typer kort, og etter hvert også plakater og nye uttrykk. Sortimentsutviklingen får skje sakte, med rom for å kjenne etter underveis.
         </p>
+
+        <p className="lg:text-lg mb-10">
+          Spor 17 er ikke ment å være stort, men det er ment å være gjennomtenkt. På sikt kan det også bli et rom for flere kreative stemmer – akkurat nå er det mitt.
+        </p>
+
+        <h3 className="text-lg lg:text-xl font-semibold mb-3">
+          Takk for at du støtter mitt lille prosjekt
+        </h3>
 
         <p className="lg:text-lg mb-8">
           Jeg håper kortene mine får være med på å markere små og store øyeblikk –
