@@ -15,7 +15,7 @@ export default function HomeAbout() {
     <div className="flex flex-col gap-5 md:flex-1 md:h-[400px] lg:h-[500px]">
       <Link 
           to="/om"  className=" flex flex-col justify-center bg-customPink hover:scale-103 rounded p-5 h-full lg:py-10">
-        <h2 className="text-xl xs:text-2xl lg:text-4xl mb-5">Hei – så fint at du er her 💗</h2>
+        <h2 className="text-xl xs:text-2xl lg:text-4xl mb-5 tracking-tight">Hei – så fint at du er her 💗</h2>
         <p className="lg:mb-4 text-lg md:text-2xl">
           Jeg heter Lill og lager illustrerte kort til små og store øyeblikk.
           
