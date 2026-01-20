@@ -17,7 +17,7 @@ export default function ProductSlider({
   return (
     <section className={className}>
       {title && (
-        <h2 className="text-2xl md:text-3xl mb-4 px-2">
+        <h2 className="text-2xl md:text-3xl mb-4 px-2 tracking-tight">
           {title}
         </h2>
       )}

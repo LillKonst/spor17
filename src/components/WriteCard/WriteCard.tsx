@@ -21,7 +21,7 @@ export default function WriteCard () {
 
     {/* Tekst */}
     <div className="flex flex-col gap-4">
-      <h2 className="text-3xl">
+      <h2 className="text-3xl tracking-tight">
         Ord som varer litt lenger
       </h2>
       <p className="text-lg text-gray-700">

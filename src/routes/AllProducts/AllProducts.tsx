@@ -20,7 +20,7 @@ export default function AllProducts() {
   return (
     <div className="mx-5">
       <div className="mb-6 lg:mx-5">
-        <h1 className="text-2xl">{title}</h1>
+        <h1 className="text-2xl mb-2 tracking-tight">{title}</h1>
         <p>{description}</p>
       </div>
 
