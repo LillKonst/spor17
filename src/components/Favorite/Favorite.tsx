@@ -120,7 +120,6 @@ export default function DagensKort() {
   return (
     <div className="w-full flex flex-col gap-3 items-center justify-center mx-auto p-5 md:py-0 px-5 my-10 flex-1 max-w-[800px]">
       <h2 className="text-2xl mx-5 mt-5 tracking-tight">Dagens kort</h2>
-      <p className="text-lg">Håndplukket for i dag</p>
 
       <div className="flex flex-col md:flex-row">
         <Link
@@ -152,7 +151,7 @@ export default function DagensKort() {
             )}
           </div>
 
-          <div className="flex flex-col gap-2 max-w-[200px]">
+          <div className="flex flex-col gap-2 max-w-[200px] self-center">
             {variant && (
               <AddToCartButton
                 variantId={variant.id}
@@ -162,7 +161,7 @@ export default function DagensKort() {
 
             <Link
               to={`/produkt/${product.handle}`}
-              className="p-2 px-3 text-sm rounded border-2 border-ctaPink w-[195px] text-center"
+              className="p-2 px-3 text-lg sm:text-xl rounded border-2 border-ctaPink w-[179px] sm:w-[195px] text-center"
             >
               Se detaljer
             </Link>
